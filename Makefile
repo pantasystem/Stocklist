@@ -3,6 +3,15 @@ GID := $(shell id -g)
 USER := $(UID):$(GID)
 DOCKER_COMPOSE := user=$(USER) docker-compose
 
+
+.PHONY: init
+init:
+	$(DOCKER_COMPOSE) up -d --build
+	$(DOCKER_COMPOSE) exec php composer install
+	$(DOCKER_COMPOSE) exec php cp .env.example .env
+	$(DOCKER_COMPOSE) exec php php artisan key:generate
+	$(DOCKER_COMPOSE) exec php php artisan migrate
+
 .PHONY: up
 up:
 	$(DOCKER_COMPOSE) up -d
@@ -10,6 +19,10 @@ up:
 .PHONY: down
 down:
 	$(DOCKER_COMPOSE) down
+
+.PHONY: rm
+rm:
+	$(DOCKER_COMPOSE) down --rmi all
 
 .PHONY: logs
 logs:
