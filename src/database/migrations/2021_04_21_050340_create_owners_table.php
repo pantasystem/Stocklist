@@ -14,8 +14,14 @@ class CreateOwnersTable extends Migration
     public function up()
     {
         Schema::create('owners', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('node_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->primary(['node_id', 'user_id']);
+
+            $table->foreign('node_id')->references('id')->on('nodes');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

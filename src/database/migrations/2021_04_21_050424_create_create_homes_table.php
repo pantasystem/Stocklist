@@ -16,6 +16,9 @@ class CreateCreateHomesTable extends Migration
         Schema::create('create_homes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string('email')->index();
+            $table->string('token')->index();
+
         });
     }
 

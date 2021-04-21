@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->unsignedBigInteger('home_id')->index();
+            $table->foreign('home_id')->references('id')->on('homes');
         });
     }
 

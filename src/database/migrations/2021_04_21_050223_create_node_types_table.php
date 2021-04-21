@@ -16,6 +16,9 @@ class CreateNodeTypesTable extends Migration
         Schema::create('node_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string('name')->index();
+            $table->unsignedBigInteger('home_id')->index();
+            $table->foreign('home_id')->references('id')->on('homes');
         });
     }
 

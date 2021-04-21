@@ -16,6 +16,9 @@ class CreateInvitationsTable extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+
+            $table->string('name')->index();
+            
         });
     }
 
