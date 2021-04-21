@@ -30,7 +30,6 @@ services:
         build: ./docker/mysql
         container_name: "Stocklist-db"
         volumes:
-            - ./docker/mysql/conf.d:/etc/mysql/conf.d
             - ./docker/StocklistLogs/mysql:/var/log/mysql/
         ports:
             - 3360:3306
@@ -40,4 +39,3 @@ services:
             MYSQL_PASSWORD: Stocklist-password
             MYSQL_ROOT_PASSWORD: Stocklist-root
             TZ: "Asia/Tokyo"
-        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
