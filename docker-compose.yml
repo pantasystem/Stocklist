@@ -27,11 +27,10 @@ services:
             - db
     
     db:
-        image: mysql:8.0.18
+        build: ./docker/mysql
         container_name: "Stocklist-db"
         volumes:
             - ./docker/mysql/conf.d:/etc/mysql/conf.d
-            - ./docker/mysql/data:/var/lib/mysql
             - ./docker/StocklistLogs/mysql:/var/log/mysql/
         ports:
             - 3360:3306
