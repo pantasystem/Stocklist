@@ -37,4 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     *  userの所属するHomeを取得
+     */
+    public function home()
+    {
+        return $this->belongsTo('App\Home');
+    }
+
+    /**
+     * userの所有するItemを取得
+     */
+    public function items()
+    {
+        return $this->belongsToMany('App\Item');
+    }
+
 }
