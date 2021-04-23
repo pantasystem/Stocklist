@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\User;
+use App\Item;
+use App\Node;
+
 class Home extends Model
 {
     //
@@ -15,7 +19,7 @@ class Home extends Model
      */
     public function members()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany(User::class);
     }
 
     /**
@@ -23,7 +27,7 @@ class Home extends Model
      */
     public function items()
     {
-        return $this->hasMany('App\Item');
+        return $this->hasMany(Item::class);
     }
 
     /**
@@ -31,7 +35,7 @@ class Home extends Model
      */
     public function nodes()
     {
-        return $this->hasMany('App\Node');
+        return $this->hasMany(Node::class);
     }
 
 }

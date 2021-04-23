@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Home;
+use App\User;
+use App\Node;
+
 class Item extends Model
 {
     //
@@ -14,7 +18,7 @@ class Item extends Model
      */
     public function home()
     {
-        return $this->belongsTo('App\Home');
+        return $this->belongsTo(Home::class);
     }
 
     /**
@@ -22,7 +26,7 @@ class Item extends Model
      */
     public function owners()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(User::class);
     }
 
     /**
@@ -30,7 +34,7 @@ class Item extends Model
      */
     public function node()
     {
-        return $this->belongsTo('App\Node');
+        return $this->belongsTo(Node::class);
     }
 
 }

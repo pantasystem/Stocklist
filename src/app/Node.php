@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Item;
+use App\Home;
+
 class Node extends Model
 {
     //
@@ -14,7 +17,7 @@ class Node extends Model
      */
     public function items()
     {
-        return $this->hasMany('App\Item');
+        return $this->hasMany(Item::class);
     }
 
     /**
@@ -22,7 +25,7 @@ class Node extends Model
      */
     public function home()
     {
-        return $this->belongsTo('App\Home');
+        return $this->belongsTo(Home::class);
     }
 
 }

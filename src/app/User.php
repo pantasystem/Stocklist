@@ -7,6 +7,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Home;
+use App\Item;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -43,7 +46,7 @@ class User extends Authenticatable
      */
     public function home()
     {
-        return $this->belongsTo('App\Home');
+        return $this->belongsTo(Home::class);
     }
 
     /**
@@ -51,7 +54,7 @@ class User extends Authenticatable
      */
     public function items()
     {
-        return $this->belongsToMany('App\Item');
+        return $this->belongsToMany(Item::class);
     }
 
 }
