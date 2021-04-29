@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+/**
+ * 認証のサンプル
+ */
+Route::get('/me', function(Request $request){
+    return $request->user();
+})->middleware('auth:sanctum');

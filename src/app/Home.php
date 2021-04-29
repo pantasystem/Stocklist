@@ -36,4 +36,9 @@ class Home extends Model
         return $this->hasMany(Box::class);
     }
 
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+
 }
