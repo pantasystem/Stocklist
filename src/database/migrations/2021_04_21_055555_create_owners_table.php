@@ -15,12 +15,12 @@ class CreateOwnersTable extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->timestamps();
-            $table->unsignedBigInteger('node_id');
+            $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('user_id');
 
-            $table->primary(['node_id', 'user_id']);
+            $table->primary(['item_id', 'user_id']);
 
-            $table->foreign('node_id')->references('id')->on('nodes');
+            $table->foreign('node_id')->references('id')->on('items');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
