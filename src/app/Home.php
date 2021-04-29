@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\User;
 use App\Item;
-use App\Node;
+use App\Box;
 
 class Home extends Model
 {
@@ -30,12 +30,10 @@ class Home extends Model
         return $this->hasMany(Item::class);
     }
 
-    /**
-     * homeにあるnodes(部屋?)を取得
-     */
-    public function nodes()
+    
+    public function boxes()
     {
-        return $this->hasMany(Node::class);
+        return $this->hasMany(Box::class);
     }
 
 }
