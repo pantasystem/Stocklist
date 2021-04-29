@@ -31,3 +31,7 @@ logs:
 .PHONY: shPHP
 shPHP:
 	$(DOCKER_COMPOSE) exec php /bin/bash
+
+.PHONY: shDB
+shDB:
+	$(DOCKER_COMPOSE) exec db /bin/bash
