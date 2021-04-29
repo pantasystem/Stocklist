@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name')->index();
-            $table->unsignedBigInteger('home_id');
+            $table->unsignedBigInteger('home_id')->index();
             $table->foreign('home_id')->references('id')->on('homes');
             $table->text('description');
         });
