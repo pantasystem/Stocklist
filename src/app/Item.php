@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Home;
 use App\User;
-use App\Node;
+use App\Box;
 
 class Item extends Model
 {
     //
-    protected $fillable = ['name', 'description', 'image_path', 'node_id'];
+    protected $fillable = ['name', 'description', 'home_id','box_id'];
 
     /**
      *  Itemの所属するHomeを取得
@@ -29,12 +29,10 @@ class Item extends Model
         return $this->belongsToMany(User::class);
     }
 
-    /**
-     *  Itemの所属するnodeを取得
-     */
-    public function node()
+    
+    public function box()
     {
-        return $this->belongsTo(Node::class);
+        return $this->belongsTo(Box::class);
     }
 
 }
