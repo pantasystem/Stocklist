@@ -23,6 +23,8 @@ class CreateBoxesTable extends Migration
             $table->unsignedBigInteger('room_id')->nullable()->index();
             $table->foreign('box_id')->references('id')->on('boxes');
             $table->foreign('room_id')->references('id')->on('rooms');
+            $table->string('name')->index();
+            $table->text('description');
             
         });
     }
