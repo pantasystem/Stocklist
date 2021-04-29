@@ -16,7 +16,7 @@ class CreateBoxesTable extends Migration
         Schema::create('boxes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsingedBigInteger('home_id');
+            $table->unsignedBigInteger('home_id');
             $table->foreign('home_id')->references('id')->on('homes');
 
             $table->unsignedBigInteger('box_id')->nullable()->index();
