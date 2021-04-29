@@ -20,7 +20,7 @@ class CreateOwnersTable extends Migration
 
             $table->primary(['item_id', 'user_id']);
 
-            $table->foreign('node_id')->references('id')->on('items');
+            $table->foreign('item_id')->references('id')->on('items');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

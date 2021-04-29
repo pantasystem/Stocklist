@@ -21,7 +21,7 @@ class CreateItemsTable extends Migration
             $table->string('image_path');
             $table->unsignedBigInteger('box_id')->nullable()->index();
             $table->unsignedBigInteger('home_id')->index();
-            $table->foreign('home_id')->references('id')->on('home');
+            $table->foreign('home_id')->references('id')->on('homes');
             $table->foreign('box_id')->references('id')->on('boxes');
         });
     }
