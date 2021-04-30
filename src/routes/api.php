@@ -24,3 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/me', function(Request $request){
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::get('/test', function(Request $request) {
+    return App\Home::first()->stocks()->with('item')->get()->count();
+});
