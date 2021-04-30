@@ -33,10 +33,20 @@ class Item extends Model
         return $this->belongsToMany(User::class);
     }
 
-    
-    public function box()
+
+    /**
+     * Stockを経由してBoxを取得する
+     */
+    public function boxes()
     {
-        return $this->belongsTo(Box::class);
+        return $this->hasManyThrough(
+            Box::class,
+            Stock::class,
+            'item_id', //中継テーブルの自分に対する参照キー
+            'id', // 中間テーブルを参照する取得予定のテーブルのキー
+            'id',
+            'box_id'
+        );
     }
 
     public function stocks()
