@@ -22,13 +22,6 @@ class Home extends Model
         return $this->hasMany(User::class);
     }
 
-    /**
-     * homeの所有するItemを取得
-     */
-    public function items()
-    {
-        return $this->hasMany(Item::class);
-    }
 
     
     public function boxes()

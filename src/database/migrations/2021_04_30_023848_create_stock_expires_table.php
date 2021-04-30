@@ -22,6 +22,7 @@ class CreateStockExpiresTable extends Migration
             $table->foreign('item_id')->references('item_id')->on('disposables');
             $table->foreign('stock_id')->references('id')->on('stocks');
             $table->date('expiration_date')->nullable()->index();
+            $table->unique(['stock_id']);
         });
     }
 

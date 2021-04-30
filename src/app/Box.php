@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
 use App\Home;
+use App\Stock;
 
 
 class Box extends Model
@@ -27,9 +28,9 @@ class Box extends Model
         return $this->hasMany(Box::class);
     }
 
-    public function items()
+    public function stocks() 
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Stock::class);
     }
 }
 
