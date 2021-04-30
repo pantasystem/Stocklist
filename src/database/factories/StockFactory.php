@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Stock::class, function (Faker $faker) {
     return [
-        'count' -> $faker->randomNumber(3),
+        'count' => $faker->randomNumber(3),
     ];
 });
