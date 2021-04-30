@@ -22,8 +22,4 @@ class Room extends Model
         return $this->hasMany(Box::class);
     }
 
-    public function items()
-    {
-        return $this->hasMany(Item::class);
-    }
 }
