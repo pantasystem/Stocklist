@@ -16,6 +16,7 @@ class CreateDisposablesTable extends Migration
         Schema::create('disposables', function (Blueprint $table) {
             $table->unsignedBigInteger('item_id');
             $table->primary(['item_id']);
+            $table->timestamps();
 
             $table->foreign('item_id')->references('id')->on('items');
 
