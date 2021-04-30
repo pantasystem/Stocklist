@@ -20,6 +20,9 @@ class CreateStocksTable extends Migration
             $table->unsignedBigInteger('box_id')->nullable()->index();
             $table->integer('count')->index();
 
+            $table->foreign('item_id')->references('id')->on('items');
+            $table->foreign('box_id')->references('id')->on('boxes');
+
         });
     }
 
