@@ -16,6 +16,10 @@ class CreateStocksTable extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('item_id')->index();
+            $table->unsignedBigInteger('box_id')->nullable()->index();
+            $table->integer('count')->index();
+
         });
     }
 
