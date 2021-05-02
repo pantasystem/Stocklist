@@ -33,26 +33,32 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });
-        $homes->each(function(Home $home){
+        /*$homes->each(function(Home $home){
             factory(Room::class, 5)->create([
                 'home_id' => $home->id
             ]);
-        });
+        });*/
 
-        Room::get()->each(function(Room $room){
+        /*Room::get()->each(function(Room $room){
             factory(Box::class, 3)->create([
                 'home_id' => $room->home_id,
                 'room_id' => $room->id
             ]);
-        });
+        });*/
 
-        Box::whereRaw('MOD(id, 2) = 0')->get()->each(function(Box $box) {
+        /*Box::whereRaw('MOD(id, 2) = 0')->get()->each(function(Box $box) {
             factory(Box::class, 3)->create([
                 'home_id' => $box->home_id,
                 'room_id' => $box->room_id,
                 'box_id' => $box->id,
             ]);
+        });*/
+        $homes->each(function(Home $home){
+            factory(Box::class, 15)->create([
+                'home_id' => $home->id
+            ]);
         });
+    
 
         Box::get()->each(function(Box $box) {
             if($box->id % 2 == 0) {
