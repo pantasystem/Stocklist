@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/homes', 'HomeController@index');
 =======
 
@@ -29,3 +30,6 @@ Route::get('/me', function(Request $request){
 })->middleware('auth:sanctum');
 
 >>>>>>> master
+=======
+Route::get('/homes', 'HomeController@index');
+>>>>>>> cb1b66bae7983bbf92913eb292938e72e582f634
