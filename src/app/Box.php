@@ -5,31 +5,32 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
 use App\Home;
+use App\Stock;
 
 
 class Box extends Model
 {
     
-    protected $fillable = ['box_id', 'name', 'description'];
+    protected $fillable = [/*'box_id',*/ 'name', 'description'];
 
     public function home() 
     {
         return $this->belongsTo(Home::class);
     }
 
-    public function parentBox()
+    /*public function parentBox()
     {
         return $this->belongsTo(Box::class);
-    }
+    }*/
 
-    public function childrenBoxes()
+    /*public function childrenBoxes()
     {
         return $this->hasMany(Box::class);
-    }
+    }*/
 
-    public function items()
+    public function stocks() 
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Stock::class);
     }
 }
 

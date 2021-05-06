@@ -35,3 +35,7 @@ shPHP:
 .PHONY: shDB
 shDB:
 	$(DOCKER_COMPOSE) exec db /bin/bash
+
+.PHONY: runTest
+runTest:
+	$(DOCKER_COMPOSE) exec php ./vendor/bin/phpunit

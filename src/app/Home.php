@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Item;
 use App\Box;
+use App\Stock;
 
 class Home extends Model
 {
@@ -22,18 +23,29 @@ class Home extends Model
         return $this->hasMany(User::class);
     }
 
-    /**
-     * homeの所有するItemを取得
-     */
-    public function items()
-    {
-        return $this->hasMany(Item::class);
-    }
 
     
     public function boxes()
     {
         return $this->hasMany(Box::class);
+    }
+
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function stocks()
+    {
+        return $this->hasManyThrough(
+            Stock::class,
+            Item::class,
+            'home_id',
+            'item_id',
+            'id',
+            'id'
+        );
     }
 
 }

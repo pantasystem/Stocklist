@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOwnersTable extends Migration
+class CreateStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateOwnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('owners', function (Blueprint $table) {
+        Schema::create('stocks', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedBigInteger('item_id');
-            $table->unsignedBigInteger('user_id');
-
-            $table->primary(['item_id', 'user_id']);
+            $table->unsignedBigInteger('item_id')->index();
+            $table->unsignedBigInteger('box_id')->nullable()->index();
+            $table->integer('count')->index();
 
             $table->foreign('item_id')->references('id')->on('items');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('box_id')->references('id')->on('boxes');
+
         });
     }
 
@@ -32,6 +33,6 @@ class CreateOwnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('owners');
+        Schema::dropIfExists('stocks');
     }
 }
