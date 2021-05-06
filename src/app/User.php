@@ -53,9 +53,9 @@ class User extends Authenticatable
     /**
      * userの所有するItemを取得
      */
-    public function items()
+    public function ownItems()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Item::class, 'owners', 'user_id', 'item_id');
     }
 
 }
