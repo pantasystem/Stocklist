@@ -19,8 +19,8 @@ class CreateStockExpiresTable extends Migration
             $table->unsignedBigInteger('item_id')->index();
             $table->unsignedBigInteger('stock_id')->index();
 
-            $table->foreign('item_id')->references('item_id')->on('disposables');
-            $table->foreign('stock_id')->references('id')->on('stocks');
+            $table->foreign('item_id')->references('item_id')->on('disposables')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade')->onUpdate('cascade');
             $table->date('expiration_date')->nullable()->index();
             $table->unique(['stock_id']);
         });

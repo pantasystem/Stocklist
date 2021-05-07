@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image_path');
             $table->unsignedBigInteger('home_id')->index();
-            $table->foreign('home_id')->references('id')->on('homes');
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
