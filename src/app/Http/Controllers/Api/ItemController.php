@@ -10,15 +10,21 @@ use App\Disposable;
 use DB;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Http\Requests\GetItemRequest;
 
 class ItemController extends Controller
 {
     //
-    public function index()
+    public function index(GetItemRequest $request)
     {
         
         // Homeを取得して関連するItemと一緒にownerとstocks数を取得して返す
-        return Auth::user()->home()->firstOrFail()->items()->with('owners')->withCount(['stocks'])->get();
+        $query = Auth::user()->home()->firstOrFail()->items()->with('owners')->withCount(['stocks']);
+        if($request->input('since_updated_at')) {
+            $query->where('updated_at', '>=', $request->input('since_updated_at'));
+        }
+        return $query->get();
+
     }
 
     public function store(CreateItemRequest $request)
