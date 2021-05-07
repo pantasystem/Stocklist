@@ -24,7 +24,7 @@ class CreateBoxesTable extends Migration
             $table->foreign('box_id')->references('id')->on('boxes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name')->index();
-            $table->text('description');
+            $table->text('description')->nullable();
             
         });
     }
