@@ -18,6 +18,8 @@ class Item extends Model
     protected $with = ['disposable'];
 
     protected $appends = ['is_disposable'];
+
+    protected $hidden = ['disposable'];
     /**
      *  Itemの所属するHomeを取得
      */

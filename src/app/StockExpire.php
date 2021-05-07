@@ -12,6 +12,8 @@ class StockExpire extends Model
 {
     //
     protected $fillable = ['expiration_date', 'item_id', 'stock_id'];
+
+    protected $hidden = ['created_at', 'updated_at', 'id', 'stock_id', 'item_id'];
     
     public function disposable()
     {
