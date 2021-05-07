@@ -31,7 +31,7 @@ class Item extends Model
      */
     public function owners()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'owners', 'item_id', 'user_id');
     }
 
 
