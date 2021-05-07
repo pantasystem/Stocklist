@@ -101,17 +101,17 @@ class DatabaseSeeder extends Seeder
         });
 
         // 消費期限をつける
-        $itemIds = Item::whereRaw('MOD(id, 5) <> 0')->get(['id']);
+        $itemIds = Item::whereRaw('MOD(id, 5) <> 0')->get(['id'])->pluck('id');
         Stock::whereIn('item_id', $itemIds)->with('item')->get()->each(function(Stock $stock) {
             
             $disposable = $stock->item->disposable()->firstOrCreate(
                 ['item_id' => $stock->item_id],
                 ['item_id' => $stock->item_id]
             );
-            $stockExpire = factory(StockExpire::class, 1)->create([
+            $stockExpire = factory(StockExpire::class)->make([
                 'stock_id' => $stock->id,
                 'item_id' => $disposable->item_id,
-            ])->first();
+            ]);
             $disposable->expires()->updateOrCreate(
                 [
                     'stock_id' => $stock->id,
