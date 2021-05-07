@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 class Disposable extends Model
 {
     //
-    protected $primaryKeys = ['item_id'];
     protected $fillable = ['item_id'];
 
     public function item()

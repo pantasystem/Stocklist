@@ -9,6 +9,7 @@ use App\Item;
 use App\Disposable;
 use DB;
 use App\Http\Requests\CreateItemRequest;
+use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
 {
@@ -44,5 +45,25 @@ class ItemController extends Controller
     public function show($itemId)
     {
         return Item::with('owners', 'stocks.expire', 'stocks.box')->findOrFail($itemId);
+    }
+
+    public function update(UpdateItemRequest $request, $itemId)
+    {
+        $item = Auth::user()->home()->firstOrFail()->items()->with('disposable')->findOrFail($itemId);
+
+        DB::transaction(function() use ($item, $request) {
+            $item->fill($request->only(['name', 'description']));
+
+            if($request->input('is_disposable') && !$item->disposable) {
+                $item->disposable()->save(new Disposable());
+            }else if(!$request->input('is_disposable') && $item->disposable) {
+                $item->disposable->delete();
+            }
+            $item->save();
+
+        });
+        
+
+        return $item->load('disposable', 'stocks.expire', 'stocks.box');
     }
 }
