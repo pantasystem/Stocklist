@@ -14,11 +14,15 @@ use App\Http\Requests\UpdateItemRequest;
 class ItemController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         
+        // Homeを取得して関連するItemと一緒にownerとstocks数を取得して返す
+        return Auth::user()->home()->firstOrFail()->items()->with('owners')->withCount(['stocks'])->get();
     }
 
-    public function store(CreateItemRequest $request){
+    public function store(CreateItemRequest $request)
+    {
 
         $user = Auth::user();
         $home = $user->home()->firstOrFail();
