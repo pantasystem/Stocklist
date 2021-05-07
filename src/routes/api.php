@@ -25,3 +25,4 @@ Route::get('/me', function(Request $request){
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::post('/items', 'Api\ItemController@store')->middleware('auth:sanctum');
