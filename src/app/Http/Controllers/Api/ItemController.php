@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Disposable;
 use DB;
+use App\Http\Requests\CreateItemRequest;
 
 class ItemController extends Controller
 {
@@ -16,7 +17,7 @@ class ItemController extends Controller
         
     }
 
-    public function store(Request $request){
+    public function store(CreateItemRequest $request){
 
         $user = Auth::user();
         $home = $user->home()->firstOrFail();
