@@ -26,3 +26,5 @@ Route::get('/me', function(Request $request){
 })->middleware('auth:sanctum');
 
 Route::post('/items', 'Api\ItemController@store')->middleware('auth:sanctum');
+
+Route::get('/items/{item_id}' ,'Api\ItemController@show')->middleware('auth:sanctum');
