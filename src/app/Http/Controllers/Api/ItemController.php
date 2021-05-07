@@ -40,4 +40,9 @@ class ItemController extends Controller
         return $item->load('stocks.box', 'disposable');
     }
     
+
+    public function show($itemId)
+    {
+        return Item::with('owners', 'stocks.expire', 'stocks.box')->findOrFail($itemId);
+    }
 }
