@@ -15,7 +15,7 @@ class Stock extends Model
 
     protected $fillable = ['item_id', 'box_id', 'count'];
 
-    protected $with = ['expire', 'item'];
+    protected $with = ['expire'];
 
     public function item()
     {

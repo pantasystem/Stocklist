@@ -14,11 +14,12 @@ class CreateDisposablesTable extends Migration
     public function up()
     {
         Schema::create('disposables', function (Blueprint $table) {
-            $table->unsignedBigInteger('item_id');
-            $table->primary(['item_id']);
+            $table->unsignedBigInteger('item_id')->index();
+            $table->bigIncrements('id');
+            $table->unique('item_id');
             $table->timestamps();
 
-            $table->foreign('item_id')->references('id')->on('items');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

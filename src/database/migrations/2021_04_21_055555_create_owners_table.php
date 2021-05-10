@@ -20,8 +20,8 @@ class CreateOwnersTable extends Migration
 
             $table->primary(['item_id', 'user_id']);
 
-            $table->foreign('item_id')->references('id')->on('items');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

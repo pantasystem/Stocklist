@@ -17,14 +17,14 @@ class CreateBoxesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('home_id');
-            $table->foreign('home_id')->references('id')->on('homes');
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('box_id')->nullable()->index();
             $table->unsignedBigInteger('room_id')->nullable()->index();
-            $table->foreign('box_id')->references('id')->on('boxes');
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('box_id')->references('id')->on('boxes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name')->index();
-            $table->text('description');
+            $table->text('description')->nullable();
             
         });
     }

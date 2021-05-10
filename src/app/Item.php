@@ -13,10 +13,13 @@ use App\Stock;
 class Item extends Model
 {
     //
-    protected $fillable = ['name', 'description', 'home_id','box_id'];
+    protected $fillable = ['name', 'description', 'home_id','box_id' , 'image_path'];
 
     protected $with = ['disposable'];
 
+    protected $appends = ['is_disposable'];
+
+    protected $hidden = ['disposable'];
     /**
      *  Itemの所属するHomeを取得
      */
@@ -30,7 +33,7 @@ class Item extends Model
      */
     public function owners()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'owners', 'item_id', 'user_id');
     }
 
 
@@ -59,9 +62,9 @@ class Item extends Model
         return $this->hasOne(Disposable::class);
     }
 
-    public function getIsDisposableAttribute($disposable)
+    public function getIsDisposableAttribute()
     {
-        return isset($disposable);
+        return isset($this->disposable);
     }
 
 }
