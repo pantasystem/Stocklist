@@ -17,7 +17,7 @@ class Item extends Model
 
     protected $with = ['disposable'];
 
-    protected $appends = ['is_disposable'];
+    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids'];
 
     protected $hidden = ['disposable'];
     /**
@@ -67,4 +67,19 @@ class Item extends Model
         return isset($this->disposable);
     }
 
+    public function getItemQuantityAttribute()
+    {
+        if(is_null($this->stocks)){
+            return null;
+        }
+        return $this->stocks->sum('count');
+    }
+
+    public function getStockIdsAttribute()
+    {
+        if(is_null($this->stocks)){
+            return null;
+        }
+        return $this->stocks->pluck('id');
+    }
 }
