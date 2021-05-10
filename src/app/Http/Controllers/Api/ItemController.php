@@ -19,11 +19,15 @@ class ItemController extends Controller
     {
         
         // Homeを取得して関連するItemと一緒にownerとstocks数を取得して返す
-        $query = Auth::user()->home()->firstOrFail()->items()->with('owners')->withCount(['stocks']);
+        $query = Auth::user()->home()->firstOrFail()->items()->with('owners', 'disposable', 'stocks');
         if($request->input('since_updated_at')) {
             $query->where('updated_at', '>=', $request->input('since_updated_at'));
         }
-        return $query->get();
+        $items = $query->get();
+        $items->each(function($item){
+            $item->makeHidden('stocks');
+        });
+        return $items;
 
     }
 
