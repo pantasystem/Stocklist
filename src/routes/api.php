@@ -30,7 +30,7 @@ Route::get('/items', 'Api\ItemController@index')->middleware('auth:sanctum');
 
 Route::get('/items/{item_id}' ,'Api\ItemController@show')->middleware('auth:sanctum');
 
-
-
 Route::put('/items/{item_id}', 'Api\ItemController@update')->middleware('auth:sanctum');
 Route::get('/items/{item_id}/stocks', 'Api\StockController@index')->middleware('auth:sanctum');
+
+Route::get('/items/{item_id}/stocks/{stock_id}','Api\StockController@show')->middleware('auth:sanctum');

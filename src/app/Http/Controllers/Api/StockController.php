@@ -23,4 +23,23 @@ class StockController extends Controller
                 $stock->item->makeHidden('stocks');
             });
     }
+
+    public function show($itemId, $stock_id)
+    {
+        return Auth::user()
+            ->firstOrFail()
+            ->home()
+            ->findOrFail($itemId)
+            ->stocks()
+            ->findOrFail($stock_id)
+            ->where('id', $stock_id)
+            ->get()
+            ->each(function($stock){
+                $stock->item;
+            })
+            ->each(function($stock){
+                $stock->box;
+            });
+    }
+
 }
