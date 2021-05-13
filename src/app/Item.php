@@ -9,6 +9,7 @@ use App\User;
 use App\Box;
 use App\Disposable;
 use App\Stock;
+use Illuminate\Support\Facades\Storage;
 
 class Item extends Model
 {
@@ -17,7 +18,7 @@ class Item extends Model
 
     protected $with = ['disposable'];
 
-    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids'];
+    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url'];
 
     protected $hidden = ['disposable'];
     /**
@@ -81,5 +82,10 @@ class Item extends Model
             return null;
         }
         return $this->stocks->pluck('id');
+    }
+
+    public function getImageUrlAttribute() 
+    {
+        return Storage::url($this->image_path);
     }
 }
