@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateStockRequest;
 
 class StockController extends Controller
 {
@@ -35,7 +36,7 @@ class StockController extends Controller
             ->findOrFail($stockId);
     }
 
-    public function update(Request $request, $itemId, $stockId)
+    public function update(UpdateStockRequest $request, $itemId, $stockId)
     {
         $item = Auth::user()
             ->home()

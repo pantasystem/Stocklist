@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateStockRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateStockRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -23,9 +25,15 @@ class UpdateStockRequest extends FormRequest
      */
     public function rules()
     {
+        $homeId = Auth::user()->home_id;
         return [
-            //
-            
+            'count' => ['required', 'integer', 'numeric', 'min:0'],
+            'box_id' => [
+                Rule::exists('boxes', 'id')->where(function($query) use ($homeId){
+                    $query->where('home_id', $homeId);
+                })
+            ],
+            'expiration_date' => ['date'],
         ];
     }
 }
