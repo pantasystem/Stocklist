@@ -64,6 +64,8 @@ class StockController extends Controller
                 ['expiration_date' => $request->input('expiration_date')]
             );
         }
+        
+        return response(null,204);
 
     }
 
