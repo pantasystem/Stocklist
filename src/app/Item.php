@@ -10,6 +10,7 @@ use App\Box;
 use App\Disposable;
 use App\Stock;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Config;
 
 class Item extends Model
 {
@@ -86,6 +87,6 @@ class Item extends Model
 
     public function getImageUrlAttribute() 
     {
-        return Storage::url($this->image_path);
+        return Config::get('app.url') . Storage::url($this->image_path);
     }
 }
