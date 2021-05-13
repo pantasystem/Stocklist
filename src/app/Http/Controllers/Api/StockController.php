@@ -24,22 +24,15 @@ class StockController extends Controller
             });
     }
 
-    public function show($itemId, $stock_id)
+    public function show($itemId, $stockId)
     {
         return Auth::user()
-            ->firstOrFail()
             ->home()
-            ->findOrFail($itemId)
+            ->firstOrFail()
             ->stocks()
-            ->findOrFail($stock_id)
-            ->where('id', $stock_id)
-            ->get()
-            ->each(function($stock){
-                $stock->item;
-            })
-            ->each(function($stock){
-                $stock->box;
-            });
+            ->where('item_id', '=', $itemId)
+            ->with('box', 'item.owners', 'expire')
+            ->findOrFail($stockId);
     }
 
 }
