@@ -18,6 +18,9 @@ class StockController extends Controller
             ->findOrFail($itemId)
             ->stocks()
             ->with('box', 'item.owners', 'expire')
-            ->get();
+            ->get()
+            ->each(function($stock){
+                $stock->item->makeHidden('stocks');
+            });
     }
 }
