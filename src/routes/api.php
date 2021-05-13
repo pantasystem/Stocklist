@@ -24,7 +24,7 @@ Route::get('/me', function(Request $request){
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/api/homes{id}', 'Api\HomeController@show')->middleware('auth:sanctum');
+Route::get('/api/homes{id}', 'Api\HomeController@show')->members('home')->middleware('auth:sanctum');
 
 Route::post('/items', 'Api\ItemController@store')->middleware('auth:sanctum');
 Route::get('/items', 'Api\ItemController@index')->middleware('auth:sanctum');
