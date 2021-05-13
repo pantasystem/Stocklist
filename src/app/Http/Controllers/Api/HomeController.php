@@ -20,6 +20,7 @@ class HomeController extends Controller
 
     public function show($id)
     {
+        $user = Home::with('members')->get();
         return Home::with('members')->findOrFail($id);
     }
 
