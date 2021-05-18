@@ -36,6 +36,40 @@ class StockController extends Controller
             ->findOrFail($stockId);
     }
 
+    public function create(CreateStockRequest $request, $itemId)
+    {
+
+        $item = Auth::user()
+            ->home()
+            ->firstOrFail()
+            ->items()
+            ->findOrFail($itemId);
+
+        $stock = $item
+            ->stocks()
+            ->with('box', 'item.owners', 'expire')
+            ->findOrFail($stockId);
+        
+        $stock -> create(
+            $request->only([
+                'count',
+                'box_id'
+            ])
+        );
+    
+        $disposable = $item->disposable()->first();
+
+        if($disposable){
+            $disposable->expires()->updateOrCreate(
+                ['stock_id' => $stockId],
+                ['expiration_date' => $request->input('expiration_date')]
+            );
+        }
+        
+        return response(null,204);
+
+    }
+
     public function update(UpdateStockRequest $request, $itemId, $stockId)
     {
         $item = Auth::user()
