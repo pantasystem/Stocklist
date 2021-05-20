@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateStockRequest;
+use App\Http\Requests\CreateStockRequest;
 
 class StockController extends Controller
 {
@@ -44,29 +45,33 @@ class StockController extends Controller
             ->firstOrFail()
             ->items()
             ->findOrFail($itemId);
-
-        $stock = $item
-            ->stocks()
-            ->with('box', 'item.owners', 'expire')
-            ->findOrFail($stockId);
         
-        $stock -> create(
-            $request->only([
-                'count',
-                'box_id'
-            ])
-        );
-    
+        $stock = $item
+            ->stocks();
+        
+        $stockcreate = $stock
+            ->create(
+                $request->only([
+                    'count',
+                    'box_id'
+                ])
+            );
+        
+        $stockshow = $stock
+            ->where('item_id', '=', $itemId)
+            ->with('box', 'item.owners', 'expire')
+            ->findOrFail($stockcreate->id);
+        
         $disposable = $item->disposable()->first();
 
         if($disposable){
             $disposable->expires()->updateOrCreate(
-                ['stock_id' => $stockId],
+                ['stock_id' => $stockcreate->id],
                 ['expiration_date' => $request->input('expiration_date')]
             );
         }
         
-        return response(null,204);
+        return $stockshow;
 
     }
 
