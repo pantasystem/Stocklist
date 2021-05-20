@@ -45,11 +45,8 @@ class StockController extends Controller
             ->firstOrFail()
             ->items()
             ->findOrFail($itemId);
-        
-        $stock = $item
-            ->stocks();
-        
-        $stockcreate = $stock
+    
+        $stockCreated = $item->stocks()
             ->create(
                 $request->only([
                     'count',
@@ -57,18 +54,16 @@ class StockController extends Controller
                 ])
             );
         
-        $stockshow = $stockcreate->load('box', 'item.owners', 'expire');
-        
         $disposable = $item->disposable()->first();
 
         if($disposable){
             $disposable->expires()->updateOrCreate(
-                ['stock_id' => $stockcreate->id],
+                ['stock_id' => $stockCreated->id],
                 ['expiration_date' => $request->input('expiration_date')]
             );
         }
         
-        return $stockshow;
+        return $stockCreated->load('box', 'item.owners', 'expire');
 
     }
 
