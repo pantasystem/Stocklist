@@ -37,7 +37,7 @@ class ItemController extends Controller
         $user = Auth::user();
         $home = $user->home()->firstOrFail();
 
-        $path = $request->image->store('images');
+        $path = $request->image->store('images', 'public');
         $item = new Item(
             array_merge(
                 $request->only('name', 'description'),

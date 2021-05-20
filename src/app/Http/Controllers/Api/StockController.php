@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateStockRequest;
 
 class StockController extends Controller
 {
@@ -33,6 +34,39 @@ class StockController extends Controller
             ->where('item_id', '=', $itemId)
             ->with('box', 'item.owners', 'expire')
             ->findOrFail($stockId);
+    }
+
+    public function update(UpdateStockRequest $request, $itemId, $stockId)
+    {
+        $item = Auth::user()
+            ->home()
+            ->firstOrFail()
+            ->items()
+            ->findOrFail($itemId);
+
+        $stock = $item
+            ->stocks()
+            ->with('box', 'item.owners', 'expire')
+            ->findOrFail($stockId);
+        
+        $stock -> update(
+            $request->only([
+                'count',
+                'box_id'
+            ])
+        );
+    
+        $disposable = $item->disposable()->first();
+
+        if($disposable){
+            $disposable->expires()->updateOrCreate(
+                ['stock_id' => $stockId],
+                ['expiration_date' => $request->input('expiration_date')]
+            );
+        }
+        
+        return response(null,204);
+
     }
 
 }
