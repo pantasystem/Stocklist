@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\User; //User 追加
 use App\Home; //Home 追加
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
