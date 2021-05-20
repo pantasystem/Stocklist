@@ -17,7 +17,7 @@ class CreateStocksTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('item_id')->index();
-            $table->unsignedBigInteger('box_id')->nullable()->index();
+            $table->unsignedBigInteger('box_id')->index();
             $table->integer('count')->index();
 
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
