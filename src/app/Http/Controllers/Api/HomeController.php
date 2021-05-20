@@ -18,10 +18,11 @@ class HomeController extends Controller
 
     }
 
-    public function show($id)
+    public function show()
     {
-        $user = Home::with('members')->get();
-        return Home::with('members')->findOrFail($id);
+        // 現在認証されているユーザーの取得
+        $user = Auth::user();
+        return $home = $user->home::with('members')->firstOrFail();
     }
 
 }
