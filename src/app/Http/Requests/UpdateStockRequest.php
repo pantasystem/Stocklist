@@ -29,6 +29,7 @@ class UpdateStockRequest extends FormRequest
         return [
             'count' => ['required', 'integer', 'numeric', 'min:0'],
             'box_id' => [
+                'required',
                 Rule::exists('boxes', 'id')->where(function($query) use ($homeId){
                     $query->where('home_id', $homeId);
                 })
