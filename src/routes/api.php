@@ -17,13 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 /**
  * 認証のサンプル
  */
 Route::get('/me', function(Request $request){
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::get('/homes', 'Api\HomeController@show')->middleware('auth:sanctum');
 
 Route::post('/items', 'Api\ItemController@store')->middleware('auth:sanctum');
 Route::get('/items', 'Api\ItemController@index')->middleware('auth:sanctum');
