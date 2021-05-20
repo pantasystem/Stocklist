@@ -57,10 +57,7 @@ class StockController extends Controller
                 ])
             );
         
-        $stockshow = $stock
-            ->where('item_id', '=', $itemId)
-            ->with('box', 'item.owners', 'expire')
-            ->findOrFail($stockcreate->id);
+        $stockshow = $stockcreate->load('box', 'item.owners', 'expire');
         
         $disposable = $item->disposable()->first();
 
