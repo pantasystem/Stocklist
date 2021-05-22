@@ -34,6 +34,12 @@ class CreateStockRequest extends FormRequest
                     $query->where('home_id', $homeId);
                 })
             ],
+            'item_id' => [
+                'required',
+                Rule::exists('items', 'id')->where(function($query) use ($homeId) {
+                    $query->where('home_id', $homeId);
+                })
+            ],
             'expiration_date' => ['date'],
         ];
     }
