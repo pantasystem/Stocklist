@@ -43,4 +43,16 @@ class Stock extends Model
             'home_id'
         );
     }
+
+    public function scopeWhereByItemIdAndBoxId($query, $itemId, $boxId) 
+    {
+        if($itemId) {
+            $query->where('item_id', '=',$itemId);
+        }
+        if($boxId) {
+            $query->where('box_id', '=', $boxId);
+        }
+        return $query;
+    }
+
 }

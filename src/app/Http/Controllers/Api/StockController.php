@@ -11,40 +11,39 @@ use App\Http\Requests\CreateStockRequest;
 class StockController extends Controller
 {
     
-    public function index($itemId)
+    public function index(Request $request)
     {
         return Auth::user()
             ->home()
             ->firstOrFail()
-            ->items()
-            ->findOrFail($itemId)
             ->stocks()
             ->with('box', 'item.owners', 'expire')
+            ->whereByItemIdAndBoxId($request->input('item_id'), $request->input('box_id'))
             ->get()
             ->each(function($stock){
                 $stock->item->makeHidden('stocks');
             });
     }
 
-    public function show($itemId, $stockId)
+    public function show(Request $request, $stockId)
     {
         return Auth::user()
             ->home()
             ->firstOrFail()
             ->stocks()
-            ->where('item_id', '=', $itemId)
+            ->whereByItemIdAndBoxId($request->input('item_id'), $request->input('box_id'))
             ->with('box', 'item.owners', 'expire')
             ->findOrFail($stockId);
     }
 
-    public function create(CreateStockRequest $request, $itemId)
+    public function create(CreateStockRequest $request)
     {
 
         $item = Auth::user()
             ->home()
             ->firstOrFail()
             ->items()
-            ->findOrFail($itemId);
+            ->findOrFail($request->input('item_id'));
     
         $stockCreated = $item->stocks()
             ->create(
@@ -67,32 +66,34 @@ class StockController extends Controller
 
     }
 
-    public function update(UpdateStockRequest $request, $itemId, $stockId)
+    public function update(UpdateStockRequest $request, $stockId)
     {
-        $item = Auth::user()
-            ->home()
-            ->firstOrFail()
-            ->items()
-            ->findOrFail($itemId);
+        $home = Auth::user()->home()->firstOrFail();
+        $item = $home->items()
+            ->find($request->input('item_id'));
 
-        $stock = $item
-            ->stocks()
+        $stock = $home->stocks()
             ->with('box', 'item.owners', 'expire')
             ->findOrFail($stockId);
         
-        $stock -> update(
+        $stock->update(
             $request->only([
                 'count',
-                'box_id'
+                'box_id',
+                'item_id'
             ])
         );
     
-        $disposable = $item->disposable()->first();
+        
 
+        $disposable = $item->disposable()->first();
         if($disposable){
-            $disposable->expires()->updateOrCreate(
+            $stock->expire()->updateOrCreate(
                 ['stock_id' => $stockId],
-                ['expiration_date' => $request->input('expiration_date')]
+                [
+                    'expiration_date' => $request->input('expiration_date'),
+                    'item_id' => $disposable->item_id
+                ]
             );
         }
         
