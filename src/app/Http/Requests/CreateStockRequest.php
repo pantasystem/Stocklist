@@ -27,7 +27,7 @@ class CreateStockRequest extends FormRequest
     {
         $homeId = Auth::user()->home_id;
         return [
-            'count' => ['required', 'integer', 'numeric', 'min:0','max:20'],
+            'count' => ['required', 'integer', 'numeric', 'min:0'],
             'box_id' => [
                 'required',
                 Rule::exists('boxes', 'id')->where(function($query) use ($homeId){
