@@ -17,9 +17,10 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('path');
-            $table->unique('path');
+            
             $table->unsignedBigInteger('home_id')->index();
             $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade')->onUpdate('cascade');
+            $table->unique(['path', 'home_id']);
         });
     }
 
