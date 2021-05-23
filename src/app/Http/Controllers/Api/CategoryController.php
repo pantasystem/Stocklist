@@ -22,12 +22,21 @@ class CategoryController extends Controller
         return Auth::user()->home()->first()->categories()->get();
     }
 
-    public function add(AddCategoryRequest $request)
+    public function create(AddCategoryRequest $request)
     {
         return Auth::user()->home()->first()->categories()->updateOrCreate(
             ['path' => $request->input('path') ],
             ['path' => $request->input('path')]
         );
+    }
+
+    public function update(AddCategoryRequest $request, $categoryId)
+    {
+        $user = Auth::user();
+        $category = Category::where('home_id', '=', $user->home_id)->findOrFail($categoryId);
+        $category->fill($request->only('path'));
+        $category->save();
+        return response(null, 204);
     }
 
     public function delete($categoryId)
