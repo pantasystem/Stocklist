@@ -40,5 +40,6 @@ Route::put('/stocks/{stock_id}', 'Api\StockController@update')->middleware('auth
 
 
 Route::get('/categories', 'Api\CategoryController@index')->middleware('auth:sanctum');
-Route::post('/categories', 'Api\CategoryController@add')->middleware('auth:sanctum');
+Route::post('/categories', 'Api\CategoryController@create')->middleware('auth:sanctum');
+Route::put('/categories/{category_id}', 'Api\CategoryController@update')->middleware('auth:sanctum');
 Route::delete('/categories/{category_id}', 'Api\CategoryController@delete')->middleware('auth:sanctum');
