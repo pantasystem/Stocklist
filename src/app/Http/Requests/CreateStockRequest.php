@@ -40,6 +40,7 @@ class CreateStockRequest extends FormRequest
                     $query->where('home_id', $homeId);
                 })
             ],
+            'category' => ['string', 'max:255'],
             'expiration_date' => ['date'],
         ];
     }

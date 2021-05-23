@@ -26,7 +26,8 @@ class UpdateItemRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:20'],
             'is_disposable' => ['required', 'boolean'],
-            'description' => ['max:255']
+            'description' => ['max:255'],
+            'category' => ['max:255', 'string']
         ];
     }
 }

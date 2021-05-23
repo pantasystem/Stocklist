@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Config;
 class Item extends Model
 {
     //
-    protected $fillable = ['name', 'description', 'home_id','box_id' , 'image_path'];
+    protected $fillable = ['name', 'description', 'home_id','box_id' , 'image_path', 'category_id'];
 
     protected $with = ['disposable', 'category'];
 
-    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url'];
+    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path'];
 
-    protected $hidden = ['disposable'];
+    protected $hidden = ['disposable', 'category_id', 'category'];
     /**
      *  Itemの所属するHomeを取得
      */
@@ -93,5 +93,13 @@ class Item extends Model
     public function getImageUrlAttribute() 
     {
         return Config::get('app.url') . Storage::url($this->image_path);
+    }
+
+    public function getCategoryPathAttribute()
+    {
+        if($this->category == null) {
+            return null;
+        }
+        return $this->category->path;
     }
 }
