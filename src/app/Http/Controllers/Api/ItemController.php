@@ -11,6 +11,7 @@ use DB;
 use App\Http\Requests\CreateItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Requests\GetItemRequest;
+use App\Category;
 
 class ItemController extends Controller
 {
@@ -46,6 +47,14 @@ class ItemController extends Controller
         );
         DB::transaction(function() use ($item, $home, $request){
             $home->items()->save($item);
+            if($request->input('category')) {
+                $category = $home->categories()->updateOrCreate(
+                    ['path' => $request->input('category') ],
+                    ['path' => $request->input('category')]
+                );
+                $item->category()->associate($category);
+            }
+            
 
             if($request->input('is_disposable') == 'true') {
                 $item->disposable()->save(new Disposable());
@@ -63,10 +72,22 @@ class ItemController extends Controller
 
     public function update(UpdateItemRequest $request, $itemId)
     {
-        $item = Auth::user()->home()->firstOrFail()->items()->with('disposable')->findOrFail($itemId);
-
-        DB::transaction(function() use ($item, $request) {
+        $home = Auth::user()->home()->first();
+        $item = $home->items()->with('disposable')->findOrFail($itemId);
+        
+    
+        DB::transaction(function() use ($item, $request, $home) {
             $item->fill($request->only(['name', 'description']));
+
+            if($request->input('category')) {
+                $category = $home->categories()->updateOrCreate(
+                    ['path' => $request->input('category') ],
+                    ['path' => $request->input('category')]
+                );
+                $item->category()->associate($category);
+            }else{
+                $item->category()->dissociate();
+            }
 
             if($request->input('is_disposable') && !$item->disposable) {
                 $item->disposable()->save(new Disposable());
