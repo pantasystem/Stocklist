@@ -17,7 +17,7 @@ class Item extends Model
     //
     protected $fillable = ['name', 'description', 'home_id','box_id' , 'image_path'];
 
-    protected $with = ['disposable'];
+    protected $with = ['disposable', 'category'];
 
     protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url'];
 
@@ -62,6 +62,11 @@ class Item extends Model
     public function disposable()
     {
         return $this->hasOne(Disposable::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function getIsDisposableAttribute()

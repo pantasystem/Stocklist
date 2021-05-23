@@ -8,6 +8,7 @@ use App\User;
 use App\Item;
 use App\Box;
 use App\Stock;
+use App\Category;
 
 class Home extends Model
 {
@@ -46,6 +47,11 @@ class Home extends Model
             'id',
             'id'
         );
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
     }
 
 }
