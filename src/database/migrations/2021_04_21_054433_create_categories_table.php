@@ -18,6 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
             $table->string('path');
             $table->unique('path');
+            $table->unsignedBigInteger('home_id')->index();
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
