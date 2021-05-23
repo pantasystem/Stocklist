@@ -9,7 +9,7 @@ use App\Home;
 class Category extends Model
 {
     protected $fillable = ['path'];
-    protected $hidden = ['created_at', 'updated_at', 'id', 'home_id'];
+    protected $hidden = ['created_at', 'updated_at', 'home_id'];
 
     public function items()
     {
