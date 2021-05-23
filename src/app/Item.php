@@ -21,7 +21,7 @@ class Item extends Model
 
     protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path'];
 
-    protected $hidden = ['disposable', 'category_id', 'category'];
+    protected $hidden = ['disposable', 'category'];
     /**
      *  Itemの所属するHomeを取得
      */
