@@ -16,6 +16,8 @@ class CreateCategoryTemplatesTable extends Migration
         Schema::create('category_templates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string('path');
+            $table->unique('path');
         });
     }
 
