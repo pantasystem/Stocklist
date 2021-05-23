@@ -17,9 +17,9 @@ class HomeObserver
     public function created(Home $home)
     {
         $categories = CategoryTemplate::get()->map(function($template){
-            new Category(
+            return new Category(
                 ['path' => $template->path ]
-            )
+            );
         });
         $home->categories()->saveMany($categories);
     }

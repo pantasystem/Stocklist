@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        $this->call(CategoryTemplateSeeder::class);
         $homes = factory(Home::class, 3)->create();
         $homes->each(function(Home $home){
             $users = factory(User::class, 4)->create([
