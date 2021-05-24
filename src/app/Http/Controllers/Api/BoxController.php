@@ -13,12 +13,11 @@ class BoxController extends Controller
     //
     public function create(CreateBoxRequest $request)
     {
-        $box = Auth::user()
+        $boxcreated = Auth::user()
         ->home()
         ->firstOrFail()
-        ->boxes();
-
-        $boxcreated = $box ->create(
+        ->boxes()
+        ->create(
             $request->only([
                 'name',
                 'description'
