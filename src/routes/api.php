@@ -43,3 +43,5 @@ Route::get('/categories', 'Api\CategoryController@index')->middleware('auth:sanc
 Route::post('/categories', 'Api\CategoryController@create')->middleware('auth:sanctum');
 Route::put('/categories/{category_id}', 'Api\CategoryController@update')->middleware('auth:sanctum');
 Route::delete('/categories/{category_id}', 'Api\CategoryController@delete')->middleware('auth:sanctum');
+
+Route::post('/boxes', 'Api\BoxController@create')->middleware('auth:sanctum');
