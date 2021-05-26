@@ -19,7 +19,7 @@ class Item extends Model
 
     protected $with = ['disposable', 'category'];
 
-    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path'];
+    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path', 'stock_expiries'];
 
     protected $hidden = ['disposable', 'category'];
     /**
@@ -88,6 +88,23 @@ class Item extends Model
             return null;
         }
         return $this->stocks->pluck('id');
+    }
+
+    public function getStockExpiriesAttribute()
+    {
+        if(is_null($this->stocks)) {
+            return null;
+        }
+    
+        return $this->stocks->map(function(Stock $stock) {
+            return $stock->expire;
+        })->filter(function(?StockExpire $expire) {
+            return $expire != null;
+        })->map(function($expire) {
+            return $expire->expiration_date;
+        })->filter(function($date) {
+            return $date != null;
+        });
     }
 
     public function getImageUrlAttribute() 
