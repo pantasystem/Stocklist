@@ -13,10 +13,12 @@ class BoxController extends Controller
     //
     public function create(CreateBoxRequest $request)
     {
-        $boxcreated = Auth::user()
+        $box = Auth::user()
         ->home()
         ->firstOrFail()
-        ->boxes()
+        ->boxes();
+
+        $boxcreated = $box
         ->create(
             $request->only([
                 'name',
@@ -24,6 +26,6 @@ class BoxController extends Controller
             ])
         );
 
-        return $boxcreated;
+        return $boxcreated->loadCount('stocks');
     }
 }
