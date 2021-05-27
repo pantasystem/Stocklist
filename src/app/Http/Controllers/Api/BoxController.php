@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Box;
 
 class BoxController extends Controller
 {
@@ -22,8 +23,8 @@ class BoxController extends Controller
 
     }
 
-    public function show()
+    public function show($boxld)
     {
-        
+        return Box::with('stocks')->findOrFail($boxld);
     }
 }

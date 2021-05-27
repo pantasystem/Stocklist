@@ -28,6 +28,8 @@ Route::get('/homes', 'Api\HomeController@show')->middleware('auth:sanctum');
 
 Route::get('/boxes', 'Api\BoxController@index')->middleware('auth:sanctum');
 
+Route::get('/boxes/{box_id}', 'Api\BoxController@show')->middleware('auth:sanctum');
+
 Route::post('/items', 'Api\ItemController@store')->middleware('auth:sanctum');
 Route::get('/items', 'Api\ItemController@index')->middleware('auth:sanctum');
 
