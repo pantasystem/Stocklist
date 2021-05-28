@@ -19,7 +19,7 @@ class Item extends Model
 
     protected $with = ['disposable', 'category'];
 
-    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path', 'stock_expiries'];
+    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path', 'stock_expiries', 'box_ids'];
 
     protected $hidden = ['disposable', 'category'];
     /**
@@ -74,6 +74,9 @@ class Item extends Model
         return isset($this->disposable);
     }
 
+    /**
+     * Stockのcountを集計した全合計
+     */
     public function getItemQuantityAttribute()
     {
         if(is_null($this->stocks)){
@@ -82,6 +85,9 @@ class Item extends Model
         return $this->stocks->sum('count');
     }
 
+    /**
+     * このItemに所属するStock一連のId
+     */
     public function getStockIdsAttribute()
     {
         if(is_null($this->stocks)){
@@ -90,6 +96,9 @@ class Item extends Model
         return $this->stocks->pluck('id');
     }
 
+    /**
+     * このItemに所属するStock一連の消費期限
+     */
     public function getStockExpiriesAttribute()
     {
         if(is_null($this->stocks)) {
@@ -104,6 +113,19 @@ class Item extends Model
             return $expire->expiration_date;
         })->filter(function($date) {
             return $date != null;
+        });
+    }
+
+    /**
+     * 自分が持つStockが所属する一連のboxId
+     */
+    public function getBoxIdsAttribute()
+    {
+        if(is_null($this->stocks)) {
+            return null;
+        }
+        return $this->stocks->map(function(Stock $stock){
+            return $stock->box_id;
         });
     }
 
