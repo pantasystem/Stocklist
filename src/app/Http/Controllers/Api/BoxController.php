@@ -7,12 +7,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Box;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateBoxRequest;
+
+use App\Http\Requests\CreateBoxRequest;
 
 class BoxController extends Controller
 {
     //
+    public function create(CreateBoxRequest $request)
+    {
+        $box = Auth::user()
+        ->home()
+        ->firstOrFail()
+        ->boxes();
+
+        $boxcreated = $box
+        ->create(
+            $request->only([
+                'name',
+                'description'
+            ])
+        );
+
+        return $boxcreated->loadCount('stocks');
+    }
     public function update(UpdateBoxRequest $request, $box_id)
     {
         Auth::user()
@@ -26,7 +44,6 @@ class BoxController extends Controller
                 'description'
             ])
         );
-
         return response(null,204);
     }
 
