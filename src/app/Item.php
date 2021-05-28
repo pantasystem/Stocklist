@@ -74,6 +74,9 @@ class Item extends Model
         return isset($this->disposable);
     }
 
+    /**
+     * Stockのcountを集計した全合計
+     */
     public function getItemQuantityAttribute()
     {
         if(is_null($this->stocks)){
@@ -82,6 +85,9 @@ class Item extends Model
         return $this->stocks->sum('count');
     }
 
+    /**
+     * このItemに所属するStock一連のId
+     */
     public function getStockIdsAttribute()
     {
         if(is_null($this->stocks)){
@@ -90,6 +96,9 @@ class Item extends Model
         return $this->stocks->pluck('id');
     }
 
+    /**
+     * このItemに所属するStock一連の消費期限
+     */
     public function getStockExpiriesAttribute()
     {
         if(is_null($this->stocks)) {
