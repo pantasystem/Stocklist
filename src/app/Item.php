@@ -19,7 +19,7 @@ class Item extends Model
 
     protected $with = ['disposable', 'category'];
 
-    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path', 'stock_expiries'];
+    protected $appends = ['is_disposable', 'item_quantity', 'stock_ids', 'image_url', 'category_path', 'stock_expiries', 'box_ids'];
 
     protected $hidden = ['disposable', 'category'];
     /**
@@ -104,6 +104,19 @@ class Item extends Model
             return $expire->expiration_date;
         })->filter(function($date) {
             return $date != null;
+        });
+    }
+
+    /**
+     * 自分が持つStockが所属する一連のboxId
+     */
+    public function getBoxIdsAttribute()
+    {
+        if(is_null($this->stocks)) {
+            return null;
+        }
+        return $this->stocks->map(function(Stock $stock){
+            return $stock->box_id;
         });
     }
 
