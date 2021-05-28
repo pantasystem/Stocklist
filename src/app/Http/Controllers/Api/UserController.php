@@ -13,11 +13,7 @@ class UserController extends Controller
 
     public function login(LoginUserRequest $request)
     {
-        $credentials = $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required'
-        ]);
-    
+        
         if (Auth::attempt($credentials)) {
             return ['message' => 'ログインしました。'];
         }
