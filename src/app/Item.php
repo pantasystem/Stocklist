@@ -109,11 +109,11 @@ class Item extends Model
             return $stock->expire;
         })->filter(function(?StockExpire $expire) {
             return $expire != null;
-        })->map(function($expire) {
+        })->map(function(StockExpire $expire) {
             return $expire->expiration_date;
-        })->filter(function($date) {
-            return $date != null;
-        });
+        })->reject(function($date) {
+            return $date === null;
+        })->flatten();
     }
 
     /**
