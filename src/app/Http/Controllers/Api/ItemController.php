@@ -47,11 +47,8 @@ class ItemController extends Controller
         );
         DB::transaction(function() use ($item, $home, $request){
             $home->items()->save($item);
-            if($request->input('category')) {
-                $category = $home->categories()->updateOrCreate(
-                    ['path' => $request->input('category') ],
-                    ['path' => $request->input('category')]
-                );
+            if($request->input('category_id')) {
+                $category = $home->categories()->findOrFail($request->input('category_id'));
                 $item->category()->associate($category);
             }
             
@@ -59,6 +56,7 @@ class ItemController extends Controller
             if($request->input('is_disposable') == 'true') {
                 $item->disposable()->save(new Disposable());
             }
+            $home->items()->save($item);
         });
         
         return $item->load('stocks.box', 'disposable');
@@ -79,11 +77,8 @@ class ItemController extends Controller
         DB::transaction(function() use ($item, $request, $home) {
             $item->fill($request->only(['name', 'description']));
 
-            if($request->input('category')) {
-                $category = $home->categories()->updateOrCreate(
-                    ['path' => $request->input('category') ],
-                    ['path' => $request->input('category')]
-                );
+            if($request->input('category_id')) {
+                $category = $home->categories()->find($request->input('category_id'));
                 $item->category()->associate($category);
             }else{
                 $item->category()->dissociate();
