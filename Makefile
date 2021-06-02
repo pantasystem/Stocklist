@@ -40,3 +40,7 @@ shDB:
 .PHONY: runTest
 runTest:
 	$(DOCKER_COMPOSE) exec php ./vendor/bin/phpunit
+
+.PHONY: seed
+seed:
+	$(DOCKER_COMPOSE) exec php php artisan migrate:fresh --seed
