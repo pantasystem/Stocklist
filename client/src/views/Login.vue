@@ -1,7 +1,5 @@
 <template>
     <v-app>
-        
-        <Header />
 
         <v-card-title class="mx-auto mt-5">
             <h1 class="display-1">ログインフォーム</h1>
@@ -39,14 +37,10 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
 import axios from 'axios'
 
 export default {
     name: 'Login',
-    components: {
-        Header
-    },
     data(){
         return {
             showPassword : false,

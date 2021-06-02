@@ -1,56 +1,29 @@
 <template>
-    <div>
-        <v-app-bar color="blue">
+<div>
 
-            <v-app-bar-nav-icon @click="drawer = true">
-                
-            </v-app-bar-nav-icon>
+    <router-link to="/">
+        <v-list-item>
+            ホーム
+        </v-list-item>
+    </router-link>
 
-            <v-toolbar-title>Stocklist</v-toolbar-title>
+    <router-link to="/login">
+        <v-list-item>
+            ログイン
+        </v-list-item>
+    </router-link>
 
-        </v-app-bar>
-        
+    <router-link to="/item">
+        <v-list-item>
+            物一覧
+        </v-list-item>
+    </router-link>
 
-        <v-navigation-drawer
-            v-model="drawer"
-            fixed
-            temporary
-        >
-            <v-list nav>
-                <v-list-item-group>
-
-                    <router-link to="/">
-                        <v-list-item>
-                            ホーム
-                        </v-list-item>
-                    </router-link>
-
-                    <router-link to="/login">
-                        <v-list-item>
-                            ログイン
-                        </v-list-item>
-                    </router-link>
-
-                    <router-link to="/item">
-                        <v-list-item>
-                            物一覧
-                        </v-list-item>
-                    </router-link>
-
-                </v-list-item-group>
-            </v-list>
-        </v-navigation-drawer>
-            
-    </div>
+</div>
 </template>
 
 <script>
     export default {
         name: 'Header',
-        data () {
-            return {
-                drawer: false,
-            }
-        },
     }
 </script>

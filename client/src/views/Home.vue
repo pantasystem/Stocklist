@@ -1,8 +1,6 @@
 <template>
     <div>
 
-        <Header />
-
         <v-card-title class="mt-5">
             <h1 class="mx-auto">Home</h1>
         </v-card-title>
@@ -27,14 +25,12 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
 import ProgressCircle from '@/components/ProgressCircle.vue'
 import axios from 'axios'
 
 export default {
     name: 'Home',
     components: {
-        Header,
         ProgressCircle
     },
     data () {
