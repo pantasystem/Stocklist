@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+
 
 class UpdateItemRequest extends FormRequest
 {
@@ -13,7 +16,7 @@ class UpdateItemRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -23,11 +26,16 @@ class UpdateItemRequest extends FormRequest
      */
     public function rules()
     {
+        $homeId = Auth::user()->home_id;
         return [
             'name' => ['required', 'string', 'max:20'],
             'is_disposable' => ['required', 'boolean'],
             'description' => ['max:255'],
-            'category' => ['max:255', 'string']
+            'category_id' => [
+                Rule::exists('categories', 'id')->where(function($query) use ($homeId) {
+                    $query->where('home_id', '=', $homeId);
+                })
+            ]
         ];
     }
 }

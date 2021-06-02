@@ -26,6 +26,10 @@ Route::get('/me', function(Request $request){
 
 Route::get('/homes', 'Api\HomeController@show')->middleware('auth:sanctum');
 
+Route::get('/boxes', 'Api\BoxController@index')->middleware('auth:sanctum');
+
+Route::get('/boxes/{box_id}', 'Api\BoxController@show')->middleware('auth:sanctum');
+
 Route::post('/items', 'Api\ItemController@store')->middleware('auth:sanctum');
 Route::get('/items', 'Api\ItemController@index')->middleware('auth:sanctum');
 
@@ -44,4 +48,5 @@ Route::post('/categories', 'Api\CategoryController@create')->middleware('auth:sa
 Route::put('/categories/{category_id}', 'Api\CategoryController@update')->middleware('auth:sanctum');
 Route::delete('/categories/{category_id}', 'Api\CategoryController@delete')->middleware('auth:sanctum');
 
+Route::post('/boxes', 'Api\BoxController@create')->middleware('auth:sanctum');
 Route::put('/boxes/{box_id}', 'Api\BoxController@update')->middleware('auth:sanctum');

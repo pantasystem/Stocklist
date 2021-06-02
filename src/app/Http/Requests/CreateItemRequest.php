@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class CreateItemRequest extends FormRequest
 {
@@ -14,7 +15,7 @@ class CreateItemRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,11 +25,17 @@ class CreateItemRequest extends FormRequest
      */
     public function rules()
     {
+        $homeId = Auth::user()->home_id;
         return [
             'name' => ['required', 'string', 'max:20'],
             'is_disposable' => ['required', Rule::in(['true', 'false'])],
             'image' => ['required','image'],
-            'description' => ['max:255', 'string']
+            'description' => ['max:255', 'string'],
+            'category_id' => [
+                Rule::exists('categories', 'id')->where(function($query) use ($homeId) {
+                    $query->where('home_id', '=', $homeId);
+                }),
+            ]
         ];
     }
 }
