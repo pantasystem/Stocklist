@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $homes = factory(Home::class, 3)->create();
         $homes->each(function(Home $home){
             $users = factory(User::class, 4)->create([
-                'home_id' => $home->id
+                'home_id' => $home->id,
             ]);
             $users->each(function(User $user) {
                 $user->tokens()->create([
@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
                     'token' => hash('sha256', 'test-' . $user->id),
                     'abilities' => ['*'],
                 ]);
+                $user->email = 'test' . $user->id . '@test.jp';
+                $user->save();
             });
         });
         /*$homes->each(function(Home $home){

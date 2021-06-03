@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\LoginUserRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -14,7 +16,7 @@ class UserController extends Controller
     public function login(LoginUserRequest $request)
     {
         
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($request->all())) {
             return ['message' => 'ログインしました。'];
         }
 
