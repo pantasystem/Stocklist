@@ -50,3 +50,6 @@ Route::delete('/categories/{category_id}', 'Api\CategoryController@delete')->mid
 
 Route::post('/boxes', 'Api\BoxController@create')->middleware('auth:sanctum');
 Route::put('/boxes/{box_id}', 'Api\BoxController@update')->middleware('auth:sanctum');
+
+Route::post('/login', 'Api\UserController@login');
+Route::post('/logout', 'Api\UserController@logout')->middleware('auth:sanctum');

@@ -27,7 +27,7 @@ class LoginUserRequest extends FormRequest
             //
             
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', new AlphaNumHalf, 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'alpha_dash', 'min:8', ],
             
         ];
     }

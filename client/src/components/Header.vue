@@ -1,56 +1,41 @@
 <template>
     <div>
-        <v-app-bar color="blue">
 
-            <v-app-bar-nav-icon @click="drawer = true">
-                
-            </v-app-bar-nav-icon>
+        <v-list>
 
-            <v-toolbar-title>Stocklist</v-toolbar-title>
+        <!-- <v-subheader>router</v-subheader> -->
 
-        </v-app-bar>
+        <v-list-item-group color="primary">
+
+            <v-list-item v-for="(item, i) in items" :key="i" :to="item.router">
+
+                <v-list-item-icon>
+                    <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-content>
+                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                </v-list-item-content>
+
+            </v-list-item>
+
+        </v-list-item-group>
+
+        </v-list>
         
 
-        <v-navigation-drawer
-            v-model="drawer"
-            fixed
-            temporary
-        >
-            <v-list nav>
-                <v-list-item-group>
-
-                    <router-link to="/">
-                        <v-list-item>
-                            ホーム
-                        </v-list-item>
-                    </router-link>
-
-                    <router-link to="/login">
-                        <v-list-item>
-                            ログイン
-                        </v-list-item>
-                    </router-link>
-
-                    <router-link to="/item">
-                        <v-list-item>
-                            物一覧
-                        </v-list-item>
-                    </router-link>
-
-                </v-list-item-group>
-            </v-list>
-        </v-navigation-drawer>
-            
     </div>
 </template>
 
 <script>
+
     export default {
         name: 'Header',
-        data () {
-            return {
-                drawer: false,
-            }
-        },
+        data: () => ({
+            items: [
+                { text: 'ホーム', router: '/', icon: 'mdi-home' },
+                { text: '物一覧', router: 'item', icon: 'mdi-briefcase' },
+            ],
+        }),
     }
 </script>

@@ -11,7 +11,7 @@
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/sanctum": "^2.10",
+        "laravel/sanctum": "^2.11",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {

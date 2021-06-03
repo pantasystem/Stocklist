@@ -26,7 +26,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
 .horizontal {
     transform: scale(-1, 1);
     animation-duration:1s;
