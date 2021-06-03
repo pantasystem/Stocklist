@@ -35,7 +35,6 @@
             items: [
                 { text: 'ホーム', router: '/', icon: 'mdi-home' },
                 { text: '物一覧', router: 'item', icon: 'mdi-briefcase' },
-                { text: 'ログイン', router: 'login' },
             ],
         }),
     }

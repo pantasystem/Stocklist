@@ -33,6 +33,7 @@
                 </v-form>
             </v-card-text>
         </v-card>
+
     </v-app>
 </template>
 
@@ -63,6 +64,7 @@ export default {
             postLogin(email, password).then(response => {
                 console.log(response);
                 localStorage.setItem("auth", "ture");
+                this.$store.state.user.login = true;
                 this.$router.push("/");
             })
             .catch(error => {
