@@ -8,7 +8,7 @@
         <div class="d-flex justify-center pa-2 mt-10">
             <ProgressCircle />
         </div>
-        <!-- <p> {{ tododata }} </p> -->
+        
     </div>
 </template>
 
