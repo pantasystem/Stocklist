@@ -8,7 +8,7 @@
 
                     <v-card width="150px" class="my-3">
 
-                        <v-img :src="item.image_path" height="150px" ></v-img> <!--画像だよ-->
+                        <v-img :src="item.image_path" height="100px" ></v-img> <!--画像だよ-->
 
                         <v-card-title> {{ item.name }} </v-card-title> <!--タイトルだよ-->
 
