@@ -6,7 +6,7 @@
 
                 <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in items" :key="item.id" :to="item.router">
 
-                    <v-card width="150px" class="my-3">
+                    <v-card width="150px" class="mx-auto my-3">
 
                         <v-img :src="item.image_path" height="100px" ></v-img> <!--画像だよ-->
 
