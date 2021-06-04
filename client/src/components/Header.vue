@@ -7,14 +7,14 @@
 
         <v-list-item-group color="primary">
 
-            <v-list-item v-for="(item, i) in items" :key="i" :to="item.router">
+            <v-list-item v-for="(router, i) in routers" :key="i" :to="router.router">
 
                 <v-list-item-icon>
-                    <v-icon>{{ item.icon }}</v-icon>
+                    <v-icon>{{ router.icon }}</v-icon>
                 </v-list-item-icon>
 
                 <v-list-item-content>
-                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                        <v-list-item-title v-text="router.text"></v-list-item-title>
                 </v-list-item-content>
 
             </v-list-item>
@@ -32,9 +32,10 @@
     export default {
         name: 'Header',
         data: () => ({
-            items: [
+            routers: [
                 { text: 'ホーム', router: '/', icon: 'mdi-home' },
                 { text: '物一覧', router: 'item', icon: 'mdi-briefcase' },
+                { text: 'ログアウト', router: '/login', icon: 'mdi-account-arrow-right' },
             ],
         }),
     }

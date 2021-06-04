@@ -5,7 +5,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Item from '../views/Item.vue'
 
-import store from '../store/index'
+// import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -41,13 +41,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    if(to.matched.some(record => record.meta.requiresAuth) && !store.state.user.login) {
-        next('/login');
-
-    }else{
-        next();
-
-    }
+    // if(to.matched.some(record => record.meta.requiresAuth) && !store.state.user.login) {
+    //     next('/login');
+    // }else{
+    //     next();
+    // }
+    next(); //いちいちログイン面倒
 })
 
 export default router
