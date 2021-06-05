@@ -34,7 +34,7 @@
         data: () => ({
             routers: [
                 { text: 'ホーム', router: '/', icon: 'mdi-home' },
-                { text: '物一覧', router: 'item', icon: 'mdi-briefcase' },
+                { text: '物一覧', router: '/item', icon: 'mdi-briefcase' },
                 { text: 'ログアウト', router: '/login', icon: 'mdi-account-arrow-right' },
             ],
         }),

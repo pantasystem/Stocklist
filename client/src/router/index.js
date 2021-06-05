@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+//home
 import Home from '../views/Home.vue'
+
+//user
 import Login from '../views/Login.vue'
+
+//item
 import Item from '../views/Item.vue'
+import ItemDetails from '../views/ItemDetails.vue'
 
 // import store from '../store/index'
 
@@ -11,6 +17,7 @@ Vue.use(VueRouter)
 
 
 const routes = [
+    //home
     {
         path: '/',
         name: 'Home',
@@ -19,11 +26,13 @@ const routes = [
             requiresAuth: true,
         }
     },
+    //user
     {
         path: '/login',
         name: 'Login',
         component: Login
     },
+    //item
     {
         path: '/item',
         name: 'Item',
@@ -31,6 +40,12 @@ const routes = [
         meta: {
             requiresAuth: true
         }
+    },
+    //詳細
+    {
+        path: '/item-details/:id',
+        name: 'ItemDetails',
+        component: ItemDetails,
     }
 ]
 
