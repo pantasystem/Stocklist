@@ -13,7 +13,7 @@
 
                 <v-col xs="6" sm="5" md="3" lg="2" xl="1" v-for="item in search_items" :key="item.id">
 
-                    <v-card width="150px" height="220px" class="ml-3 mb-2" :to="'/item-details/' + item.id">
+                    <v-card width="150px" height="220px" class="ml-3 mb-2" :to="'/item/item-details/' + item.id">
 
                         <v-img :src="item.image_path" height="100px" ></v-img> <!--画像だよ-->
 
@@ -36,20 +36,30 @@
                 </v-col>
 
             </v-row>
+
+            <v-row>
+                <v-overlay style="position: fixed;z-index: 999;" :absolute="absolute" :value="overlay">
+                    <v-col clos="12">
+                        <v-btn @click="overlay = false">戻る</v-btn>
+                    </v-col>
+                </v-overlay>
+            </v-row>
             
         </v-container>
 
         <v-fab-transition>
-            <v-btn @click="top" fab large dark bottom right style="bottom: 80px; right: 0; position: absolute; margin: 0 32px 32px 0; position: fixed;">
+            <v-btn @click="top" fab large dark bottom right style="bottom: 80px; right: 0; position: absolute; margin: 0 16px 16px 0; position: fixed;">
                 <v-icon>mdi-chevron-up</v-icon>
             </v-btn>
         </v-fab-transition>
 
         <v-fab-transition>
-            <v-btn fab large dark bottom right style="bottom: 0; right: 0; position: absolute; margin: 0 32px 32px 0; position: fixed;">
+            <v-btn @click="overlay = true" fab large dark bottom right style="bottom: 0; right: 0; position: absolute; margin: 0 16px 16px 0; position: fixed;">
                 <v-icon>mdi-plus</v-icon>
             </v-btn>
         </v-fab-transition>
+
+        
 
     </v-app>
 </template>
@@ -64,6 +74,8 @@ export default {
             keyword: '', //検索用
             searchIcon: 'mdi-briefcase-search',
             items: [], //物用
+            overlay: false, //オーバーレイ用
+            absolute: true,
         }
     },
     methods:{
