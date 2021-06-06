@@ -1,5 +1,8 @@
 <template>
     <v-app>
+
+        <v-touch v-on:swiperight="onSwipeRight">
+
         <head>
             <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
         </head>
@@ -20,6 +23,9 @@
         <v-main>
             <router-view/>
         </v-main>
+
+        </v-touch>
+
     </v-app>
 </template>
 
@@ -34,6 +40,11 @@ export default {
     data () {
         return {
             drawer: null,
+        }
+    },
+    methods:{
+        onSwipeRight(){
+            this.drawer = !this.drawer
         }
     },
 };

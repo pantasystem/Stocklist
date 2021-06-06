@@ -6,6 +6,9 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from 'axios';
 
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {name: 'v-touch'})
+
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true;
 

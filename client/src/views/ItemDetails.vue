@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <p>dateils</p>
+        <p>datails</p>
         <p> {{ this.$route.params.id }} </p>
     </v-app>
 </template>
