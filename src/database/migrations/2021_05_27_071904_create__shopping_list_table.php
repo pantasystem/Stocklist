@@ -13,11 +13,12 @@ class CreateShoppingListTable extends Migration
      */
     public function up()
     {
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('shopping_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text('title');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->nullable();
+            $table->unsignedBigInteger('home_id')->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateShoppingListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todos');
+        Schema::dropIfExists('shopping-lists');
     }
 }
