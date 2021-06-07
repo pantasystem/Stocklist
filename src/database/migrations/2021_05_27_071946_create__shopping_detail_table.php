@@ -18,7 +18,7 @@ class CreateShoppingDetailTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('box_id')->nullable();
             $table->date('completed_at')->nullable();
-            $table->unsignedBigInteger('shopping_list_id')->foreign('id')->references('id')->on('ShoppingLists');
+            $table->unsignedBigInteger('shopping_list_id')->foreign('id')->references('id')->on('shopping_lists');
         });
     }
 
