@@ -59,8 +59,6 @@
             </v-btn>
         </v-fab-transition>
 
-        
-
     </v-app>
 </template>
 
@@ -73,7 +71,6 @@ export default {
         return {
             keyword: '', //検索用
             searchIcon: 'mdi-briefcase-search',
-            items: [], //物用
             overlay: false, //オーバーレイ用
             absolute: true,
         }
@@ -89,19 +86,18 @@ export default {
     computed: {
         //物検索
         search_items(){
-            return this.items.filter(item => {
-                return item.name.includes(this.keyword)
+            return this.$store.state.item.items.filter(items => {
+                return items.name.includes(this.keyword)
             })
         }
     },
     created() {
         //物取得
         if(this.$store.state.user.login){
-                axios.get('/api/items')
+            axios.get('/api/items')
             .then( response =>{
-                this.items = response.data;
+                this.$store.state.item.items = response.data;
             });
-            this.$store.state.item.items = this.items;
         }
     },
 }

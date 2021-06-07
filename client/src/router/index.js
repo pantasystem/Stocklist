@@ -9,7 +9,7 @@ import Login from '../views/Login.vue'
 
 //item
 import Item from '../views/Item.vue'
-import ItemDetails from '../views/ItemDetails.vue'
+import ItemDetail from '../views/ItemDetail.vue'
 
 // import store from '../store/index'
 
@@ -44,8 +44,8 @@ const routes = [
     //詳細
     {
         path: '/item/item-details/:id',
-        name: 'ItemDetails',
-        component: ItemDetails,
+        name: 'ItemDetail',
+        component: ItemDetail,
     }
 ]
 
