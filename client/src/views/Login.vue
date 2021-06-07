@@ -65,7 +65,7 @@ export default {
                 console.log(response);
                 localStorage.setItem("auth", "ture");
                 this.$store.state.user.login = true;
-                this.$router.push("/");
+                this.$router.push('/', () => {});
             })
             .catch(error => {
                 this.errors = error.response.data.errors;
