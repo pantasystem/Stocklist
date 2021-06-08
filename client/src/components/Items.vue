@@ -38,29 +38,14 @@
                 </v-col>
 
             </v-row>
-
-            <!-- オーバーレイ表示 -->
-            <v-row>
-                <v-overlay class="overlay" style="z-index: 999;" :absolute="absolute" :value="overlay">
-                    <v-col clos="12">
-                        <v-btn @click="overlay = false">戻る</v-btn>
-                    </v-col>
-                </v-overlay>
-            </v-row>
             
         </v-container>
-
-        <!-- フローティングアクションボタン表示 -->
-        <v-fab-transition>
-            <v-btn @click="overlay = true" fab large dark bottom right class="fab">
-                <v-icon>mdi-plus</v-icon>
-            </v-btn>
-        </v-fab-transition>
 
     </v-app>
 </template>
 
 <script>
+
 export default {
     name: 'Item',
     data: () => {
@@ -68,9 +53,6 @@ export default {
             //検索用
             keyword: '',
             searchIcon: 'mdi-briefcase-search',
-            //オーバーレイ用
-            overlay: false,
-            absolute: true,
         }
     },
     computed: {
@@ -106,18 +88,6 @@ export default {
 .img{
     width: 100%;
     height: 100px;
-}
-
-.fab{
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    margin: 0 32px 32px 0;
-    position: fixed;
-}
-
-.overlay{
-    position: fixed;
 }
 
 </style>

@@ -1,11 +1,11 @@
 <template>
     <v-app>
 
-        <v-card-title class="mx-auto mt-5">
-            <h1 class="display-1">ログインフォーム</h1>
-        </v-card-title>
 
         <v-card width="400px" class="mx-auto mt-5">
+            <v-card-title class="mx-auto mt-5">
+                <h1 class="display-1">ログイン</h1>
+            </v-card-title>
             <v-card-text>
                 <v-form>
                     <v-text-field

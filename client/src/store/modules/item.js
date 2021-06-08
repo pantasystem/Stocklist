@@ -3,7 +3,10 @@ import axios from 'axios';
 export default {
     namespaced:true,
     state: {
+        //物用
         items:[],
+        //追加画面用
+        dialog: false,
     },
     mutations: {
         setItems: (state, response) => {
