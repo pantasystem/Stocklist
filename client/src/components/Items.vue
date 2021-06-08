@@ -61,8 +61,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
     name: 'Item',
     data: () => {
@@ -85,12 +83,7 @@ export default {
     },
     created() {
         //物取得API
-        if(this.$store.state.user.login){
-            axios.get('/api/items')
-            .then( response =>{
-                this.$store.state.item.items = response.data;
-            });
-        }
+        this.$store.dispatch('item/getItems')
     },
 }
 </script>
