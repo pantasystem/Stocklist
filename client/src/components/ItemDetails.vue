@@ -1,16 +1,19 @@
 <template>
     <v-app>
-        <p>datails</p>
-        <p> {{ this.$route.params.id }} </p>
-        <!-- <div v-for="item in items" :key="item.id">
-            {{item.name}}
-        </div> -->
-        <p>{{this.$store.state.item.items}}</p>
+        <h1>details</h1>
+        <p>
+            {{item}}
+        </p>
     </v-app>
 </template>
 
 <script>
     export default {
         name: 'ItemDetails',
+        computed: {
+            item(){
+                return this.$store.state.item.items[this.$route.params.id]
+            }
+        },
     }
 </script>

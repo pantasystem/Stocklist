@@ -17,7 +17,7 @@
         <v-app-bar app>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-toolbar-title>Stocklist</v-toolbar-title>
+        <v-toolbar-title @click="top">Stocklist</v-toolbar-title>
         </v-app-bar>
 
         <v-main>
@@ -45,6 +45,12 @@ export default {
     methods:{
         onSwipeRight(){
             this.drawer = !this.drawer
+        },
+        top:()=>{
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }
     },
 };
