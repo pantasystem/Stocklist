@@ -6,8 +6,8 @@ export default {
         items:[],
     },
     mutations: {
-        setItems: (state, payload) => {
-            state.items = payload.data;
+        setItems: (state, response) => {
+            state.items = response.data;
         },
     },
     getters:{
@@ -15,13 +15,9 @@ export default {
     actions: {
         async getItems({ commit }){
             if(this.state.user.login){
-                const payload = {
-                    data: '',
-                };
                 await axios.get('/api/items')
                 .then( response =>{
-                    payload.data = response.data;
-                    commit('setItems', payload);
+                    commit('setItems', response);
                 })
                 .catch(error => {
                     console.log(error);
