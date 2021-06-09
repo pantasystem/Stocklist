@@ -10,7 +10,8 @@ use App\User;
 class ShoppingList extends Model
 {
     //
-    protected $with = ['details.item', 'user', 'details.box'];
+    protected $with = ['details','details.item', 'user', 'details.box'];
+    protected $appends = ['is_all_completed'];
 
     protected $fillable = [
         'title',
@@ -20,7 +21,7 @@ class ShoppingList extends Model
 
     public function details()
     {
-        return $this->belongsTo(ShoppingDetail::class);
+        return $this->hasMany(ShoppingDetail::class);
     }
 
     public function home() 
@@ -35,8 +36,8 @@ class ShoppingList extends Model
 
     public function getIsAllCompletedAttribute()
     {
-        if(isset($this->details)) {
-            return null;
+        if(is_null($this->details)) {
+            return false;
         }
 
         $completedCount = $this->details->sum(function($detail) {

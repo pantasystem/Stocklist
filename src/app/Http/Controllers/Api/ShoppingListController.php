@@ -15,7 +15,7 @@ class ShoppingListController extends Controller
 
     public function index()
     {
-        Auth::user()->home()->first()->shoppingLists()->get();
+        return Auth::user()->home()->first()->shoppingLists()->with('details')->get();
     }
 
     public function update(UpdateShoppingListRequest $request, $shoppingListId)

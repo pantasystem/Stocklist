@@ -18,7 +18,7 @@ class CreateShoppingListTable extends Migration
             $table->timestamps();
             $table->text('title');
             $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('home_id')->index();
             $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
         });
