@@ -29,7 +29,7 @@ class ShoppingListController extends Controller
     public function create(CreateShoppingListRequest $request)
     {
         $home = Auth::user()->home()->first();
-        return $home->shoppingLists()->create($request->only('title')); 
+        return $home->shoppingLists()->create($request->only('title'))->load('details','details.item', 'user', 'details.box'); 
         
     }
 
@@ -43,6 +43,6 @@ class ShoppingListController extends Controller
     public function show($shoppingListId)
     {
         $home = Auth::user()->home()->first();
-        return $home->shoppingLists()->findOrFail($shoppingListId);
+        return $home->shoppingLists()->with('details','details.item', 'user', 'details.box')->findOrFail($shoppingListId);
     }
 }
