@@ -31,6 +31,6 @@ class CreateShoppingListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopping-lists');
+        Schema::dropIfExists('shopping_lists');
     }
 }

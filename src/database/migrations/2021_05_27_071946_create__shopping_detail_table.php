@@ -13,12 +13,12 @@ class CreateShoppingDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopping-details', function (Blueprint $table) {
+        Schema::create('shopping_details', function (Blueprint $table) {
             $table->bigIncrements('item_id');
             $table->timestamps();
             $table->unsignedBigInteger('box_id')->nullable();
             $table->date('completed_at')->nullable();
-            $table->unsignedBigInteger('shopping_list_id')->foreign('id')->references('id')->on('shopping_lists');
+            $table->unsignedBigInteger('shopping_lists_id')->foreign('id')->references('id')->on('shopping_lists');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateShoppingDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopping-details');
+        Schema::dropIfExists('shopping_details');
     }
 }
