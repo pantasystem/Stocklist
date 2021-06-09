@@ -53,3 +53,11 @@ Route::put('/boxes/{box_id}', 'Api\BoxController@update')->middleware('auth:sanc
 
 Route::post('/login', 'Api\UserController@login');
 Route::post('/logout', 'Api\UserController@logout')->middleware('auth:sanctum');
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::get('/shopping-lists', 'Api\ShoppingListController@index');
+    Route::get('/shopping-lists/{shopping_list_id}', 'Api\ShoppingListController@show');
+    Route::put('/shopping-lists/{shopping_list_id}', 'Api\ShoppingListController@update');
+    Route::post('/shopping-lists', 'Api\ShoppingListController@create');
+    Route::delete('/shopping-lists/{shopping_list_id}', 'Api\ShoppingListController@delete');
+});

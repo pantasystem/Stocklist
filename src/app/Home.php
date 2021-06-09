@@ -9,6 +9,7 @@ use App\Item;
 use App\Box;
 use App\Stock;
 use App\Category;
+use App\ShoppingList;
 
 class Home extends Model
 {
@@ -52,6 +53,11 @@ class Home extends Model
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function shoppingLists()
+    {
+        return $this->hasMany(ShoppingList::class);
     }
 
 }
