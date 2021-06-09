@@ -14,11 +14,15 @@ class CreateShoppingDetailTable extends Migration
     public function up()
     {
         Schema::create('shopping_details', function (Blueprint $table) {
-            $table->bigIncrements('item_id');
+            $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('box_id')->nullable();
             $table->date('completed_at')->nullable();
-            $table->unsignedBigInteger('shopping_lists_id')->foreign('id')->references('id')->on('shopping_lists');
+            $table->unsignedBigInteger('shopping_list_id');
+            $table->foreign('shopping_list_id')->references('id')->on('shopping_lists')->onDelete('cascade');
+            $table->foreign('box_id')->references('id')->on('boxes')->onDelete('set null');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 
