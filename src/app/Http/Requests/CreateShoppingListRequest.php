@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class CreateShoppingListRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class CreateShoppingListRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -23,8 +25,12 @@ class CreateShoppingListRequest extends FormRequest
      */
     public function rules()
     {
+        $homeId = Auth::user()->home_id;
         return [
-            'title' => ['required', 'max:20', 'string']
+            'title' => ['required', 'max:20', 'string', ],
+            'user_id' => ['nullable', Rule::exists('users', 'id')->where(function($query) use ($homeId){
+                $query->where('home_id', '=', $homeId);
+            })]
         ];
     }
 }
