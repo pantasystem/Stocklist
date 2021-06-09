@@ -25,34 +25,34 @@
 
                     <v-card-text>
                         <v-container grid-list-md>
-                            <div v-if="this.img">
-                                <v-flex>
-                                    <img :src="this.img">
+                            <div v-if="this.imgUrl">
+                                <v-flex class="d-flex justify-center">
+                                    <img max-height="300px" width="300px" :src="this.imgUrl">
                                 </v-flex>
                             </div>
                             <v-flex xs12>
-                                <v-file-input show-size label="画像" prepend-icon="mdi-image" />
+                                <v-file-input show-size label="画像" prepend-icon="mdi-image" @change="onImg" accept="image/*" />
                             </v-flex>
                             <v-flex xs12>
-                                <v-text-field label="名前" prepend-icon="mdi-briefcase" />
+                                <v-text-field label="名前" prepend-icon="mdi-briefcase" v-model="name" />
                             </v-flex>
                             <v-row justify="center">
                                 <v-flex xs5 class="mx-auto">
-                                    <v-switch label="使い捨て" />
+                                    <v-switch label="使い捨て" v-model="disposable" />
                                 </v-flex>
                                 <v-flex xs5 class="mx-auto">
-                                    <v-select label="カテゴリー" />
+                                    <v-select label="カテゴリー" v-model="categoryId" :items="category" />
                                 </v-flex>
                             </v-row>
                             <v-flex xs12 class="mt-5">
-                                <v-textarea filled label="説明" />
+                                <v-textarea filled label="説明" v-model="description" />
                             </v-flex>
                         </v-container>
                     </v-card-text>
 
                     <v-card-actions>
                         <v-container>
-                            <v-btn block dark>追加</v-btn>
+                            <v-btn @click="itemAdd" block dark>追加</v-btn>
                         </v-container>
                     </v-card-actions>
 
@@ -71,16 +71,60 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         name: 'ItemAdd',
         data:()=>{
             return{
+                category:[1,2],
                 //モーダルウィンドウ用
                 dialog: false,
                 //POST用
+                name: '',
+                description: '',
                 img: null,
+                disposable: null,
+                categoryId: null,
+                //imgプレビュー用
+                imgUrl: '',
             }
         },
+        methods:{
+            itemAdd() {
+                axios.post("/api/items", {
+                    name: this.name,
+                    is_disposable: this.disposable ? 'true' : 'false',
+                    image: this.img,
+                    description: this.description,
+                    category_id: this.categoryId,    
+                })
+                .then(response => {
+                    console.log(response);
+                    this.dialog = false;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            },
+            onImg(file) {
+                if (file !== undefined && file !== null) {
+
+                    if (file.name.lastIndexOf('.') <= 0) {
+                        return
+                    }
+                    
+                    const fr = new FileReader()
+                    fr.readAsDataURL(file)
+                    fr.addEventListener('load', () => {
+                        this.imgUrl = fr.result
+                    })
+                    
+                } else {
+                    this.imgUrl = ''
+                }
+            }
+        }
     }
 </script>
 
@@ -95,3 +139,5 @@
 }
 
 </style>
+
+// String(
