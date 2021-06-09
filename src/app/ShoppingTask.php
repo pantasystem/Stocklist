@@ -7,7 +7,7 @@ use App\Item;
 use App\Box;
 use App\ShoppingList;
 
-class ShoppingDetail extends Model
+class ShoppingTask extends Model
 {
     //
     protected $fillable = [

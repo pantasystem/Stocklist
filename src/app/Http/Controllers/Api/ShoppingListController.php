@@ -15,7 +15,7 @@ class ShoppingListController extends Controller
 
     public function index()
     {
-        return Auth::user()->home()->first()->shoppingLists()->with('details')->get();
+        return Auth::user()->home()->first()->shoppingLists()->with('tasks')->get();
     }
 
     public function update(UpdateShoppingListRequest $request, $shoppingListId)
@@ -29,7 +29,7 @@ class ShoppingListController extends Controller
     public function create(CreateShoppingListRequest $request)
     {
         $home = Auth::user()->home()->first();
-        return $home->shoppingLists()->create($request->only('title', 'user_id'))->load('details','details.item', 'user', 'details.box'); 
+        return $home->shoppingLists()->create($request->only('title', 'user_id'))->load('tasks','tasks.item', 'user', 'tasks.box'); 
         
     }
 
@@ -43,6 +43,6 @@ class ShoppingListController extends Controller
     public function show($shoppingListId)
     {
         $home = Auth::user()->home()->first();
-        return $home->shoppingLists()->with('details','details.item', 'user', 'details.box')->findOrFail($shoppingListId);
+        return $home->shoppingLists()->with('tasks','tasks.item', 'user', 'tasks.box')->findOrFail($shoppingListId);
     }
 }

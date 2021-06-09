@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\ShoppingDetail;
+use App\ShoppingTask;
 use App\Home;
 use App\User;
 
 class ShoppingList extends Model
 {
     //
-    protected $with = ['details','details.item', 'user', 'details.box'];
+    protected $with = ['tasks','tasks.item', 'user', 'tasks.box'];
     protected $appends = ['is_all_completed'];
 
     protected $fillable = [
@@ -19,9 +19,9 @@ class ShoppingList extends Model
         'home_id'
     ];
 
-    public function details()
+    public function tasks()
     {
-        return $this->hasMany(ShoppingDetail::class);
+        return $this->hasMany(ShoppingTask::class);
     }
 
     public function home() 
@@ -36,11 +36,11 @@ class ShoppingList extends Model
 
     public function getIsAllCompletedAttribute()
     {
-        if(is_null($this->details)) {
+        if(is_null($this->tasks)) {
             return false;
         }
 
-        $completedCount = $this->details->sum(function($detail) {
+        $completedCount = $this->tasks->sum(function($detail) {
             if($detail->complated_at == null) {
                 return 0;
             }else{

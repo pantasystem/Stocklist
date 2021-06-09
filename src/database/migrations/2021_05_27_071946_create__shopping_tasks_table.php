@@ -13,7 +13,7 @@ class CreateShoppingDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_details', function (Blueprint $table) {
+        Schema::create('shopping_tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('item_id');
