@@ -22,14 +22,14 @@ class ShoppingListController extends Controller
     {
         $home = Auth::user()->home()->first();
         $sl = $home->shoppingLists()->findOrFail($shoppingListId);
-        $sl->fill($request->only('title'));
+        $sl->fill($request->only('title', 'user_id'));
         return response(null, 204);
     }
 
     public function create(CreateShoppingListRequest $request)
     {
         $home = Auth::user()->home()->first();
-        return $home->shoppingLists()->create($request->only('title'))->load('details','details.item', 'user', 'details.box'); 
+        return $home->shoppingLists()->create($request->only('title', 'user_id'))->load('details','details.item', 'user', 'details.box'); 
         
     }
 
