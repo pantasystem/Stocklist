@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShoppingDetailTable extends Migration
+class CreateShoppingTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -33,6 +33,6 @@ class CreateShoppingDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopping_details');
+        Schema::dropIfExists('shopping_tasks');
     }
 }
