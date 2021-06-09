@@ -10,6 +10,8 @@ use App\User;
 class ShoppingList extends Model
 {
     //
+    protected $with = ['details.item', 'user', 'details.box'];
+
     protected $fillable = [
         'title',
         'user_id',
@@ -29,5 +31,21 @@ class ShoppingList extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getIsAllCompletedAttribute()
+    {
+        if(isset($this->details)) {
+            return null;
+        }
+
+        $completedCount = $this->details->sum(function($detail) {
+            if($detail->complated_at == null) {
+                return 0;
+            }else{
+                return 1;
+            }
+        });
+        return $completedCount == $this->details->count();
     }
 }
