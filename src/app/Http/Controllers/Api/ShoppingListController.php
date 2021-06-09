@@ -20,7 +20,7 @@ class ShoppingListController extends Controller
 
     public function update(UpdateShoppingListRequest $request, $shoppingListId)
     {
-        $home = Auht::user()->home()->first();
+        $home = Auth::user()->home()->first();
         $sl = $home->shoppingLists()->findOrFail($shoppingListId);
         $sl->fill($request->only('title'));
         return response(null, 204);
@@ -28,21 +28,21 @@ class ShoppingListController extends Controller
 
     public function create(CreateShoppingListRequest $request)
     {
-        $home = Auht::user()->home()->first();
+        $home = Auth::user()->home()->first();
         return $home->shoppingLists()->create($request->only('title')); 
         
     }
 
     public function delete($shoppingListId)
     {
-        $home = Auht::user()->home()->first();
+        $home = Auth::user()->home()->first();
         $home->shoppingLists()->findOrFail($shoppingListId)->delete();
         return response(null, 204);
     }
 
     public function show($shoppingListId)
     {
-        $home = Auht::user()->home()->first();
+        $home = Auth::user()->home()->first();
         return $home->shoppingLists()->findOrFail($shoppingListId);
     }
 }
