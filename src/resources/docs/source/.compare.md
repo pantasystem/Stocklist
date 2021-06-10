@@ -62,7 +62,8 @@ fetch(url, {
 <!-- END_535e1188fa3ce491f9abb9e5774a5094 -->
 
 <!-- START_b6abd12bcef0c2bff565f6f2cc8387c1 -->
-## api/homes
+## 自分の所属しているHomeを取得します。
+
 > Example request:
 
 ```bash
@@ -106,7 +107,8 @@ fetch(url, {
 <!-- END_b6abd12bcef0c2bff565f6f2cc8387c1 -->
 
 <!-- START_256614aeb4b0fc76d333ecc60b34b88f -->
-## api/boxes
+## 自分が所属しているHomeの収納を全て取得します。
+
 > Example request:
 
 ```bash
@@ -150,7 +152,8 @@ fetch(url, {
 <!-- END_256614aeb4b0fc76d333ecc60b34b88f -->
 
 <!-- START_bcab03cfb84e49724af518980f54a8a7 -->
-## api/boxes/{box_id}
+## 収納をIdに基づいて表示します。
+
 > Example request:
 
 ```bash
@@ -194,7 +197,8 @@ fetch(url, {
 <!-- END_bcab03cfb84e49724af518980f54a8a7 -->
 
 <!-- START_07fb85e5d8610027392f9f49c33a97c1 -->
-## api/items
+## 物を作成します。
+
 > Example request:
 
 ```bash
@@ -231,7 +235,9 @@ fetch(url, {
 <!-- END_07fb85e5d8610027392f9f49c33a97c1 -->
 
 <!-- START_2d89b427b331f35cdded42a87b6e4acc -->
-## api/items
+## 自分の所属しているHomeの物を全て取得します。
+またsince_updated_atを指定するとそれ以降に作成、更新された物を取得することができます。
+
 > Example request:
 
 ```bash
@@ -275,7 +281,8 @@ fetch(url, {
 <!-- END_2d89b427b331f35cdded42a87b6e4acc -->
 
 <!-- START_26ca08593e8681c3c477fc86d5ce30e9 -->
-## api/items/{item_id}
+## 物をIdで表示します。
+
 > Example request:
 
 ```bash
@@ -319,7 +326,8 @@ fetch(url, {
 <!-- END_26ca08593e8681c3c477fc86d5ce30e9 -->
 
 <!-- START_72020bc23561e84002574779796c1e43 -->
-## api/items/{item_id}
+## 指定した物を更新します。
+
 > Example request:
 
 ```bash
@@ -356,7 +364,9 @@ fetch(url, {
 <!-- END_72020bc23561e84002574779796c1e43 -->
 
 <!-- START_2ec1d42f10af712dfa16a2aea8d3f762 -->
-## api/stocks
+## ストックを全て取得します。
+QueryParameterにitem_id, box_idを指定することでフィルタすることができます(AND条件)
+
 > Example request:
 
 ```bash
@@ -400,7 +410,8 @@ fetch(url, {
 <!-- END_2ec1d42f10af712dfa16a2aea8d3f762 -->
 
 <!-- START_4a8f30403319f686b8a9d11d6fd5208a -->
-## api/stocks
+## Stockを作成します。
+
 > Example request:
 
 ```bash
@@ -437,7 +448,8 @@ fetch(url, {
 <!-- END_4a8f30403319f686b8a9d11d6fd5208a -->
 
 <!-- START_27701f804284b7541fc2521ce2f2596b -->
-## api/stocks/{stock_id}
+## Stockを表示します。
+
 > Example request:
 
 ```bash
@@ -481,7 +493,8 @@ fetch(url, {
 <!-- END_27701f804284b7541fc2521ce2f2596b -->
 
 <!-- START_6e8fc8a00b9f88a058695fd1fd8875ac -->
-## api/stocks/{stock_id}
+## Stockを更新します。
+
 > Example request:
 
 ```bash
@@ -518,7 +531,8 @@ fetch(url, {
 <!-- END_6e8fc8a00b9f88a058695fd1fd8875ac -->
 
 <!-- START_109013899e0bc43247b0f00b67f889cf -->
-## api/categories
+## 自分の所属しているHomeカテゴリーを全て取得します。
+
 > Example request:
 
 ```bash
@@ -562,7 +576,8 @@ fetch(url, {
 <!-- END_109013899e0bc43247b0f00b67f889cf -->
 
 <!-- START_2335abbed7f782ea7d7dd6df9c738d74 -->
-## api/categories
+## カテゴリを作成します。
+
 > Example request:
 
 ```bash
@@ -599,7 +614,8 @@ fetch(url, {
 <!-- END_2335abbed7f782ea7d7dd6df9c738d74 -->
 
 <!-- START_0e07c23b70bf5976e6339ccd8c9ca63e -->
-## api/categories/{category_id}
+## カテゴリを更新します。
+
 > Example request:
 
 ```bash
@@ -636,7 +652,8 @@ fetch(url, {
 <!-- END_0e07c23b70bf5976e6339ccd8c9ca63e -->
 
 <!-- START_3b414a6721415a71c9a19f16334276f9 -->
-## api/categories/{category_id}
+## カテゴリを削除します。
+
 > Example request:
 
 ```bash
@@ -673,7 +690,8 @@ fetch(url, {
 <!-- END_3b414a6721415a71c9a19f16334276f9 -->
 
 <!-- START_41c4cd65a0311f8215d1ed0103a2bb3e -->
-## api/boxes
+## 収納を作成します。
+
 > Example request:
 
 ```bash
@@ -710,7 +728,8 @@ fetch(url, {
 <!-- END_41c4cd65a0311f8215d1ed0103a2bb3e -->
 
 <!-- START_6d308b8aa3d4ec604003b390b67f2bec -->
-## api/boxes/{box_id}
+## 収納を更新します。
+
 > Example request:
 
 ```bash
@@ -821,7 +840,8 @@ fetch(url, {
 <!-- END_61739f3220a224b34228600649230ad1 -->
 
 <!-- START_8d257f00ca3c289f6956272f4ae6b332 -->
-## api/shopping-lists
+## 自分の所属しているHomeの買い物リストを全て取得します。
+
 > Example request:
 
 ```bash
@@ -865,7 +885,8 @@ fetch(url, {
 <!-- END_8d257f00ca3c289f6956272f4ae6b332 -->
 
 <!-- START_ab74884e3c1bb4e209632aa04bec35a4 -->
-## api/shopping-lists/{shopping_list_id}
+## 買い物リストを表示します。
+
 > Example request:
 
 ```bash
@@ -909,7 +930,8 @@ fetch(url, {
 <!-- END_ab74884e3c1bb4e209632aa04bec35a4 -->
 
 <!-- START_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
-## api/shopping-lists/{shopping_list_id}
+## 買い物リストを更新します。
+
 > Example request:
 
 ```bash
@@ -946,7 +968,8 @@ fetch(url, {
 <!-- END_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
 
 <!-- START_f13bfb5cfc00ccf449b1db148b090b47 -->
-## api/shopping-lists
+## 買い物リストを作成します。
+
 > Example request:
 
 ```bash
@@ -983,7 +1006,8 @@ fetch(url, {
 <!-- END_f13bfb5cfc00ccf449b1db148b090b47 -->
 
 <!-- START_9277ba20f5175d25789239f43c5e698d -->
-## api/shopping-lists/{shopping_list_id}
+## 買い物リストを削除します。
+
 > Example request:
 
 ```bash
@@ -1020,7 +1044,8 @@ fetch(url, {
 <!-- END_9277ba20f5175d25789239f43c5e698d -->
 
 <!-- START_8e84615877d224db68ca54a1e19c6765 -->
-## api/shopping-lists/{shopping_list_id}/tasks
+## 買い物リストにタスクを追加します。
+
 > Example request:
 
 ```bash
@@ -1057,7 +1082,8 @@ fetch(url, {
 <!-- END_8e84615877d224db68ca54a1e19c6765 -->
 
 <!-- START_a9008d2778493892b49da84aa818dcec -->
-## api/shopping-lists/{shopping_list_id}/tasks/{task_id}
+## タスクを更新します。
+
 > Example request:
 
 ```bash
@@ -1094,7 +1120,8 @@ fetch(url, {
 <!-- END_a9008d2778493892b49da84aa818dcec -->
 
 <!-- START_4b89bdc0ad941de02ffe940a5a9d6b69 -->
-## api/shopping-lists/{shopping_list_id}/tasks/{task_id}
+## タスクを削除します。
+
 > Example request:
 
 ```bash
@@ -1131,7 +1158,8 @@ fetch(url, {
 <!-- END_4b89bdc0ad941de02ffe940a5a9d6b69 -->
 
 <!-- START_7fd629503ab15c43e3bff9cef54174d3 -->
-## api/shopping-lists/{shopping_list_id}/tasks/{task_id}/complete
+## タスクの状態を完了にします。
+
 > Example request:
 
 ```bash
@@ -1168,7 +1196,8 @@ fetch(url, {
 <!-- END_7fd629503ab15c43e3bff9cef54174d3 -->
 
 <!-- START_4b473377c13b1a703f612271334bfbe9 -->
-## api/shopping-lists/{shopping_list_id}/tasks/{task_id}/incomplete
+## タスクの状態を未完了にします。
+
 > Example request:
 
 ```bash
