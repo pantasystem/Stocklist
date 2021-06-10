@@ -13,18 +13,6 @@
                     <v-card class="mb-5">
                         <v-card-title>名前：{{item.name}}</v-card-title>
                     </v-card>
-                    <v-card class="mb-5">
-                        <v-card-title>名前：{{item.name}}</v-card-title>
-                    </v-card>
-                    <v-card class="mb-5">
-                        <v-card-title>名前：{{item.name}}</v-card-title>
-                    </v-card>
-                    <v-card class="mb-5">
-                        <v-card-title>名前：{{item.name}}</v-card-title>
-                    </v-card>
-                    <v-card class="mb-5">
-                        <v-card-title>名前：{{item.name}}</v-card-title>
-                    </v-card>
                 </v-col>
             </v-row>
         </v-container>
@@ -37,7 +25,17 @@
         name: 'ItemDetails',
         computed: {
             item(){
-                return this.$store.state.item.items[this.$route.params.id]
+                var item;
+                for( const i in this.$store.state.item.items ){
+
+                    var items = this.$store.state.item.items[i];
+
+                    if(items.id == this.$route.params.id){
+                        item = items;
+                    }
+
+                }
+                return item
             }
         },
     }

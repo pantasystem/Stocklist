@@ -1,7 +1,7 @@
 export default {
     namespaced:true,
     state: {
-        login: false,
+        login: null,
     },
     mutations: {
     },

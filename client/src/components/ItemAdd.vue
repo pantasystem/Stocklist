@@ -1,9 +1,10 @@
 <template>
-    <v-app>
+    <v-app class="modal-window">
 
         <!-- 追加画面 表示 -->
         <v-dialog v-model="dialog" max-width="600px">
             <v-card>
+
                 <v-card-title>
                     <span class="headline">追加</span>
                     <v-spacer></v-spacer>
@@ -11,6 +12,7 @@
                     <v-icon>mdi-close</v-icon>
                     </v-btn>
                 </v-card-title>
+
                 <form>
 
                     <!-- 'name' => ['required', 'string', 'max:20'],
@@ -27,11 +29,11 @@
                         <v-container grid-list-md>
                             <div v-if="this.imgUrl">
                                 <v-flex class="d-flex justify-center">
-                                    <img max-height="300px" width="300px" :src="this.imgUrl">
+                                    <img height="100%" width="100%" :src="this.imgUrl">
                                 </v-flex>
                             </div>
                             <v-flex xs12>
-                                <v-file-input show-size label="画像" prepend-icon="mdi-image" @change="onImg" accept="image/*" />
+                                <v-file-input show-size label="画像" prepend-icon="mdi-image" @change="img" accept="image/*" />
                             </v-flex>
                             <v-flex xs12>
                                 <v-text-field label="名前" prepend-icon="mdi-briefcase" v-model="name" />
@@ -57,6 +59,7 @@
                     </v-card-actions>
 
                 </form>
+                
             </v-card>
         </v-dialog>
 
@@ -83,7 +86,7 @@
                 //POST用
                 name: '',
                 description: '',
-                img: null,
+                image: null,
                 disposable: null,
                 categoryId: null,
                 //imgプレビュー用
@@ -95,9 +98,9 @@
                 axios.post("/api/items", {
                     name: this.name,
                     is_disposable: this.disposable ? 'true' : 'false',
-                    image: this.img,
+                    image: this.image,
                     description: this.description,
-                    category_id: this.categoryId,    
+                    category_id: this.categoryId,
                 })
                 .then(response => {
                     console.log(response);
@@ -107,19 +110,13 @@
                     console.log(error);
                 });
             },
-            onImg(file) {
-                if (file !== undefined && file !== null) {
-
-                    if (file.name.lastIndexOf('.') <= 0) {
-                        return
-                    }
-                    
+            img(file) {
+                if (file) {
                     const fr = new FileReader()
                     fr.readAsDataURL(file)
                     fr.addEventListener('load', () => {
                         this.imgUrl = fr.result
                     })
-                    
                 } else {
                     this.imgUrl = ''
                 }
@@ -136,6 +133,10 @@
     position: absolute;
     margin: 0 32px 32px 0;
     position: fixed;
+}
+
+.modal-window{
+    position:fixed;
 }
 
 </style>
