@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateShoppingTaskRequest;
 use App\Http\Requests\UpdateShoppingTaskRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class ShoppingTaskController extends Controller
 {
     //
-    public function create(CreateShoppingTaskRequest $request)
+    public function create(CreateShoppingTaskRequest $request, $listId)
     {
         Auth::user()
             ->home()
             ->first()
             ->shoppingLists()
+            ->findOrFail($listId)
+            ->tasks()
             ->create(
                 $request->only('item_id', 'box_id', 'count')
             );
