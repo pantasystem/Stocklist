@@ -42,8 +42,8 @@ class ShoppingTaskController extends Controller
     public function complete($listId, $taskId)
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
-        if(!$task->complated_at) {
-            $task->complated_at = new Carbon('now');
+        if(!$task->completed_at) {
+            $task->completed_at = new Carbon('now');
             $task->save();
         }
         return $task;
@@ -52,7 +52,7 @@ class ShoppingTaskController extends Controller
     public function incomplete($listId, $taskId)
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
-        $task->complated_at = null;
+        $task->completed_at = null;
         $task->save();
         return $task;
     }
