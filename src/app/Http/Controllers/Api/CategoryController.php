@@ -17,16 +17,14 @@ class CategoryController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    /**
-     * 自分の所属しているHomeカテゴリーを全て取得します。
-     */
+   
     public function index() 
     {
         return Auth::user()->home()->first()->categories()->get();
     }
 
     /**
-     * カテゴリを作成します。
+     * @bodyParam path string required カテゴリの名称
      */
     public function create(AddCategoryRequest $request)
     {
@@ -37,7 +35,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * カテゴリを更新します。
+     * @bodyParam path string required カテゴリの名称
      */
     public function update(AddCategoryRequest $request, $categoryId)
     {
@@ -48,9 +46,7 @@ class CategoryController extends Controller
         return response(null, 204);
     }
 
-    /**
-     * カテゴリを削除します。
-     */
+
     public function delete($categoryId)
     {
         Auth::user()->home()->first()->categories()->findOrFail($categoryId)->delete();

@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "7ecb2c5a-cf85-4c1c-b0a2-35ed90a5c4ba",
+        "_postman_id": "95bb8b10-bdf0-41b9-99ea-7ccb4de37f35",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -29,6 +29,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -57,6 +61,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -68,7 +76,7 @@
                     }
                 },
                 {
-                    "name": "\u81ea\u5206\u304c\u6240\u5c5e\u3057\u3066\u3044\u308bHome\u306e\u53ce\u7d0d\u3092\u5168\u3066\u53d6\u5f97\u3057\u307e\u3059\u3002",
+                    "name": "api\/boxes",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -85,6 +93,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -96,7 +108,7 @@
                     }
                 },
                 {
-                    "name": "\u53ce\u7d0d\u3092Id\u306b\u57fa\u3065\u3044\u3066\u8868\u793a\u3057\u307e\u3059\u3002",
+                    "name": "api\/boxes\/{box_id}",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -113,6 +125,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -124,7 +140,7 @@
                     }
                 },
                 {
-                    "name": "\u7269\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002",
+                    "name": "api\/items",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -141,11 +157,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"image\": \"fuga\",\n    \"name\": \"sit\",\n    \"description\": \"necessitatibus\",\n    \"is_disposable\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -169,6 +189,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -180,7 +204,7 @@
                     }
                 },
                 {
-                    "name": "\u7269\u3092Id\u3067\u8868\u793a\u3057\u307e\u3059\u3002",
+                    "name": "api\/items\/{item_id}",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -197,6 +221,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -208,7 +236,7 @@
                     }
                 },
                 {
-                    "name": "\u6307\u5b9a\u3057\u305f\u7269\u3092\u66f4\u65b0\u3057\u307e\u3059\u3002",
+                    "name": "api\/items\/{item_id}",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -225,11 +253,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"name\": \"iure\",\n    \"description\": \"consequatur\",\n    \"is_disposable\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -253,6 +285,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -281,6 +317,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -309,6 +349,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -337,6 +381,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -348,7 +396,7 @@
                     }
                 },
                 {
-                    "name": "\u81ea\u5206\u306e\u6240\u5c5e\u3057\u3066\u3044\u308bHome\u30ab\u30c6\u30b4\u30ea\u30fc\u3092\u5168\u3066\u53d6\u5f97\u3057\u307e\u3059\u3002",
+                    "name": "api\/categories",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -365,6 +413,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -376,7 +428,7 @@
                     }
                 },
                 {
-                    "name": "\u30ab\u30c6\u30b4\u30ea\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002",
+                    "name": "api\/categories",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -393,18 +445,22 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"path\": \"nam\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "\u30ab\u30c6\u30b4\u30ea\u3092\u66f4\u65b0\u3057\u307e\u3059\u3002",
+                    "name": "api\/categories\/{category_id}",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -421,18 +477,22 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"path\": \"aut\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "\u30ab\u30c6\u30b4\u30ea\u3092\u524a\u9664\u3057\u307e\u3059\u3002",
+                    "name": "api\/categories\/{category_id}",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -449,6 +509,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -460,7 +524,7 @@
                     }
                 },
                 {
-                    "name": "\u53ce\u7d0d\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002",
+                    "name": "api\/boxes",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -477,18 +541,22 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"name\": \"quasi\",\n    \"description\": \"dolor\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "\u53ce\u7d0d\u3092\u66f4\u65b0\u3057\u307e\u3059\u3002",
+                    "name": "api\/boxes\/{box_id}",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -505,11 +573,15 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"name\": \"eligendi\",\n    \"description\": \"molestiae\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -533,6 +605,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -561,6 +637,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -589,6 +669,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -617,6 +701,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -645,6 +733,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -673,6 +765,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -701,6 +797,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -729,6 +829,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -757,6 +861,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -785,6 +893,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -813,6 +925,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {
@@ -841,6 +957,10 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1|test-1"
                             }
                         ],
                         "body": {

@@ -36,7 +36,10 @@ class ItemController extends Controller
     }
 
     /**
-     * 物を作成します。
+     * @bodyParam image image required 物の画像
+     * @bodyParam name string required 物の名前
+     * @bodyParam description string optional 物の説明
+     * @bodyParam is_disposable boolean required 消耗品フラグ
      */
     public function store(CreateItemRequest $request)
     {
@@ -69,16 +72,16 @@ class ItemController extends Controller
     }
     
 
-    /**
-     * 物をIdで表示します。
-     */
+
     public function show($itemId)
     {
         return Item::with('owners', 'stocks.expire', 'stocks.box')->findOrFail($itemId);
     }
 
     /**
-     * 指定した物を更新します。
+     * @bodyParam name string required 物の名前
+     * @bodyParam description string optional 物の説明
+     * @bodyParam is_disposable boolean required 消耗品フラグ
      */
     public function update(UpdateItemRequest $request, $itemId)
     {

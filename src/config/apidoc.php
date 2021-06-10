@@ -150,7 +150,7 @@ return [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    // 'Authorization' => 'Bearer {token}',
+                    'Authorization' => 'Bearer 1|test-1',
                     // 'Api-Version' => 'v2',
                 ],
 

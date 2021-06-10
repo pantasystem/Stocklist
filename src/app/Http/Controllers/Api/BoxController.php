@@ -15,7 +15,8 @@ class BoxController extends Controller
 {
     //
     /**
-     * 収納を作成します。
+     * @bodyParam name string required 収納の名称
+     * @bodyParam description string optional 収納の説明
      */
     public function create(CreateBoxRequest $request)
     {
@@ -36,7 +37,8 @@ class BoxController extends Controller
     }
 
     /**
-     * 収納を更新します。
+     * @bodyParam name string required 収納の名称
+     * @bodyParam description string optional 収納の説明
      */
     public function update(UpdateBoxRequest $request, $box_id)
     {
@@ -54,9 +56,7 @@ class BoxController extends Controller
         return response(null,204);
     }
 
-    /**
-     * 自分が所属しているHomeの収納を全て取得します。
-     */
+  
     public function index()
     {
         // Homeを取得して関連するstocksを取得
@@ -66,9 +66,6 @@ class BoxController extends Controller
     }
 
 
-    /**
-     * 収納をIdに基づいて表示します。
-     */
     public function show($boxld)
     {
         return Box::with('stocks')->where('home_id', '=', Auth::user()->home_id)->findOrFail($boxld);
