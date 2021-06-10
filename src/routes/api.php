@@ -65,6 +65,6 @@ Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'shopping-lists'], f
     Route::put('/{shopping_list_id}/tasks/{task_id}', 'Api\ShoppingTaskController@update');
     Route::delete('/{shopping_list_id}/tasks/{task_id}', 'Api\ShoppingTaskController@delete');
     Route::post('/{shopping_list_id}/tasks/{task_id}/complete', 'Api\ShoppingTaskController@complete');
-    Route::post('/{shopping_list_id}/tasks/{task_id}/incomplete', 'Api\ShoppingTaskController@complete');
+    Route::post('/{shopping_list_id}/tasks/{task_id}/incomplete', 'Api\ShoppingTaskController@incomplete');
 
 });
