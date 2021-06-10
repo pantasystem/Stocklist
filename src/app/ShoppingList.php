@@ -40,13 +40,13 @@ class ShoppingList extends Model
             return false;
         }
 
-        $completedCount = $this->tasks->sum(function($detail) {
-            if($detail->complated_at == null) {
+        $completedCount = $this->tasks->sum(function($task) {
+            if($task->complated_at == null) {
                 return 0;
             }else{
                 return 1;
             }
         });
-        return $completedCount == $this->details->count();
+        return $completedCount == $this->tasks->count();
     }
 }
