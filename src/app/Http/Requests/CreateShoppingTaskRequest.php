@@ -32,11 +32,8 @@ class CreateShoppingTaskRequest extends FormRequest
             })],
             'count' => ['required', 'integer', 'numeric', 'min:0'],
             'completed_at' => ['date', 'nullable'],
-            'shopping_list_id' => ['required', Rule::exists('shopping_lists', 'id')->where(function($query){
-                $homeId = Auth::user()->home_id;
-                $query->where('home_id', '=', $homeId);
-            })],
-            'box_id' => ['required', Rule::exists('shopping_lists', 'id')->where(function($query){
+            
+            'box_id' => ['nullable', Rule::exists('shopping_lists', 'id')->where(function($query){
                 $homeId = Auth::user()->home_id;
                 $query->where('home_id', '=', $homeId);
             })]
