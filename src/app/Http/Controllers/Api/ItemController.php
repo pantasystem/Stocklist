@@ -15,7 +15,10 @@ use App\Category;
 
 class ItemController extends Controller
 {
-    //
+    /**
+     * 自分の所属しているHomeの物を全て取得します。
+     * またsince_updated_atを指定するとそれ以降に作成、更新された物を取得することができます。
+     */
     public function index(GetItemRequest $request)
     {
         
@@ -32,6 +35,9 @@ class ItemController extends Controller
 
     }
 
+    /**
+     * 物を作成します。
+     */
     public function store(CreateItemRequest $request)
     {
 
@@ -63,11 +69,17 @@ class ItemController extends Controller
     }
     
 
+    /**
+     * 物をIdで表示します。
+     */
     public function show($itemId)
     {
         return Item::with('owners', 'stocks.expire', 'stocks.box')->findOrFail($itemId);
     }
 
+    /**
+     * 指定した物を更新します。
+     */
     public function update(UpdateItemRequest $request, $itemId)
     {
         $home = Auth::user()->home()->first();
