@@ -11,6 +11,10 @@ use App\Http\Requests\CreateStockRequest;
 class StockController extends Controller
 {
     
+    /**
+     * ストックを全て取得します。
+     * QueryParameterにitem_id, box_idを指定することでフィルタすることができます(AND条件)
+     */
     public function index(Request $request)
     {
         return Auth::user()
@@ -25,6 +29,9 @@ class StockController extends Controller
             });
     }
 
+    /**
+     * Stockを表示します。
+     */
     public function show(Request $request, $stockId)
     {
         return Auth::user()
@@ -36,6 +43,9 @@ class StockController extends Controller
             ->findOrFail($stockId);
     }
 
+    /**
+     * Stockを作成します。
+     */
     public function create(CreateStockRequest $request)
     {
 
@@ -66,6 +76,9 @@ class StockController extends Controller
 
     }
 
+    /**
+     * Stockを更新します。
+     */
     public function update(UpdateStockRequest $request, $stockId)
     {
         $home = Auth::user()->home()->firstOrFail();
