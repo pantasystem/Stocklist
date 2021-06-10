@@ -41,7 +41,7 @@ class ShoppingList extends Model
         }
 
         $completedCount = $this->tasks->sum(function($task) {
-            if($task->complated_at == null) {
+            if($task->completed_at == null) {
                 return 0;
             }else{
                 return 1;
