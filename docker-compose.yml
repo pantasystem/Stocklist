@@ -9,6 +9,7 @@ services:
             - 8080:80
         volumes:
             - ./src/public:/var/www/public
+            - ./src/storage:/var/www/storage
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
             - ./docker/StocklistLogs/nginx:/var/log/nginx/
         depends_on:
