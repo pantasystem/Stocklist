@@ -13,17 +13,13 @@ class ShoppingListController extends Controller
 {
     //
 
-    /**
-     * 自分の所属しているHomeの買い物リストを全て取得します。
-     */
+
     public function index()
     {
         return Auth::user()->home()->first()->shoppingLists()->with('tasks')->get();
     }
 
-    /**
-     * 買い物リストを更新します。
-     */
+
     public function update(UpdateShoppingListRequest $request, $shoppingListId)
     {
         $home = Auth::user()->home()->first();
@@ -32,9 +28,7 @@ class ShoppingListController extends Controller
         return response(null, 204);
     }
 
-    /** 
-     * 買い物リストを作成します。
-     */
+
     public function create(CreateShoppingListRequest $request)
     {
         $home = Auth::user()->home()->first();
@@ -42,9 +36,7 @@ class ShoppingListController extends Controller
         
     }
 
-    /**
-     * 買い物リストを削除します。
-     */
+
     public function delete($shoppingListId)
     {
         $home = Auth::user()->home()->first();
@@ -52,9 +44,7 @@ class ShoppingListController extends Controller
         return response(null, 204);
     }
 
-    /** 
-     * 買い物リストを表示します。
-     */
+  
     public function show($shoppingListId)
     {
         $home = Auth::user()->home()->first();

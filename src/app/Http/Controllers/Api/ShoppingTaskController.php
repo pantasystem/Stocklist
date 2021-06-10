@@ -12,9 +12,7 @@ use Carbon\Carbon;
 
 class ShoppingTaskController extends Controller
 {
-    /**
-     * 買い物リストにタスクを追加します。
-     */
+   
     public function create(CreateShoppingTaskRequest $request, $listId)
     {
         return Auth::user()
@@ -28,9 +26,7 @@ class ShoppingTaskController extends Controller
             );
     }
 
-    /**
-     * タスクを更新します。
-     */
+  
     public function update(UpdateShoppingTaskRequest $request, $listId, $taskId)
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
@@ -38,18 +34,14 @@ class ShoppingTaskController extends Controller
         return response(null, 204);
     }
 
-    /**
-     * タスクを削除します。
-     */
+
     public function delete($listId, $taskId)
     {
         $this->findShoppingList($listId)->tasks()->findOrFail($taskId)->delete();
         return response(null, 204);
     }
 
-    /**
-     * タスクの状態を完了にします。
-     */
+
     public function complete($listId, $taskId)
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
@@ -60,9 +52,7 @@ class ShoppingTaskController extends Controller
         return $task;
     }
 
-    /**
-     * タスクの状態を未完了にします。
-     */
+
     public function incomplete($listId, $taskId)
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
