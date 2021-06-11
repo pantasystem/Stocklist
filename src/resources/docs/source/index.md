@@ -536,7 +536,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"image":"voluptatem","name":"tenetur","description":"quo","is_disposable":true}'
+    -d '{"image":"fuga","name":"perferendis","description":"et","is_disposable":false}'
 
 ```
 
@@ -552,10 +552,10 @@ let headers = {
 };
 
 let body = {
-    "image": "voluptatem",
-    "name": "tenetur",
-    "description": "quo",
-    "is_disposable": true
+    "image": "fuga",
+    "name": "perferendis",
+    "description": "et",
+    "is_disposable": false
 }
 
 fetch(url, {
@@ -3633,7 +3633,7 @@ curl -X PUT \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"et","description":"eos","is_disposable":false}'
+    -d '{"name":"corrupti","description":"repudiandae","is_disposable":true}'
 
 ```
 
@@ -3649,9 +3649,9 @@ let headers = {
 };
 
 let body = {
-    "name": "et",
-    "description": "eos",
-    "is_disposable": false
+    "name": "corrupti",
+    "description": "repudiandae",
+    "is_disposable": true
 }
 
 fetch(url, {
@@ -8943,7 +8943,9 @@ curl -X POST \
     "http://10.200.3.189/api/stocks" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"count":6,"box_id":188.28513,"item_id":41.438,"expiration_date":"omnis"}'
+
 ```
 
 ```javascript
@@ -8957,9 +8959,17 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "count": 6,
+    "box_id": 188.28513,
+    "item_id": 41.438,
+    "expiration_date": "omnis"
+}
+
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -8970,7 +8980,14 @@ fetch(url, {
 ### HTTP Request
 `POST api/stocks`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `count` | number |  required  | 収納しているゼロ以上の個数
+        `box_id` | number |  required  | 収納場所
+        `item_id` | number |  required  | 収納している物
+        `expiration_date` | date |  optional  | optional 収納している物の消費期限（消耗品の時のみ）
+    
 <!-- END_4a8f30403319f686b8a9d11d6fd5208a -->
 
 <!-- START_27701f804284b7541fc2521ce2f2596b -->
@@ -9082,7 +9099,9 @@ curl -X PUT \
     "http://10.200.3.189/api/stocks/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"count":37843723.66,"box_id":24.86,"item_id":39102644.610586815,"expiration_date":"dignissimos"}'
+
 ```
 
 ```javascript
@@ -9096,9 +9115,17 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "count": 37843723.66,
+    "box_id": 24.86,
+    "item_id": 39102644.610586815,
+    "expiration_date": "dignissimos"
+}
+
 fetch(url, {
     method: "PUT",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -9109,7 +9136,14 @@ fetch(url, {
 ### HTTP Request
 `PUT api/stocks/{stock_id}`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `count` | number |  required  | 収納しているゼロ以上の個数
+        `box_id` | number |  required  | 収納場所
+        `item_id` | number |  required  | 収納している物
+        `expiration_date` | date |  optional  | optional 収納している物の消費期限（消耗品の時のみ）
+    
 <!-- END_6e8fc8a00b9f88a058695fd1fd8875ac -->
 
 <!-- START_109013899e0bc43247b0f00b67f889cf -->
@@ -9195,7 +9229,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"iure"}'
+    -d '{"path":"sed"}'
 
 ```
 
@@ -9211,7 +9245,7 @@ let headers = {
 };
 
 let body = {
-    "path": "iure"
+    "path": "sed"
 }
 
 fetch(url, {
@@ -9245,7 +9279,7 @@ curl -X PUT \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"quidem"}'
+    -d '{"path":"itaque"}'
 
 ```
 
@@ -9261,7 +9295,7 @@ let headers = {
 };
 
 let body = {
-    "path": "quidem"
+    "path": "itaque"
 }
 
 fetch(url, {
@@ -9334,7 +9368,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"sit","description":"in"}'
+    -d '{"name":"unde","description":"aut"}'
 
 ```
 
@@ -9350,8 +9384,8 @@ let headers = {
 };
 
 let body = {
-    "name": "sit",
-    "description": "in"
+    "name": "unde",
+    "description": "aut"
 }
 
 fetch(url, {
@@ -9386,7 +9420,7 @@ curl -X PUT \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"et","description":"rem"}'
+    -d '{"name":"non","description":"voluptas"}'
 
 ```
 
@@ -9402,8 +9436,8 @@ let headers = {
 };
 
 let body = {
-    "name": "et",
-    "description": "rem"
+    "name": "non",
+    "description": "voluptas"
 }
 
 fetch(url, {
@@ -10011,7 +10045,9 @@ curl -X PUT \
     "http://10.200.3.189/api/shopping-lists/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"title":"quo","user_id":87324.67451661}'
+
 ```
 
 ```javascript
@@ -10025,9 +10061,15 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "title": "quo",
+    "user_id": 87324.67451661
+}
+
 fetch(url, {
     method: "PUT",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -10038,7 +10080,12 @@ fetch(url, {
 ### HTTP Request
 `PUT api/shopping-lists/{shopping_list_id}`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `title` | string |  required  | 最大二十文字のタイトル
+        `user_id` | number |  required  | この買い物リストを担当するユーザーのId
+    
 <!-- END_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
 
 <!-- START_f13bfb5cfc00ccf449b1db148b090b47 -->
@@ -10050,7 +10097,9 @@ curl -X POST \
     "http://10.200.3.189/api/shopping-lists" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"title":"doloremque","user_id":17588341.97419129}'
+
 ```
 
 ```javascript
@@ -10064,9 +10113,15 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "title": "doloremque",
+    "user_id": 17588341.97419129
+}
+
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -10077,7 +10132,12 @@ fetch(url, {
 ### HTTP Request
 `POST api/shopping-lists`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `title` | string |  required  | 最大二十文字のタイトル
+        `user_id` | number |  required  | この買い物リストを担当するユーザーのId
+    
 <!-- END_f13bfb5cfc00ccf449b1db148b090b47 -->
 
 <!-- START_9277ba20f5175d25789239f43c5e698d -->
@@ -10128,7 +10188,9 @@ curl -X POST \
     "http://10.200.3.189/api/shopping-lists/1/tasks" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"item_id":5.9,"count":1324978.577,"box_id":13925800.01}'
+
 ```
 
 ```javascript
@@ -10142,9 +10204,16 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "item_id": 5.9,
+    "count": 1324978.577,
+    "box_id": 13925800.01
+}
+
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -10155,7 +10224,13 @@ fetch(url, {
 ### HTTP Request
 `POST api/shopping-lists/{shopping_list_id}/tasks`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `item_id` | number |  required  | 買うべき物のId
+        `count` | number |  required  | 買う物の個数
+        `box_id` | number |  optional  | optional 買った物の収納場所(任意)
+    
 <!-- END_8e84615877d224db68ca54a1e19c6765 -->
 
 <!-- START_a9008d2778493892b49da84aa818dcec -->
@@ -10167,7 +10242,9 @@ curl -X PUT \
     "http://10.200.3.189/api/shopping-lists/1/tasks/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"item_id":10045.1,"count":30227,"box_id":28705433.294823814,"completed_at":"nisi"}'
+
 ```
 
 ```javascript
@@ -10181,9 +10258,17 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "item_id": 10045.1,
+    "count": 30227,
+    "box_id": 28705433.294823814,
+    "completed_at": "nisi"
+}
+
 fetch(url, {
     method: "PUT",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -10194,7 +10279,14 @@ fetch(url, {
 ### HTTP Request
 `PUT api/shopping-lists/{shopping_list_id}/tasks/{task_id}`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `item_id` | number |  required  | 買うべき物のId
+        `count` | number |  required  | 買う物の個数
+        `box_id` | number |  optional  | optional 買った物の収納場所(任意)
+        `completed_at` | date |  optional  | optional このタスクの達成日時
+    
 <!-- END_a9008d2778493892b49da84aa818dcec -->
 
 <!-- START_4b89bdc0ad941de02ffe940a5a9d6b69 -->

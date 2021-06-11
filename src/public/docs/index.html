@@ -518,7 +518,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"image":"voluptatem","name":"tenetur","description":"quo","is_disposable":true}'
+    -d '{"image":"fuga","name":"perferendis","description":"et","is_disposable":false}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/items"
@@ -531,10 +531,10 @@ let headers = {
 };
 
 let body = {
-    "image": "voluptatem",
-    "name": "tenetur",
-    "description": "quo",
-    "is_disposable": true
+    "image": "fuga",
+    "name": "perferendis",
+    "description": "et",
+    "is_disposable": false
 }
 
 fetch(url, {
@@ -3613,7 +3613,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"et","description":"eos","is_disposable":false}'
+    -d '{"name":"corrupti","description":"repudiandae","is_disposable":true}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/items/1"
@@ -3626,9 +3626,9 @@ let headers = {
 };
 
 let body = {
-    "name": "et",
-    "description": "eos",
-    "is_disposable": false
+    "name": "corrupti",
+    "description": "repudiandae",
+    "is_disposable": true
 }
 
 fetch(url, {
@@ -8927,7 +8927,9 @@ fetch(url, {
     "http://10.200.3.189/api/stocks" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"</code></pre>
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"count":6,"box_id":188.28513,"item_id":41.438,"expiration_date":"omnis"}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/stocks"
 );
@@ -8938,14 +8940,59 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "count": 6,
+    "box_id": 188.28513,
+    "item_id": 41.438,
+    "expiration_date": "omnis"
+}
+
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/stocks</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td>number</td>
+<td>required</td>
+<td>収納しているゼロ以上の個数</td>
+</tr>
+<tr>
+<td><code>box_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>収納場所</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>収納している物</td>
+</tr>
+<tr>
+<td><code>expiration_date</code></td>
+<td>date</td>
+<td>optional</td>
+<td>optional 収納している物の消費期限（消耗品の時のみ）</td>
+</tr>
+</tbody>
+</table>
 <!-- END_4a8f30403319f686b8a9d11d6fd5208a -->
 <!-- START_27701f804284b7541fc2521ce2f2596b -->
 <h2>api/stocks/{stock_id}</h2>
@@ -9045,7 +9092,9 @@ fetch(url, {
     "http://10.200.3.189/api/stocks/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"</code></pre>
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"count":37843723.66,"box_id":24.86,"item_id":39102644.610586815,"expiration_date":"dignissimos"}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/stocks/1"
 );
@@ -9056,14 +9105,59 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "count": 37843723.66,
+    "box_id": 24.86,
+    "item_id": 39102644.610586815,
+    "expiration_date": "dignissimos"
+}
+
 fetch(url, {
     method: "PUT",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>PUT api/stocks/{stock_id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td>number</td>
+<td>required</td>
+<td>収納しているゼロ以上の個数</td>
+</tr>
+<tr>
+<td><code>box_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>収納場所</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>収納している物</td>
+</tr>
+<tr>
+<td><code>expiration_date</code></td>
+<td>date</td>
+<td>optional</td>
+<td>optional 収納している物の消費期限（消耗品の時のみ）</td>
+</tr>
+</tbody>
+</table>
 <!-- END_6e8fc8a00b9f88a058695fd1fd8875ac -->
 <!-- START_109013899e0bc43247b0f00b67f889cf -->
 <h2>api/categories</h2>
@@ -9137,7 +9231,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"iure"}'
+    -d '{"path":"sed"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/categories"
@@ -9150,7 +9244,7 @@ let headers = {
 };
 
 let body = {
-    "path": "iure"
+    "path": "sed"
 }
 
 fetch(url, {
@@ -9192,7 +9286,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"quidem"}'
+    -d '{"path":"itaque"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/categories/1"
@@ -9205,7 +9299,7 @@ let headers = {
 };
 
 let body = {
-    "path": "quidem"
+    "path": "itaque"
 }
 
 fetch(url, {
@@ -9276,7 +9370,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"sit","description":"in"}'
+    -d '{"name":"unde","description":"aut"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/boxes"
@@ -9289,8 +9383,8 @@ let headers = {
 };
 
 let body = {
-    "name": "sit",
-    "description": "in"
+    "name": "unde",
+    "description": "aut"
 }
 
 fetch(url, {
@@ -9338,7 +9432,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"et","description":"rem"}'
+    -d '{"name":"non","description":"voluptas"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/boxes/1"
@@ -9351,8 +9445,8 @@ let headers = {
 };
 
 let body = {
-    "name": "et",
-    "description": "rem"
+    "name": "non",
+    "description": "voluptas"
 }
 
 fetch(url, {
@@ -9931,7 +10025,9 @@ fetch(url, {
     "http://10.200.3.189/api/shopping-lists/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"</code></pre>
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"title":"quo","user_id":87324.67451661}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/shopping-lists/1"
 );
@@ -9942,14 +10038,45 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "title": "quo",
+    "user_id": 87324.67451661
+}
+
 fetch(url, {
     method: "PUT",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>PUT api/shopping-lists/{shopping_list_id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>required</td>
+<td>最大二十文字のタイトル</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>この買い物リストを担当するユーザーのId</td>
+</tr>
+</tbody>
+</table>
 <!-- END_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
 <!-- START_f13bfb5cfc00ccf449b1db148b090b47 -->
 <h2>api/shopping-lists</h2>
@@ -9960,7 +10087,9 @@ fetch(url, {
     "http://10.200.3.189/api/shopping-lists" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"</code></pre>
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"title":"doloremque","user_id":17588341.97419129}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/shopping-lists"
 );
@@ -9971,14 +10100,45 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "title": "doloremque",
+    "user_id": 17588341.97419129
+}
+
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/shopping-lists</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>required</td>
+<td>最大二十文字のタイトル</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>この買い物リストを担当するユーザーのId</td>
+</tr>
+</tbody>
+</table>
 <!-- END_f13bfb5cfc00ccf449b1db148b090b47 -->
 <!-- START_9277ba20f5175d25789239f43c5e698d -->
 <h2>api/shopping-lists/{shopping_list_id}</h2>
@@ -10018,7 +10178,9 @@ fetch(url, {
     "http://10.200.3.189/api/shopping-lists/1/tasks" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"</code></pre>
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"item_id":5.9,"count":1324978.577,"box_id":13925800.01}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/shopping-lists/1/tasks"
 );
@@ -10029,14 +10191,52 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "item_id": 5.9,
+    "count": 1324978.577,
+    "box_id": 13925800.01
+}
+
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/shopping-lists/{shopping_list_id}/tasks</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>買うべき物のId</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>number</td>
+<td>required</td>
+<td>買う物の個数</td>
+</tr>
+<tr>
+<td><code>box_id</code></td>
+<td>number</td>
+<td>optional</td>
+<td>optional 買った物の収納場所(任意)</td>
+</tr>
+</tbody>
+</table>
 <!-- END_8e84615877d224db68ca54a1e19c6765 -->
 <!-- START_a9008d2778493892b49da84aa818dcec -->
 <h2>api/shopping-lists/{shopping_list_id}/tasks/{task_id}</h2>
@@ -10047,7 +10247,9 @@ fetch(url, {
     "http://10.200.3.189/api/shopping-lists/1/tasks/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer 1|test-1"</code></pre>
+    -H "Authorization: Bearer 1|test-1" \
+    -d '{"item_id":10045.1,"count":30227,"box_id":28705433.294823814,"completed_at":"nisi"}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/shopping-lists/1/tasks/1"
 );
@@ -10058,14 +10260,59 @@ let headers = {
     "Authorization": "Bearer 1|test-1",
 };
 
+let body = {
+    "item_id": 10045.1,
+    "count": 30227,
+    "box_id": 28705433.294823814,
+    "completed_at": "nisi"
+}
+
 fetch(url, {
     method: "PUT",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>PUT api/shopping-lists/{shopping_list_id}/tasks/{task_id}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item_id</code></td>
+<td>number</td>
+<td>required</td>
+<td>買うべき物のId</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>number</td>
+<td>required</td>
+<td>買う物の個数</td>
+</tr>
+<tr>
+<td><code>box_id</code></td>
+<td>number</td>
+<td>optional</td>
+<td>optional 買った物の収納場所(任意)</td>
+</tr>
+<tr>
+<td><code>completed_at</code></td>
+<td>date</td>
+<td>optional</td>
+<td>optional このタスクの達成日時</td>
+</tr>
+</tbody>
+</table>
 <!-- END_a9008d2778493892b49da84aa818dcec -->
 <!-- START_4b89bdc0ad941de02ffe940a5a9d6b69 -->
 <h2>api/shopping-lists/{shopping_list_id}/tasks/{task_id}</h2>
