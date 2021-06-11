@@ -39,6 +39,12 @@ class StockController extends Controller
     }
 
 
+    /**
+     * @bodyParam count number required 収納しているゼロ以上の個数
+     * @bodyParam box_id number required 収納場所
+     * @bodyParam item_id number required 収納している物
+     * @bodyParam expiration_date date optional 収納している物の消費期限（消耗品の時のみ）
+     */
     public function create(CreateStockRequest $request)
     {
 
@@ -70,6 +76,12 @@ class StockController extends Controller
     }
 
 
+    /**
+     * @bodyParam count number required 収納しているゼロ以上の個数
+     * @bodyParam box_id number required 収納場所
+     * @bodyParam item_id number required 収納している物
+     * @bodyParam expiration_date date optional 収納している物の消費期限（消耗品の時のみ）
+     */
     public function update(UpdateStockRequest $request, $stockId)
     {
         $home = Auth::user()->home()->firstOrFail();
