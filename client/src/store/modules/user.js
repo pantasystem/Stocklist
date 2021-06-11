@@ -1,7 +1,7 @@
 export default {
     namespaced:true,
     state: {
-        login: sessionStorage.getItem('login'),
+        login: localStorage.getItem('login'),
     },
     mutations: {
     },

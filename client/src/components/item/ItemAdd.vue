@@ -33,7 +33,7 @@
                                 </v-flex>
                             </div>
                             <v-flex xs12>
-                                <v-file-input show-size label="画像" prepend-icon="mdi-image" @change="img" accept="image/*" />
+                                <v-file-input show-size label="画像" prepend-icon="mdi-image" v-model="image" @change="img" accept="image/*" />
                             </v-flex>
                             <v-flex xs12>
                                 <v-text-field label="名前" prepend-icon="mdi-briefcase" v-model="name" />
@@ -59,7 +59,7 @@
                     </v-card-actions>
 
                 </form>
-                
+
             </v-card>
         </v-dialog>
 
@@ -86,8 +86,8 @@
                 //POST用
                 name: '',
                 description: '',
+                disposable: false,
                 image: null,
-                disposable: null,
                 categoryId: null,
                 //imgプレビュー用
                 imgUrl: '',
@@ -95,15 +95,17 @@
         },
         methods:{
             itemAdd() {
-                axios.post("/api/items", {
-                    name: this.name,
-                    is_disposable: this.disposable ? 'true' : 'false',
-                    image: this.image,
-                    description: this.description,
-                    category_id: this.categoryId,
-                })
-                .then(response => {
-                    console.log(response);
+                let data = new FormData();
+                data.append("image", this.image);
+                data.append("name", this.name);
+                data.append("is_disposable", this.disposable);
+                data.append("description", this.description);
+                data.append("category_id", this.categoryId);
+    
+                axios
+                .post("/api/items", data)
+                .then(() => {
+                    this.$store.dispatch('item/getItems')
                     this.dialog = false;
                 })
                 .catch(error => {

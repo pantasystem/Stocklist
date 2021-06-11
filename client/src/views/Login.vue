@@ -32,6 +32,7 @@
                     </v-card-actions>
                 </v-form>
             </v-card-text>
+
         </v-card>
 
     </v-app>
@@ -47,21 +48,23 @@ export default {
             showPassword : false,
             email:'',
             password:'',
-            errors: []
+            errors:[],
         }
     },
     methods:{
         async login() {
+            await axios.get('api/csrf-cookie')
             await axios.post("/api/login", {
                 email: this.email,
                 password: this.password,
             })
             .then(()=>{
-                sessionStorage.setItem("login", true);
-                this.$router.push('/', () => {});
+                this.$router.push('/');
+                localStorage.setItem("login", true);
+                this.$store.state.user.login = true;
             })
             .catch(error => {
-                console.log(error);
+                this.errors = error.response.data.errors;
             });
         }
     }
