@@ -15,7 +15,7 @@ use App\Category;
 
 class ItemController extends Controller
 {
-    //
+
     public function index(GetItemRequest $request)
     {
         
@@ -32,6 +32,12 @@ class ItemController extends Controller
 
     }
 
+    /**
+     * @bodyParam image image required 物の画像
+     * @bodyParam name string required 物の名前
+     * @bodyParam description string optional 物の説明
+     * @bodyParam is_disposable boolean required 消耗品フラグ
+     */
     public function store(CreateItemRequest $request)
     {
 
@@ -63,11 +69,17 @@ class ItemController extends Controller
     }
     
 
+
     public function show($itemId)
     {
         return Item::with('owners', 'stocks.expire', 'stocks.box')->findOrFail($itemId);
     }
 
+    /**
+     * @bodyParam name string required 物の名前
+     * @bodyParam description string optional 物の説明
+     * @bodyParam is_disposable boolean required 消耗品フラグ
+     */
     public function update(UpdateItemRequest $request, $itemId)
     {
         $home = Auth::user()->home()->first();

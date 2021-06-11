@@ -12,7 +12,12 @@ use Carbon\Carbon;
 
 class ShoppingTaskController extends Controller
 {
-    //
+   
+    /**
+     * @bodyParam item_id number required 買うべき物のId
+     * @bodyParam count number required 買う物の個数
+     * @bodyParam box_id number optional 買った物の収納場所(任意)
+     */
     public function create(CreateShoppingTaskRequest $request, $listId)
     {
         return Auth::user()
@@ -26,6 +31,12 @@ class ShoppingTaskController extends Controller
             );
     }
 
+    /**
+     * @bodyParam item_id number required 買うべき物のId
+     * @bodyParam count number required 買う物の個数
+     * @bodyParam box_id number optional 買った物の収納場所(任意)
+     * @bodyParam completed_at date optional このタスクの達成日時
+     */
     public function update(UpdateShoppingTaskRequest $request, $listId, $taskId)
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
@@ -33,11 +44,13 @@ class ShoppingTaskController extends Controller
         return response(null, 204);
     }
 
+
     public function delete($listId, $taskId)
     {
         $this->findShoppingList($listId)->tasks()->findOrFail($taskId)->delete();
         return response(null, 204);
     }
+
 
     public function complete($listId, $taskId)
     {
@@ -48,6 +61,7 @@ class ShoppingTaskController extends Controller
         }
         return $task;
     }
+
 
     public function incomplete($listId, $taskId)
     {
