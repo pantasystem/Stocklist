@@ -8,8 +8,8 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 
 //item
-import Item from '../views/Item.vue'
-import ItemDetail from '../views/ItemDetail.vue'
+import Item from '../views/item/Item.vue'
+import ItemDetail from '../views/item/ItemDetail.vue'
 
 // import store from '../store/index'
 

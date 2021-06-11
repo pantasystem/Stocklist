@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Items from '@/components/Items.vue';
-import ItemAdd from '@/components/ItemAdd.vue';
+import Items from '@/components/item/Items.vue';
+import ItemAdd from '@/components/item/ItemAdd.vue';
 
 export default {
     name: 'Item',

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Details from '@/components/ItemDetails.vue';
+import Details from '@/components/item/ItemDetails.vue';
 
 export default {
     name: 'ItemDetail',
