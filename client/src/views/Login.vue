@@ -52,23 +52,16 @@ export default {
     },
     methods:{
         async login() {
-            let email = this.email;
-            let password = this.password;
-            let postLogin = async (email, pw)=>{
-                await axios.get('api/csrf-cookie');
-                await axios.post("/api/login", {
-                    email: email,
-                    password: pw
-                })
-            }
-            postLogin(email, password).then(response => {
-                console.log(response);
-                localStorage.setItem("auth", "ture");
-                this.$store.state.user.login = true;
+            await axios.post("/api/login", {
+                email: this.email,
+                password: this.password,
+            })
+            .then(()=>{
+                sessionStorage.setItem("login", true);
                 this.$router.push('/', () => {});
             })
             .catch(error => {
-                this.errors = error.response.data.errors;
+                console.log(error);
             });
         }
     }
