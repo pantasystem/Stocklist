@@ -64,8 +64,7 @@ fetch(url, {
 <!-- END_535e1188fa3ce491f9abb9e5774a5094 -->
 
 <!-- START_b6abd12bcef0c2bff565f6f2cc8387c1 -->
-## 自分の所属しているHomeを取得します。
-
+## api/homes
 > Example request:
 
 ```bash
@@ -537,7 +536,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"image":"fuga","name":"sit","description":"necessitatibus","is_disposable":false}'
+    -d '{"image":"voluptatem","name":"tenetur","description":"quo","is_disposable":true}'
 
 ```
 
@@ -553,10 +552,10 @@ let headers = {
 };
 
 let body = {
-    "image": "fuga",
-    "name": "sit",
-    "description": "necessitatibus",
-    "is_disposable": false
+    "image": "voluptatem",
+    "name": "tenetur",
+    "description": "quo",
+    "is_disposable": true
 }
 
 fetch(url, {
@@ -584,9 +583,7 @@ Parameter | Type | Status | Description
 <!-- END_07fb85e5d8610027392f9f49c33a97c1 -->
 
 <!-- START_2d89b427b331f35cdded42a87b6e4acc -->
-## 自分の所属しているHomeの物を全て取得します。
-またsince_updated_atを指定するとそれ以降に作成、更新された物を取得することができます。
-
+## api/items
 > Example request:
 
 ```bash
@@ -3636,7 +3633,7 @@ curl -X PUT \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"iure","description":"consequatur","is_disposable":false}'
+    -d '{"name":"et","description":"eos","is_disposable":false}'
 
 ```
 
@@ -3652,8 +3649,8 @@ let headers = {
 };
 
 let body = {
-    "name": "iure",
-    "description": "consequatur",
+    "name": "et",
+    "description": "eos",
     "is_disposable": false
 }
 
@@ -3681,9 +3678,7 @@ Parameter | Type | Status | Description
 <!-- END_72020bc23561e84002574779796c1e43 -->
 
 <!-- START_2ec1d42f10af712dfa16a2aea8d3f762 -->
-## ストックを全て取得します。
-QueryParameterにitem_id, box_idを指定することでフィルタすることができます(AND条件)
-
+## api/stocks
 > Example request:
 
 ```bash
@@ -8940,8 +8935,7 @@ fetch(url, {
 <!-- END_2ec1d42f10af712dfa16a2aea8d3f762 -->
 
 <!-- START_4a8f30403319f686b8a9d11d6fd5208a -->
-## Stockを作成します。
-
+## api/stocks
 > Example request:
 
 ```bash
@@ -8980,8 +8974,7 @@ fetch(url, {
 <!-- END_4a8f30403319f686b8a9d11d6fd5208a -->
 
 <!-- START_27701f804284b7541fc2521ce2f2596b -->
-## Stockを表示します。
-
+## api/stocks/{stock_id}
 > Example request:
 
 ```bash
@@ -9081,8 +9074,7 @@ fetch(url, {
 <!-- END_27701f804284b7541fc2521ce2f2596b -->
 
 <!-- START_6e8fc8a00b9f88a058695fd1fd8875ac -->
-## Stockを更新します。
-
+## api/stocks/{stock_id}
 > Example request:
 
 ```bash
@@ -9203,7 +9195,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"nam"}'
+    -d '{"path":"iure"}'
 
 ```
 
@@ -9219,7 +9211,7 @@ let headers = {
 };
 
 let body = {
-    "path": "nam"
+    "path": "iure"
 }
 
 fetch(url, {
@@ -9253,7 +9245,7 @@ curl -X PUT \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"aut"}'
+    -d '{"path":"quidem"}'
 
 ```
 
@@ -9269,7 +9261,7 @@ let headers = {
 };
 
 let body = {
-    "path": "aut"
+    "path": "quidem"
 }
 
 fetch(url, {
@@ -9342,7 +9334,7 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"quasi","description":"dolor"}'
+    -d '{"name":"sit","description":"in"}'
 
 ```
 
@@ -9358,8 +9350,8 @@ let headers = {
 };
 
 let body = {
-    "name": "quasi",
-    "description": "dolor"
+    "name": "sit",
+    "description": "in"
 }
 
 fetch(url, {
@@ -9394,7 +9386,7 @@ curl -X PUT \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"eligendi","description":"molestiae"}'
+    -d '{"name":"et","description":"rem"}'
 
 ```
 
@@ -9410,8 +9402,8 @@ let headers = {
 };
 
 let body = {
-    "name": "eligendi",
-    "description": "molestiae"
+    "name": "et",
+    "description": "rem"
 }
 
 fetch(url, {
@@ -9515,8 +9507,7 @@ fetch(url, {
 <!-- END_61739f3220a224b34228600649230ad1 -->
 
 <!-- START_8d257f00ca3c289f6956272f4ae6b332 -->
-## 自分の所属しているHomeの買い物リストを全て取得します。
-
+## api/shopping-lists
 > Example request:
 
 ```bash
@@ -9765,8 +9756,7 @@ fetch(url, {
 <!-- END_8d257f00ca3c289f6956272f4ae6b332 -->
 
 <!-- START_ab74884e3c1bb4e209632aa04bec35a4 -->
-## 買い物リストを表示します。
-
+## api/shopping-lists/{shopping_list_id}
 > Example request:
 
 ```bash
@@ -10013,8 +10003,7 @@ fetch(url, {
 <!-- END_ab74884e3c1bb4e209632aa04bec35a4 -->
 
 <!-- START_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
-## 買い物リストを更新します。
-
+## api/shopping-lists/{shopping_list_id}
 > Example request:
 
 ```bash
@@ -10053,8 +10042,7 @@ fetch(url, {
 <!-- END_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
 
 <!-- START_f13bfb5cfc00ccf449b1db148b090b47 -->
-## 買い物リストを作成します。
-
+## api/shopping-lists
 > Example request:
 
 ```bash
@@ -10093,8 +10081,7 @@ fetch(url, {
 <!-- END_f13bfb5cfc00ccf449b1db148b090b47 -->
 
 <!-- START_9277ba20f5175d25789239f43c5e698d -->
-## 買い物リストを削除します。
-
+## api/shopping-lists/{shopping_list_id}
 > Example request:
 
 ```bash
@@ -10133,8 +10120,7 @@ fetch(url, {
 <!-- END_9277ba20f5175d25789239f43c5e698d -->
 
 <!-- START_8e84615877d224db68ca54a1e19c6765 -->
-## 買い物リストにタスクを追加します。
-
+## api/shopping-lists/{shopping_list_id}/tasks
 > Example request:
 
 ```bash
@@ -10173,8 +10159,7 @@ fetch(url, {
 <!-- END_8e84615877d224db68ca54a1e19c6765 -->
 
 <!-- START_a9008d2778493892b49da84aa818dcec -->
-## タスクを更新します。
-
+## api/shopping-lists/{shopping_list_id}/tasks/{task_id}
 > Example request:
 
 ```bash
@@ -10213,8 +10198,7 @@ fetch(url, {
 <!-- END_a9008d2778493892b49da84aa818dcec -->
 
 <!-- START_4b89bdc0ad941de02ffe940a5a9d6b69 -->
-## タスクを削除します。
-
+## api/shopping-lists/{shopping_list_id}/tasks/{task_id}
 > Example request:
 
 ```bash
@@ -10253,8 +10237,7 @@ fetch(url, {
 <!-- END_4b89bdc0ad941de02ffe940a5a9d6b69 -->
 
 <!-- START_7fd629503ab15c43e3bff9cef54174d3 -->
-## タスクの状態を完了にします。
-
+## api/shopping-lists/{shopping_list_id}/tasks/{task_id}/complete
 > Example request:
 
 ```bash
@@ -10293,8 +10276,7 @@ fetch(url, {
 <!-- END_7fd629503ab15c43e3bff9cef54174d3 -->
 
 <!-- START_4b473377c13b1a703f612271334bfbe9 -->
-## タスクの状態を未完了にします。
-
+## api/shopping-lists/{shopping_list_id}/tasks/{task_id}/incomplete
 > Example request:
 
 ```bash

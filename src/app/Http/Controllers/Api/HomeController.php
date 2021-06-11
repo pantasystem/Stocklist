@@ -20,9 +20,7 @@ class HomeController extends Controller
 
     }
 
-    /**
-     * 自分の所属しているHomeを取得します。
-     */
+
     public function show()
     {
         // 現在認証されているユーザーの取得

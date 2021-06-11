@@ -15,10 +15,7 @@ use App\Category;
 
 class ItemController extends Controller
 {
-    /**
-     * 自分の所属しているHomeの物を全て取得します。
-     * またsince_updated_atを指定するとそれ以降に作成、更新された物を取得することができます。
-     */
+
     public function index(GetItemRequest $request)
     {
         

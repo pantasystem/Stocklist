@@ -20,6 +20,10 @@ class ShoppingListController extends Controller
     }
 
 
+    /**
+     * @bodyParam title string required 最大二十文字のタイトル
+     * @bodyParam user_id number required この買い物リストを担当するユーザーのId
+     */
     public function update(UpdateShoppingListRequest $request, $shoppingListId)
     {
         $home = Auth::user()->home()->first();
@@ -29,6 +33,10 @@ class ShoppingListController extends Controller
     }
 
 
+    /**
+     * @bodyParam title string required 最大二十文字のタイトル
+     * @bodyParam user_id number required この買い物リストを担当するユーザーのId
+     */
     public function create(CreateShoppingListRequest $request)
     {
         $home = Auth::user()->home()->first();

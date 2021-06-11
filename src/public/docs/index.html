@@ -79,7 +79,7 @@ fetch(url, {
 <p><code>GET api/csrf-cookie</code></p>
 <!-- END_535e1188fa3ce491f9abb9e5774a5094 -->
 <!-- START_b6abd12bcef0c2bff565f6f2cc8387c1 -->
-<h2>自分の所属しているHomeを取得します。</h2>
+<h2>api/homes</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -518,7 +518,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"image":"fuga","name":"sit","description":"necessitatibus","is_disposable":false}'
+    -d '{"image":"voluptatem","name":"tenetur","description":"quo","is_disposable":true}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/items"
@@ -531,10 +531,10 @@ let headers = {
 };
 
 let body = {
-    "image": "fuga",
-    "name": "sit",
-    "description": "necessitatibus",
-    "is_disposable": false
+    "image": "voluptatem",
+    "name": "tenetur",
+    "description": "quo",
+    "is_disposable": true
 }
 
 fetch(url, {
@@ -585,8 +585,7 @@ fetch(url, {
 </table>
 <!-- END_07fb85e5d8610027392f9f49c33a97c1 -->
 <!-- START_2d89b427b331f35cdded42a87b6e4acc -->
-<h2>自分の所属しているHomeの物を全て取得します。</h2>
-<p>またsince_updated_atを指定するとそれ以降に作成、更新された物を取得することができます。</p>
+<h2>api/items</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3614,7 +3613,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"iure","description":"consequatur","is_disposable":false}'
+    -d '{"name":"et","description":"eos","is_disposable":false}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/items/1"
@@ -3627,8 +3626,8 @@ let headers = {
 };
 
 let body = {
-    "name": "iure",
-    "description": "consequatur",
+    "name": "et",
+    "description": "eos",
     "is_disposable": false
 }
 
@@ -3674,8 +3673,7 @@ fetch(url, {
 </table>
 <!-- END_72020bc23561e84002574779796c1e43 -->
 <!-- START_2ec1d42f10af712dfa16a2aea8d3f762 -->
-<h2>ストックを全て取得します。</h2>
-<p>QueryParameterにitem_id, box_idを指定することでフィルタすることができます(AND条件)</p>
+<h2>api/stocks</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -8921,7 +8919,7 @@ fetch(url, {
 <p><code>GET api/stocks</code></p>
 <!-- END_2ec1d42f10af712dfa16a2aea8d3f762 -->
 <!-- START_4a8f30403319f686b8a9d11d6fd5208a -->
-<h2>Stockを作成します。</h2>
+<h2>api/stocks</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -8950,7 +8948,7 @@ fetch(url, {
 <p><code>POST api/stocks</code></p>
 <!-- END_4a8f30403319f686b8a9d11d6fd5208a -->
 <!-- START_27701f804284b7541fc2521ce2f2596b -->
-<h2>Stockを表示します。</h2>
+<h2>api/stocks/{stock_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -9039,7 +9037,7 @@ fetch(url, {
 <p><code>GET api/stocks/{stock_id}</code></p>
 <!-- END_27701f804284b7541fc2521ce2f2596b -->
 <!-- START_6e8fc8a00b9f88a058695fd1fd8875ac -->
-<h2>Stockを更新します。</h2>
+<h2>api/stocks/{stock_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -9139,7 +9137,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"nam"}'
+    -d '{"path":"iure"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/categories"
@@ -9152,7 +9150,7 @@ let headers = {
 };
 
 let body = {
-    "path": "nam"
+    "path": "iure"
 }
 
 fetch(url, {
@@ -9194,7 +9192,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"path":"aut"}'
+    -d '{"path":"quidem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/categories/1"
@@ -9207,7 +9205,7 @@ let headers = {
 };
 
 let body = {
-    "path": "aut"
+    "path": "quidem"
 }
 
 fetch(url, {
@@ -9278,7 +9276,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"quasi","description":"dolor"}'
+    -d '{"name":"sit","description":"in"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/boxes"
@@ -9291,8 +9289,8 @@ let headers = {
 };
 
 let body = {
-    "name": "quasi",
-    "description": "dolor"
+    "name": "sit",
+    "description": "in"
 }
 
 fetch(url, {
@@ -9340,7 +9338,7 @@ fetch(url, {
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer 1|test-1" \
-    -d '{"name":"eligendi","description":"molestiae"}'
+    -d '{"name":"et","description":"rem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://10.200.3.189/api/boxes/1"
@@ -9353,8 +9351,8 @@ let headers = {
 };
 
 let body = {
-    "name": "eligendi",
-    "description": "molestiae"
+    "name": "et",
+    "description": "rem"
 }
 
 fetch(url, {
@@ -9451,7 +9449,7 @@ fetch(url, {
 <p><code>POST api/logout</code></p>
 <!-- END_61739f3220a224b34228600649230ad1 -->
 <!-- START_8d257f00ca3c289f6956272f4ae6b332 -->
-<h2>自分の所属しているHomeの買い物リストを全て取得します。</h2>
+<h2>api/shopping-lists</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -9689,7 +9687,7 @@ fetch(url, {
 <p><code>GET api/shopping-lists</code></p>
 <!-- END_8d257f00ca3c289f6956272f4ae6b332 -->
 <!-- START_ab74884e3c1bb4e209632aa04bec35a4 -->
-<h2>買い物リストを表示します。</h2>
+<h2>api/shopping-lists/{shopping_list_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -9925,7 +9923,7 @@ fetch(url, {
 <p><code>GET api/shopping-lists/{shopping_list_id}</code></p>
 <!-- END_ab74884e3c1bb4e209632aa04bec35a4 -->
 <!-- START_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
-<h2>買い物リストを更新します。</h2>
+<h2>api/shopping-lists/{shopping_list_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -9954,7 +9952,7 @@ fetch(url, {
 <p><code>PUT api/shopping-lists/{shopping_list_id}</code></p>
 <!-- END_04d3ae18a7cc7e0c6722464c9eaee5e8 -->
 <!-- START_f13bfb5cfc00ccf449b1db148b090b47 -->
-<h2>買い物リストを作成します。</h2>
+<h2>api/shopping-lists</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -9983,7 +9981,7 @@ fetch(url, {
 <p><code>POST api/shopping-lists</code></p>
 <!-- END_f13bfb5cfc00ccf449b1db148b090b47 -->
 <!-- START_9277ba20f5175d25789239f43c5e698d -->
-<h2>買い物リストを削除します。</h2>
+<h2>api/shopping-lists/{shopping_list_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -10012,7 +10010,7 @@ fetch(url, {
 <p><code>DELETE api/shopping-lists/{shopping_list_id}</code></p>
 <!-- END_9277ba20f5175d25789239f43c5e698d -->
 <!-- START_8e84615877d224db68ca54a1e19c6765 -->
-<h2>買い物リストにタスクを追加します。</h2>
+<h2>api/shopping-lists/{shopping_list_id}/tasks</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -10041,7 +10039,7 @@ fetch(url, {
 <p><code>POST api/shopping-lists/{shopping_list_id}/tasks</code></p>
 <!-- END_8e84615877d224db68ca54a1e19c6765 -->
 <!-- START_a9008d2778493892b49da84aa818dcec -->
-<h2>タスクを更新します。</h2>
+<h2>api/shopping-lists/{shopping_list_id}/tasks/{task_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -10070,7 +10068,7 @@ fetch(url, {
 <p><code>PUT api/shopping-lists/{shopping_list_id}/tasks/{task_id}</code></p>
 <!-- END_a9008d2778493892b49da84aa818dcec -->
 <!-- START_4b89bdc0ad941de02ffe940a5a9d6b69 -->
-<h2>タスクを削除します。</h2>
+<h2>api/shopping-lists/{shopping_list_id}/tasks/{task_id}</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -10099,7 +10097,7 @@ fetch(url, {
 <p><code>DELETE api/shopping-lists/{shopping_list_id}/tasks/{task_id}</code></p>
 <!-- END_4b89bdc0ad941de02ffe940a5a9d6b69 -->
 <!-- START_7fd629503ab15c43e3bff9cef54174d3 -->
-<h2>タスクの状態を完了にします。</h2>
+<h2>api/shopping-lists/{shopping_list_id}/tasks/{task_id}/complete</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -10128,7 +10126,7 @@ fetch(url, {
 <p><code>POST api/shopping-lists/{shopping_list_id}/tasks/{task_id}/complete</code></p>
 <!-- END_7fd629503ab15c43e3bff9cef54174d3 -->
 <!-- START_4b473377c13b1a703f612271334bfbe9 -->
-<h2>タスクの状態を未完了にします。</h2>
+<h2>api/shopping-lists/{shopping_list_id}/tasks/{task_id}/incomplete</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
