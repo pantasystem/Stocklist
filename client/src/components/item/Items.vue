@@ -1,22 +1,10 @@
 <template>
     <v-app>
         <v-container>
-
-            <!-- 検索表示 -->
-            <v-row>
-                <v-col class="mt-5" cols="12">
-                    <v-text-field v-model="keyword" filled label="検索" :prepend-icon="searchIcon"></v-text-field>
-                </v-col>
-            </v-row>
-
-        </v-container>
-        
-        <v-container>
-            
             <!-- 物表示 -->
             <v-row dense>
 
-                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in search_items" :key="item.id">
+                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in items" :key="item.id">
 
                     <v-card class="card ml-3 mb-2" :to="'/item/item-details/' + item.id">
 
@@ -44,7 +32,7 @@
                 </v-col>
 
             </v-row>
-            
+
         </v-container>
     </v-app>
 </template>
@@ -55,16 +43,18 @@ export default {
     name: 'Item',
     data: () => {
         return {
-            //検索用
-            keyword: '',
-            searchIcon: 'mdi-briefcase-search',
+            items:[
+                {name: 'test-1name', item_quantity: 'test-item_quantity'},
+                {name: 'test-2name', item_quantity: 'test-item_quantity'},
+                {name: 'test-3name', item_quantity: 'test-item_quantity'},
+            ],
         }
     },
     computed: {
         //物検索
         search_items(){
             return this.$store.state.item.items.filter(items => {
-                return items.name.includes(this.keyword)
+                return items.name.includes(this.$store.state.item.keyword)
             })
         }
     },
@@ -75,6 +65,12 @@ export default {
 }
 </script>
 <style scoped>
+
+.search-block{
+    width: 80%;
+    position: absolute;
+    z-index: 10;
+}
 
 .card{
     width: 150px;

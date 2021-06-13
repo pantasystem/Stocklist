@@ -7,6 +7,9 @@ export default {
         items:[],
         //追加画面用
         dialog: false,
+        //一覧用
+        keyword: null,
+        sort: false,
     },
     mutations: {
         setItems: (state, response) => {

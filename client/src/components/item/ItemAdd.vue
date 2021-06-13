@@ -62,7 +62,7 @@
         <!-- フローティングアクションボタン表示 -->
         <v-fab-transition>
             <v-btn @click="dialog = true" fab large dark bottom right class="fab">
-                <v-icon>mdi-plus</v-icon>
+                <v-icon>mdi-briefcase-plus</v-icon>
             </v-btn>
         </v-fab-transition>
         
@@ -76,6 +76,7 @@
         name: 'ItemAdd',
         data:()=>{
             return{
+                //カテゴリーID
                 category:[1,2],
                 //モーダルウィンドウ用
                 dialog: false,
@@ -138,5 +139,3 @@
 }
 
 </style>
-
-// String(
