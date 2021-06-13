@@ -1,6 +1,5 @@
 <template>
     <v-app>
-
         <v-container>
 
             <!-- 検索表示 -->
@@ -17,11 +16,14 @@
 
                     <v-card class="card ml-3 mb-2" :to="'/item/item-details/' + item.id">
 
-                        <v-img class="img" :src="item.image_path"></v-img> <!--画像だよ-->
+                        <!--画像だよ-->
+                        <v-img class="img" :src="item.image_path"></v-img>
 
-                        <v-card-title> <span class="card-text"> {{item.name}} </span> </v-card-title> <!--タイトルだよ-->
+                        <!--タイトルだよ-->
+                        <v-card-title> <span class="card-text"> {{item.name}} </span> </v-card-title>
 
-                        <v-card-subtitle class="card-text"> {{item.item_quantity}} </v-card-subtitle> <!--サブタイトルだよ-->
+                        <!--サブタイトルだよ-->
+                        <v-card-subtitle class="card-text"> {{item.item_quantity}} </v-card-subtitle>
 
                         <!-- プラマイボタン -->
                         <!-- <v-flex text-center>
@@ -40,7 +42,6 @@
             </v-row>
             
         </v-container>
-
     </v-app>
 </template>
 

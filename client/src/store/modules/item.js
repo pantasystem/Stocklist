@@ -18,7 +18,8 @@ export default {
     actions: {
         async getItems({ commit }){
             if(this.state.user.login){
-                await axios.get('/api/items')
+                await axios
+                .get('/api/items')
                 .then( response =>{
                     commit('setItems', response);
                 })

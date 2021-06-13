@@ -15,29 +15,23 @@
 
                 <form>
 
-                    <!-- 'name' => ['required', 'string', 'max:20'],
-                    'is_disposable' => ['required', Rule::in(['true', 'false'])],
-                    'image' => ['required','image'],
-                    'description' => ['max:255', 'string'],
-                    'category_id' => [
-                        Rule::exists('categories', 'id')->where(function($query) use ($homeId) {
-                            $query->where('home_id', '=', $homeId);
-                        }),
-                    ] -->
-
                     <v-card-text>
                         <v-container grid-list-md>
+                            
                             <div v-if="this.imgUrl">
                                 <v-flex class="d-flex justify-center">
                                     <img height="100%" width="100%" :src="this.imgUrl">
                                 </v-flex>
                             </div>
+
                             <v-flex xs12>
                                 <v-file-input show-size label="画像" prepend-icon="mdi-image" v-model="image" @change="img" accept="image/*" />
                             </v-flex>
+
                             <v-flex xs12>
                                 <v-text-field label="名前" prepend-icon="mdi-briefcase" v-model="name" />
                             </v-flex>
+
                             <v-row justify="center">
                                 <v-flex xs5 class="mx-auto">
                                     <v-switch label="使い捨て" v-model="disposable" />
@@ -46,9 +40,11 @@
                                     <v-select label="カテゴリー" v-model="categoryId" :items="category" />
                                 </v-flex>
                             </v-row>
+
                             <v-flex xs12 class="mt-5">
                                 <v-textarea filled label="説明" v-model="description" />
                             </v-flex>
+
                         </v-container>
                     </v-card-text>
 

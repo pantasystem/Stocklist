@@ -1,6 +1,8 @@
 <template>
     <v-app>
+        
         <v-container class="my-auto">
+
             <v-row justify="center">
                 <v-col cols="6">
                     <v-card>
@@ -15,29 +17,31 @@
                     </v-card>
                 </v-col>
             </v-row>
+            
         </v-container>
         {{item}}
+        
     </v-app>
 </template>
 
 <script>
-    export default {
-        name: 'ItemDetails',
-        computed: {
-            item(){
-                var item;
-                for( const i in this.$store.state.item.items ){
+export default {
+    name: 'ItemDetails',
+    computed: {
+        item(){
+            var item;
+            for( const i in this.$store.state.item.items ){
 
-                    var items = this.$store.state.item.items[i];
+                var items = this.$store.state.item.items[i];
 
-                    if(items.id == this.$route.params.id){
-                        item = items;
-                    }
-
+                if(items.id == this.$route.params.id){
+                    item = items;
                 }
-                return item
+
             }
-        },
+            return item
+        }
+    },
     }
 </script>
 
