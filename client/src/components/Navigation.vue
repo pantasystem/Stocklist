@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    name: 'Header',
+    name: 'Navigation',
     data: () => ({
         routers: [
             { text: 'ホーム', router: '/', icon: 'mdi-home' },

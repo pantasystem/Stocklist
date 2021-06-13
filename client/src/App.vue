@@ -22,12 +22,12 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
+import Navigation from '@/components/Navigation.vue'
 
 export default {
     name: 'App',
     components: {
-        Header
+        Navigation
     },
     data () {
         return {
