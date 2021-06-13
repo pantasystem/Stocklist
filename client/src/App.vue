@@ -4,7 +4,7 @@
         <v-touch v-on:swiperight="onSwipeRight">
 
             <v-navigation-drawer v-model="drawer" app>
-                <Header />
+                <Navigation />
             </v-navigation-drawer>
 
             <v-app-bar app>
