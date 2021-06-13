@@ -16,7 +16,7 @@
                 <form>
 
                     <v-card-text>
-                        <v-container grid-list-md>
+                        <v-container>
                             
                             <div v-if="this.imgUrl">
                                 <v-flex class="d-flex justify-center">
@@ -24,11 +24,11 @@
                                 </v-flex>
                             </div>
 
-                            <v-flex xs12>
+                            <v-flex>
                                 <v-file-input show-size label="画像" prepend-icon="mdi-image" v-model="image" @change="img" accept="image/*" />
                             </v-flex>
 
-                            <v-flex xs12>
+                            <v-flex>
                                 <v-text-field label="名前" prepend-icon="mdi-briefcase" v-model="name" />
                             </v-flex>
 
@@ -41,7 +41,7 @@
                                 </v-flex>
                             </v-row>
 
-                            <v-flex xs12 class="mt-5">
+                            <v-flex class="mt-5">
                                 <v-textarea filled label="説明" v-model="description" />
                             </v-flex>
 

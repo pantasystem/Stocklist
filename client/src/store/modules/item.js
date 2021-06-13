@@ -9,7 +9,7 @@ export default {
         dialog: false,
         //一覧用
         keyword: null,
-        sort: false,
+        sort: 0,
     },
     mutations: {
         setItems: (state, response) => {

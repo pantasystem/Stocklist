@@ -9,13 +9,18 @@
         <v-btn @click="searchChange" icon v-if="this.$route.path === '/item'">
             <v-icon>mdi-magnify</v-icon>
         </v-btn>
-        <v-btn icon v-if="this.$route.path === '/item'">
-            <v-icon>{{sorticon[0]}}</v-icon>
-        </v-btn>
-        
-        <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
+        <v-menu v-if="this.$route.path === '/item'" class="sortMenu" v-model="sort" transition="scroll-x-reverse-transition">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon>{{sortIcon[sortNum]}}</v-icon>
+                </v-btn>
+            </template>
+            <v-list>
+                <v-list-item v-for="(list, i) in sortList" :key="i" @click="sortChange(i)" style="text-align: center;">
+                    <v-list-item-title>{{list.title}}</v-list-item-title>
+                </v-list-item>
+            </v-list>
+        </v-menu>
 
     </div>
 </template>
@@ -28,13 +33,21 @@ export default {
             //検索用キーワード
             key: null,
             search: false,
-            //ソートアイコン
-            sorticon:[
+            //ソート
+            sort: false,
+            sortNum: 0,
+            sortIcon:[
                 'mdi-sort-clock-ascending',
                 'mdi-sort-clock-descending',
                 'mdi-sort-numeric-ascending',
-                'mdi-sort-numeri-descending',
+                'mdi-sort-numeric-descending',
             ],
+            sortList:[
+                {title: '物：降順'},
+                {title: '物：昇順'},
+                {title: '個数：降順'},
+                {title: '個数：昇順'},
+            ]
         }
     },
     methods:{
@@ -43,6 +56,10 @@ export default {
         },
         keyword(){
             this.$store.state.item.keyword = this.key;
+        },
+        sortChange(i){
+            this.sortNum = i
+            this.$store.state.item.sort = i
         }
     }
 }
