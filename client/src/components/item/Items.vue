@@ -8,6 +8,10 @@
                     <v-text-field v-model="keyword" filled label="検索" :prepend-icon="searchIcon"></v-text-field>
                 </v-col>
             </v-row>
+
+        </v-container>
+        
+        <v-container>
             
             <!-- 物表示 -->
             <v-row dense>
