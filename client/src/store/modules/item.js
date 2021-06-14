@@ -8,7 +8,7 @@ export default {
         //追加画面用
         dialog: false,
         //一覧用
-        keyword: null,
+        keyword: '',
         sort: 0,
     },
     mutations: {

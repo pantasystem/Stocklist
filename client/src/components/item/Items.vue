@@ -4,7 +4,7 @@
             <!-- 物表示 -->
             <v-row dense>
 
-                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in items" :key="item.id">
+                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in search_items" :key="item.id">
 
                     <v-card class="card ml-3 mb-2" :to="'/item/item-details/' + item.id">
 
@@ -41,15 +41,6 @@
 
 export default {
     name: 'Item',
-    data: () => {
-        return {
-            items:[
-                {name: 'test-1name', item_quantity: 'test-item_quantity'},
-                {name: 'test-2name', item_quantity: 'test-item_quantity'},
-                {name: 'test-3name', item_quantity: 'test-item_quantity'},
-            ],
-        }
-    },
     computed: {
         //物検索
         search_items(){
