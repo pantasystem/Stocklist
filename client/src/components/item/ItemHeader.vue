@@ -59,6 +59,9 @@ export default {
             this.sortNum = i
             this.$store.state.item.sort = i
         }
+    },
+    created(){
+        this.$store.state.item.keyword = '';
     }
 }
 </script>
