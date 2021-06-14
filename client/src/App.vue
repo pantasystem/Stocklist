@@ -1,27 +1,27 @@
 <template>
     <v-app>
 
+
+        <!-- ナビだよぉ -->
+        <v-navigation-drawer v-model="drawer" app>
+            <Navigation />
+        </v-navigation-drawer>
+
+        <!-- ヘッダーだよぉ -->
         <v-touch v-on:swiperight="onSwipeRight">
-
-            <!-- ナビだよぉ -->
-            <v-navigation-drawer v-model="drawer" app>
-                <Navigation />
-            </v-navigation-drawer>
-
-            <!-- ヘッダーだよぉ -->
             <v-app-bar app>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title @click="top">Stocklist</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <Header />
             </v-app-bar>
-
-            <!-- mainです -->
-            <v-main>
-                <router-view/>
-            </v-main>
-
         </v-touch>
+
+        <!-- mainです -->
+        <v-main>
+            <router-view/>
+        </v-main>
+
 
     </v-app>
 </template>

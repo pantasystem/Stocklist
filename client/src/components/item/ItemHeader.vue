@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="text-align: right;">
         <!-- 検索表示 -->
         <transition>
             <input v-if="this.search" class="search-block" type="text" v-model="key" @input="keyword" />
@@ -69,9 +69,12 @@ export default {
 <style scoped>
 
 .search-block{
-    font-size: auto;
-    border-radius: 3px; /*ボックス角の丸み*/
-    border: 2px solid #000; /*枠線*/
+    max-width: 50%;
+    border: 1px solid #000; /*枠線*/
+}
+
+input[type=text]{
+    font-size: 16px;
 }
 
 /* 検索表示アニメーション */

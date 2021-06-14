@@ -4,7 +4,7 @@
             <!-- 物表示 -->
             <v-row dense>
 
-                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in search_items" :key="item.id">
+                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in searchItems" :key="item.id">
 
                     <v-card class="card ml-3 mb-2" :to="'/item/item-details/' + item.id">
 
@@ -43,11 +43,23 @@ export default {
     name: 'Item',
     computed: {
         //物検索
-        search_items(){
-            return this.$store.state.item.items.filter(items => {
+        searchItems(){
+            let items = this.$store.state.item.items.filter(items => {
                 return items.name.includes(this.$store.state.item.keyword)
             })
-        }
+            switch(this.$store.state.item.sort){
+                case 0:
+                    return items
+                case 1:
+                    return items.reverse()
+                case 2:
+                    return items.sort((a, b)=>{return a.item_quantity - b.item_quantity});
+                case 3:
+                    return items.sort((a, b)=>{return a.item_quantity - b.item_quantity}).reverse();
+                default:
+                    return ''
+            }
+        },
     },
     created() {
         //物取得API
