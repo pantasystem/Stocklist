@@ -2,11 +2,11 @@
     <v-app>
         <v-container>
             <!-- 物表示 -->
-            <v-row dense>
+            <v-row dense class="mt-2">
 
-                <v-col xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in searchItems" :key="item.id">
+                <v-col class="card-col" cols="6" xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in searchItems" :key="item.id">
 
-                    <v-card class="card ml-3 mb-2" :to="'/item/item-details/' + item.id">
+                    <v-card class="card" :to="'/item/item-details/' + item.id">
 
                         <!--画像だよ-->
                         <v-img class="img" :src="item.image_path"></v-img>
@@ -41,6 +41,11 @@
 
 export default {
     name: 'Item',
+    data:()=>{
+        return {
+            rowCount:0,
+        }
+    },
     computed: {
         //物検索
         searchItems(){
@@ -75,9 +80,15 @@ export default {
     z-index: 10;
 }
 
+.card-col{
+    display: flex;
+    justify-content: center;
+}
+
 .card{
     width: 150px;
     height: 200px;
+    text-align: left;
 }
 
 .card-text{
