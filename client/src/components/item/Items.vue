@@ -4,9 +4,9 @@
             <!-- 物表示 -->
             <v-row dense class="mt-2">
 
-                <v-col class="card-col" cols="6" xs="6" sm="4" md="3" lg="2" xl="1" v-for="item in searchItems" :key="item.id">
+                <v-col class="card-col" cols="6" xs="6" sm="3" md="3" lg="2" xl="1" v-for="item in searchItems" :key="item.id">
 
-                    <v-card class="card" :to="'/item/item-details/' + item.id">
+                    <v-card class="card" :to="{name: 'ItemDetail', query: {id: item.id}}">
 
                         <!--画像だよ-->
                         <v-img class="img" :src="item.image_path"></v-img>
@@ -67,9 +67,10 @@ export default {
         },
     },
     created() {
-        //item取得
+        //取得
         this.$store.dispatch('item/getItems')
         this.$store.dispatch('box/getBoxes')
+        this.$store.dispatch('stock/getStocks')
     },
 }
 </script>
