@@ -67,8 +67,9 @@ export default {
         },
     },
     created() {
-        //物取得API
+        //item取得
         this.$store.dispatch('item/getItems')
+        this.$store.dispatch('box/getBoxes')
     },
 }
 </script>

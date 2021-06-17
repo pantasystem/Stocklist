@@ -37,7 +37,7 @@
                                     <v-switch label="使い捨て" v-model="disposable" />
                                 </v-flex>
                                 <v-flex xs5 class="mx-auto">
-                                    <v-select label="カテゴリー" v-model="categoryId" :items="category" />
+                                    <v-select label="カテゴリー" v-model="categoryId" item-text="name" item-value="id" :items="this.$store.state.box.boxes" />
                                 </v-flex>
                             </v-row>
 
@@ -76,16 +76,14 @@
         name: 'ItemAdd',
         data:()=>{
             return{
-                //カテゴリーID
-                category:[1,2],
                 //モーダルウィンドウ用
                 dialog: false,
                 //POST用
                 name: '',
                 description: '',
                 disposable: false,
-                image: null,
                 categoryId: null,
+                image: null,
                 //imgプレビュー用
                 imgUrl: '',
             }
@@ -120,7 +118,7 @@
                     this.imgUrl = ''
                 }
             }
-        }
+        },
     }
 </script>
 
