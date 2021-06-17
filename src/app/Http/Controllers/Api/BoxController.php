@@ -14,6 +14,10 @@ use App\Http\Requests\CreateBoxRequest;
 class BoxController extends Controller
 {
     //
+    /**
+     * @bodyParam name string required 収納の名称
+     * @bodyParam description string optional 収納の説明
+     */
     public function create(CreateBoxRequest $request)
     {
         $box = Auth::user()
@@ -31,6 +35,11 @@ class BoxController extends Controller
 
         return $boxcreated->loadCount('stocks');
     }
+
+    /**
+     * @bodyParam name string required 収納の名称
+     * @bodyParam description string optional 収納の説明
+     */
     public function update(UpdateBoxRequest $request, $box_id)
     {
         Auth::user()
@@ -47,6 +56,7 @@ class BoxController extends Controller
         return response(null,204);
     }
 
+  
     public function index()
     {
         // Homeを取得して関連するstocksを取得
@@ -56,9 +66,8 @@ class BoxController extends Controller
     }
 
 
-
     public function show($boxld)
     {
-        return Box::with('stocks')->findOrFail($boxld);
+        return Box::with('stocks')->where('home_id', '=', Auth::user()->home_id)->findOrFail($boxld);
     }
 }

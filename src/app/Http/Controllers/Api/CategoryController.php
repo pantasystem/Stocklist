@@ -17,11 +17,15 @@ class CategoryController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+   
     public function index() 
     {
         return Auth::user()->home()->first()->categories()->get();
     }
 
+    /**
+     * @bodyParam path string required カテゴリの名称
+     */
     public function create(AddCategoryRequest $request)
     {
         return Auth::user()->home()->first()->categories()->updateOrCreate(
@@ -30,6 +34,9 @@ class CategoryController extends Controller
         );
     }
 
+    /**
+     * @bodyParam path string required カテゴリの名称
+     */
     public function update(AddCategoryRequest $request, $categoryId)
     {
         $user = Auth::user();
@@ -38,6 +45,7 @@ class CategoryController extends Controller
         $category->save();
         return response(null, 204);
     }
+
 
     public function delete($categoryId)
     {

@@ -40,7 +40,7 @@ class CreateStockRequest extends FormRequest
                     $query->where('home_id', $homeId);
                 })
             ],
-            'expiration_date' => ['date'],
+            'expiration_date' => ['nullable', 'date'],
         ];
     }
 }
