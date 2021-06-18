@@ -2,11 +2,11 @@
     <v-app class="modal-window">
 
         <!-- 追加画面 表示 -->
-        <v-dialog v-model="dialog" max-width="600px">
+        <v-dialog v-model="$store.state.item.itemEdit" max-width="600px">
             <v-card>
 
                 <v-card-title>
-                    <span class="headline">追加</span>
+                    <span class="headline">編集</span>
                     <v-spacer></v-spacer>
                     <v-btn icon @click="dialog = false">
                     <v-icon>mdi-close</v-icon>
@@ -18,16 +18,6 @@
                     <v-card-text>
                         <v-container>
                             
-                            <div v-if="this.imgUrl">
-                                <v-flex class="d-flex justify-center">
-                                    <img height="100%" width="100%" :src="this.imgUrl">
-                                </v-flex>
-                            </div>
-
-                            <v-flex>
-                                <v-file-input show-size label="画像" prepend-icon="mdi-image" v-model="image" @change="img" accept="image/*" />
-                            </v-flex>
-
                             <v-flex>
                                 <v-text-field label="名前" prepend-icon="mdi-briefcase" v-model="name" />
                             </v-flex>
@@ -50,7 +40,7 @@
 
                     <v-card-actions>
                         <v-container>
-                            <v-btn @click="itemAdd" block dark>追加</v-btn>
+                            <v-btn @click="itemAdd" block dark>保存</v-btn>
                         </v-container>
                     </v-card-actions>
 
@@ -58,13 +48,6 @@
 
             </v-card>
         </v-dialog>
-
-        <!-- フローティングアクションボタン表示 -->
-        <v-fab-transition>
-            <v-btn @click="dialog = true" fab large dark bottom right class="fab">
-                <v-icon>mdi-briefcase-plus</v-icon>
-            </v-btn>
-        </v-fab-transition>
         
     </v-app>
 </template>
@@ -76,64 +59,50 @@ export default {
     name: 'ItemAdd',
     data:()=>{
         return{
-            //モーダルウィンドウ用
-            dialog: false,
             //POST用
             name: '',
             description: '',
             disposable: false,
             categoryId: null,
-            image: null,
-            //imgプレビュー用
-            imgUrl: '',
+
+            // 'name' => ['required', 'string', 'max:20'],
+            // 'is_disposable' => ['required', 'boolean'],
+            // 'description' => ['max:255'],
+            // 'category_id' => [
+            //     Rule::exists('categories', 'id')->where(function($query) use ($homeId) {
+            //         $query->where('home_id', '=', $homeId);
+            //     })
+            // ]
+            
         }
     },
     methods:{
         itemAdd() {
             let data = new FormData();
-            data.append("image", this.image);
             data.append("name", this.name);
             data.append("is_disposable", this.disposable);
             data.append("description", this.description);
             data.append("category_id", this.categoryId);
 
             axios
-            .post("/api/items", data)
+            .put("/api/items/" + this.$route.query.id, data)
             .then(() => {
                 this.$store.dispatch('item/getItems')
-                this.dialog = false;
+                this.$store.state.item.itemEdit = false;
             })
             .catch(error => {
                 console.log(error);
             });
         },
-        img(file) {
-            if (file) {
-                const fr = new FileReader()
-                fr.readAsDataURL(file)
-                fr.addEventListener('load', () => {
-                    this.imgUrl = fr.result
-                })
-            } else {
-                this.imgUrl = ''
-            }
-        }
     },
 }
 </script>
 
 <style scoped>
 
-.fab{
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    margin: 0 32px 32px 0;
-    position: fixed;
-}
-
 .modal-window{
     position:fixed;
+    z-index:999;
 }
 
 </style>

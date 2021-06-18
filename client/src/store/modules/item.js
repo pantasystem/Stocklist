@@ -10,6 +10,7 @@ export default {
         //一覧用
         keyword: '',
         sort: 0,
+        itemEdit: false,
     },
     mutations: {
         setItems: (state, response) => {
