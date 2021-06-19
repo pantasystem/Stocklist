@@ -3,7 +3,7 @@
 
         <ItemEdit />
         
-        <v-container>
+        <v-container class="my-auto">
 
             <v-row>
                 <v-col cols="12">
@@ -77,6 +77,7 @@ export default {
         //取得
         this.$store.dispatch('item/getItems')
         this.$store.dispatch('stock/getStocks')
+        this.$store.dispatch('box/getBoxes')
 
     },
 }
