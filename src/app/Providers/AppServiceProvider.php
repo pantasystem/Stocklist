@@ -28,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Home::observe(HomeObserver::class);
-        Stock:observe(StockObserver::class);
+        Stock::observe(StockObserver::class);
     }
 }
