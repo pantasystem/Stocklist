@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Stock;
+use App\StockExpire;
 
 class StockObserver
 {
@@ -26,6 +27,7 @@ class StockObserver
     public function updated(Stock $stock)
     {
         //
+        $stock->StockExpires()->saveMany($StockExpires);
     }
 
     /**

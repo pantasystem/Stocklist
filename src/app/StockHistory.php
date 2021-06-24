@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Observers;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Stock;
+use App\User;
 
 class StockHistory extends Model
 {
