@@ -78,14 +78,13 @@ export default {
     },
     methods:{
         itemAdd() {
-            let data = new FormData();
-            data.append("name", this.name);
-            data.append("is_disposable", this.disposable);
-            data.append("description", this.description);
-            data.append("category_id", this.categoryId);
-
             axios
-            .put("/api/items/" + this.$route.query.id, data)
+            .put("/api/items/" + this.$route.query.id, {
+                "name": this.name,
+                "is_disposable": this.disposable,
+                "description": this.description,
+                "category_id": this.categoryId,
+            })
             .then(() => {
                 this.$store.dispatch('item/getItems')
                 this.$store.state.item.itemEdit = false;
