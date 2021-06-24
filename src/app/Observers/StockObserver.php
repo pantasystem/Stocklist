@@ -27,7 +27,7 @@ class StockObserver
     public function updated(Stock $stock)
     {
         //
-        $stock->StockExpires()->saveMany($StockExpires);
+        $stock->StockHistory();
     }
 
     /**
