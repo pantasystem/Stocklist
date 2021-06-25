@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Home;
 use App\Observers\HomeObserver;
+use App\Stock;
+use App\Observers\StockObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Home::observe(HomeObserver::class);
+        Stock::observe(StockObserver::class);
     }
 }

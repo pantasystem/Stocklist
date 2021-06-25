@@ -5,6 +5,7 @@ use App\Item;
 use App\Box;
 use App\StockExpire;
 use App\Home;
+use App\StockHistory;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -53,6 +54,11 @@ class Stock extends Model
             $query->where('box_id', '=', $boxId);
         }
         return $query;
+    }
+
+    public function StockHistories()
+    {
+        return $this->belongsTo(StockHistory::class);
     }
 
 }
