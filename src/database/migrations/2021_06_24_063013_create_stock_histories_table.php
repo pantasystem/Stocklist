@@ -15,14 +15,15 @@ class CreateStockHistoriesTable extends Migration
     {
         Schema::create('stock_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('stock_id');
-            $table->unsignedBigInteger('item_id');
-            $table->unsignedBigInteger('box_id');
+            $table->timestamps();
+            $table->unsignedBigInteger('stock_id')->nullable();
+            $table->unsignedBigInteger('item_id')->nullable();
+            $table->unsignedBigInteger('box_id')->nullable();
             $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('set null');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('set null');
-            $table->foreign('box_id')->references('id')->on('box')->onDelete('set null');
-            $table->Integer('count');
-            $table->timestamps();
+            $table->foreign('box_id')->references('id')->on('boxes')->onDelete('set null');
+            $table->integer('count');
+        
         });
     }
 

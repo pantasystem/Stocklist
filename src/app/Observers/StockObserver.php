@@ -27,7 +27,23 @@ class StockObserver
     public function updated(Stock $stock)
     {
         //
-        $stock->StockHistory();
+
+        // $table->bigIncrements('id');
+        // $table->timestamps();
+        // $table->unsignedBigInteger('stock_id')->nullable();
+        // $table->unsignedBigInteger('item_id')->nullable();
+        // $table->unsignedBigInteger('box_id')->nullable();
+        // $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('set null');
+        // $table->foreign('item_id')->references('id')->on('items')->onDelete('set null');
+        // $table->foreign('box_id')->references('id')->on('boxes')->onDelete('set null');
+        // $table->integer('count');
+
+        $stock->StockHistories()->create([
+            'stock_id' => $stock->id,
+            'item_id' => $stock->item_id,
+            'box_id' => $stock->box_id,
+            'count' => $stock->count
+        ]);
     }
 
     /**
