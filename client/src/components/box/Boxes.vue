@@ -1,6 +1,8 @@
 <template>
     <div>
+        
         <BoxAdd />
+        
         <v-data-table
             :headers="headers"
             :items="this.$store.state.box.boxes"
