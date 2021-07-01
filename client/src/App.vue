@@ -1,39 +1,55 @@
 <template>
     <v-app>
-        <head>
-            <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        </head>
 
-        <v-navigation-drawer
-        v-model="drawer"
-        app
-        >
-        <Header />
+
+        <!-- ナビだよぉ -->
+        <v-navigation-drawer v-model="drawer" app>
+            <Navigation />
         </v-navigation-drawer>
 
-        <v-app-bar app>
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <!-- ヘッダーだよぉ -->
+        <v-touch v-on:swiperight="onSwipeRight">
+            <v-app-bar app>
+                <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+                <v-toolbar-title @click="top">Stocklist</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <Header />
+            </v-app-bar>
+        </v-touch>
 
-        <v-toolbar-title>Stocklist</v-toolbar-title>
-        </v-app-bar>
-
+        <!-- mainです -->
         <v-main>
             <router-view/>
         </v-main>
+
+
     </v-app>
 </template>
 
 <script>
+import Navigation from '@/components/Navigation.vue'
 import Header from '@/components/Header.vue'
 
 export default {
     name: 'App',
     components: {
-        Header
+        Navigation,
+        Header,
     },
     data () {
         return {
             drawer: null,
+        }
+    },
+    methods:{
+        onSwipeRight(){
+            this.drawer = !this.drawer
+        },
+        top:()=>{
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }
     },
 };

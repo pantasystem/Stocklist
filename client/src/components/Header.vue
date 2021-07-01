@@ -1,41 +1,24 @@
 <template>
     <div>
 
-        <v-list>
-
-        <!-- <v-subheader>router</v-subheader> -->
-
-        <v-list-item-group color="primary">
-
-            <v-list-item v-for="(item, i) in items" :key="i" :to="item.router">
-
-                <v-list-item-icon>
-                    <v-icon>{{ item.icon }}</v-icon>
-                </v-list-item-icon>
-
-                <v-list-item-content>
-                        <v-list-item-title v-text="item.text"></v-list-item-title>
-                </v-list-item-content>
-
-            </v-list-item>
-
-        </v-list-item-group>
-
-        </v-list>
-        
+        <ItemHeader v-if="this.$route.path === '/item'" />
+        <ItemDetailsHeader v-if="this.$route.path === '/item/item-details'" />
+        <BoxHeader v-if="this.$route.path === '/box'" />
 
     </div>
 </template>
 
 <script>
+import ItemHeader from '@/components/item/ItemHeader.vue'
+import ItemDetailsHeader from '@/components/item/ItemDetailsHeader.vue'
+import BoxHeader from '@/components/box/BoxHeader.vue'
 
-    export default {
-        name: 'Header',
-        data: () => ({
-            items: [
-                { text: 'ホーム', router: '/', icon: 'mdi-home' },
-                { text: '物一覧', router: 'item', icon: 'mdi-briefcase' },
-            ],
-        }),
+export default {
+    name: 'Header',
+    components:{
+        ItemHeader,
+        ItemDetailsHeader,
+        BoxHeader,
     }
+}
 </script>
