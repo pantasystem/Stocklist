@@ -114,7 +114,18 @@ class StockController extends Controller
         }
         
         return response(null,204);
+    }
 
+    public function frequency(){
+        $frequency = DB::table('stocks')
+                        ->select('stocks.*', 'count(stock_histories.*) as frenquency')
+                        ->join('stock_histories', 'stocks.id', '=', 'stock_histories.stock_id')
+                        ->whereRaw('stock_histories.created_at, INTERVAL 30 DAY)  >= NOW()')
+                        ->groupBy('stocks.*')
+                        ->orderByRaw('frequency DESC')
+                        ->get();
+
+        return $frequency;
     }
 
 }
