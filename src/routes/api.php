@@ -68,3 +68,6 @@ Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'shopping-lists'], f
     Route::post('/{shopping_list_id}/tasks/{task_id}/incomplete', 'Api\ShoppingTaskController@incomplete');
 
 });
+
+
+Route::get('/update-frequency', 'Api\StockController@frequency')->middleware('auth:sanctum');
