@@ -33,6 +33,7 @@ export default {
         routers: [
             { text: 'ホーム', router: '/', icon: 'mdi-home' },
             { text: '物一覧', router: '/item', icon: 'mdi-briefcase' },
+            { text: '収納一覧', router: '/box', icon: 'mdi-archive' },
             { text: 'ログアウト', router: '/login', icon: 'mdi-account-arrow-right' }, //一時的ログイン画面
         ],
     }),
