@@ -141,4 +141,6 @@ class Item extends Model
         }
         return $this->category->path;
     }
+
+    
 }
