@@ -5,6 +5,7 @@ export default {
     state: {
         //物用
         boxes:[],
+        boxAddFlag: false,
     },
     mutations: {
         setBoxes: (state, response) => {

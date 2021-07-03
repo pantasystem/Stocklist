@@ -1,5 +1,8 @@
 <template>
     <div>
+        
+        <BoxAdd />
+        
         <v-data-table
             :headers="headers"
             :items="this.$store.state.box.boxes"
@@ -10,8 +13,13 @@
 </template>
 
 <script>
+import BoxAdd from '@/components/box/BoxAdd.vue'
+
 export default {
     name: 'Box',
+    components:{
+        BoxAdd,
+    },
     data () {
         return {
             headers: [
