@@ -53,6 +53,7 @@ Route::put('/boxes/{box_id}', 'Api\BoxController@update')->middleware('auth:sanc
 
 Route::post('/login', 'Api\UserController@login');
 Route::post('/logout', 'Api\UserController@logout')->middleware('auth:sanctum');
+Route::post('/register', 'Api\UserController@store');
 
 Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'shopping-lists'], function() {
     Route::get('/', 'Api\ShoppingListController@index');
