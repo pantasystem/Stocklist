@@ -16,10 +16,6 @@
 
             </form>
         </v-container>
-        <p>
-            'name' => ['required', 'max:20'],<br>
-            'description' => ['max:255']
-        </p>
     </v-app>
 </template>
 
