@@ -2,6 +2,9 @@
     <v-app>
 
         <v-container class="con">
+            <v-alert v-if="alert == 1" type="warning">変更がありません。</v-alert>
+            <v-alert v-else-if="alert == 2" type="success">変更しました。</v-alert>
+            <v-alert v-else-if="alert == 3" type="error">エラー：名前を入力してください。</v-alert>
             <form>
                     
                 <v-flex>
@@ -28,6 +31,7 @@ export default {
         return{
             id: null,
             name: null,
+            alert: 0,
             description: null,
         }
     },
@@ -42,11 +46,14 @@ export default {
                 .then(() => {
                     this.$router.push('/box/' + this.id);            
                     this.$store.dispatch('box/getBoxes')
-                    alert('変更しました')
+                    this.alert = 2
                 })
                 .catch(error => {
                     console.log(error);
+                    this.alert = 3
                 });
+            }else{
+                this.alert = 1
             }
         },
     },
