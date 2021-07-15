@@ -7,6 +7,7 @@
             :headers="headers"
             :items="this.$store.state.box.boxes"
             :items-per-page="10"
+            @click:row="this.edit"
         >
         </v-data-table>
     </div>
@@ -34,6 +35,11 @@ export default {
             { text: 'Description', value: 'description' },
             { text: 'Home_id', value: 'home_id' },
         ],
+        }
+    },
+    methods:{
+        edit(data){
+            this.$router.push({ path: `/box/${data.id}` })
         }
     },
     created(){

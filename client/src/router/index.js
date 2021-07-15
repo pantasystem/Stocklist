@@ -12,7 +12,8 @@ import Item from '../views/item/Item.vue'
 import ItemDetail from '../views/item/ItemDetail.vue'
 
 //box
-import Box from '../views/box/box.vue'
+import Box from '../views/box/Box.vue'
+import BoxEdit from '../views/box/BoxEdit.vue'
 
 // import store from '../store/index'
 
@@ -55,6 +56,12 @@ const routes = [
         path: '/box',
         name: 'Box',
         component: Box,
+    },
+    //編集
+    {
+        path: '/box/:id',
+        name: 'BoxEdit',
+        component: BoxEdit,
     }
 ]
 
