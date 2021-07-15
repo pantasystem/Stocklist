@@ -44,25 +44,32 @@ class UserController extends Controller
         ]);
         */
 
+        $user = new User;
+        $user->name = $request->input('user_name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
         
-        $user = User::create([
-            'name' => $request->input('user_name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'home_id' => $home->id
-        ]);
+        // $user = User::create([
+        //     'name' => $request->input('user_name'),
+        //     'email' => $request->input('email'),
+        //     'password' => Hash::make($request->input('password')),
+        //     'home_id' => 1,
+        // ]);
 
         $home = $user->home()->create([
             'name' => $request->input('home_name')
         ]);
 
-        $user->update([
-            'home_id' => $home->id
-        ]);
+        $user->home_id = $home->id;
+        $user->save();
 
-        Auth::attempt($user);
+        // $user->update([
+        //     'home_id' => $home->id
+        // ]);
 
-        return 'test';
+        // Auth::attempt($user);
+
+        return $home;
     }
 
 }
