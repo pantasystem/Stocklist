@@ -41,6 +41,7 @@ class ShoppingTaskController extends Controller
     {
         $task = $this->findShoppingList($listId)->tasks()->findOrFail($taskId);
         $task->fill($request->only('item_id', 'box_id', 'count', 'complated_at'));
+        $task->save();
         return response(null, 204);
     }
 
