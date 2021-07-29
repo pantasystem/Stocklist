@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -29,6 +33,47 @@ class UserController extends Controller
     {
         Auth::logout();
         return ['message' => 'ログアウトしました。'];
+    }
+
+    public function store(CreateUserRequest $request)
+    {
+        /*
+        $user=Auth::user();
+
+        $home = $user->firstOrFail()->home()->create([
+            'name' => $request->input('home_name'),
+        ]);
+        */
+
+        $user = new User;
+        $user->name = $request->input('user_name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        
+        // $user = User::create([
+        //     'name' => $request->input('user_name'),
+        //     'email' => $request->input('email'),
+        //     'password' => Hash::make($request->input('password')),
+        //     'home_id' => 1,
+        // ]);
+
+        $home = DB::transaction(function() use ($user,$request){
+            return $user->home()->create([
+                'name' => $request->input('home_name')
+            ]);
+
+            $user->home_id = $home->id;
+            $user->save();
+        });
+        
+
+        // $user->update([
+        //     'home_id' => $home->id
+        // ]);
+
+        Auth::attempt($request->only('email', 'password'));
+
+        return $home;
     }
 
 }
