@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -56,18 +57,21 @@ class UserController extends Controller
         //     'home_id' => 1,
         // ]);
 
-        $home = $user->home()->create([
-            'name' => $request->input('home_name')
-        ]);
+        $home = DB::transaction(function() use ($user,$request){
+            return $user->home()->create([
+                'name' => $request->input('home_name')
+            ]);
 
-        $user->home_id = $home->id;
-        $user->save();
+            $user->home_id = $home->id;
+            $user->save();
+        });
+        
 
         // $user->update([
         //     'home_id' => $home->id
         // ]);
 
-        // Auth::attempt($user);
+        Auth::attempt($request->only('email', 'password'));
 
         return $home;
     }
