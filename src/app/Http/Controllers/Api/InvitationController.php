@@ -5,25 +5,28 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Invitation;
+use App\Home;
 
 class InvitationController extends Controller
 {
     //
-    public function store(){
-        $user = Invitation::create([
+    public function store(Request $req){
+        Invitation::create([
             'token' => Hash::make((string) Str::uuid()),
-            'home_id' => Auth::user()->home()->id,
+            'home_id' => $req->input('home_id'),
             'user_id' => Auth::user()->id,
-         ]);
+        ]);
+
+        return url("/api/invitations/{$user->token}/register");
     }
 
-    public function generate(Request $req){
-        /**
-         * 招待ＵＲＬの作成
-        */
-        $token = Invitation::find($req->input('id'))->token;
+    public function index(Request $req, $token){
 
-        return url("/api/invitations/${token}/register");
+        $user = Auth::user();
+
+        $home_id = Invitation::where('token', $token)->create([
+            
+        ]);
 
     }
 
