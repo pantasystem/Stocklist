@@ -12,7 +12,6 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class MobileUserController extends Controller
 {
@@ -21,13 +20,13 @@ class MobileUserController extends Controller
         
         $email = $request->input('email');
         $user = User::where('email', $email)->with('home')->firstOrFail();
-        if(!($user && Hash::check($request->input('password', $user->password)))) {
+        if(!($user && Hash::check($request->input('password'), $user->password))) {
             throw ValidationException::withMessages([
                 'email' => ['メールアドレスまたはパスワードが違います。'],
             ]);
         }
         
-        $token = $user->createToken($request->input('device_name') ?? 'unknown');
+        $token = $user->createToken($request->input('device_name') ?? 'unknown')->plainTextToken;
         return [
             'token' => $token,
             'user' => $user
@@ -47,12 +46,13 @@ class MobileUserController extends Controller
         
 
         $home = DB::transaction(function() use ($user,$request){
-            return $user->home()->create([
+            $home = $user->home()->create([
                 'name' => $request->input('home_name')
             ]);
 
             $user->home_id = $home->id;
             $user->save();
+            return $home;
         });
         
 
