@@ -28,7 +28,7 @@ services:
             - db
     
     db:
-        build: ./docker/mysql
+        image: mariadb:10.6.2
         container_name: Stocklist-db
         ports:
             - 3360:3306
