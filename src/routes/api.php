@@ -56,7 +56,7 @@ Route::post('/logout', 'Api\UserController@logout')->middleware('auth:sanctum');
 Route::post('/register', 'Api\UserController@store');
 
 Route::post('/login/mobile', 'Api\MobileUserController@login');
-Route::post('/register/mobile', 'Api\MobileUserController@register')
+Route::post('/register/mobile', 'Api\MobileUserController@register');
 
 Route::post('/invitations', 'Api\InvitationController@store')->middleware('auth:sanctum');
 Route::post('/invitations/{token}/register', 'Api\InvitationController@index')->middleware('auth:sanctum');
