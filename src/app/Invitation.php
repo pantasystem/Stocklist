@@ -9,7 +9,7 @@ class Invitation extends Model
 {
     //
     protected $fillable = [
-        'token', 'home_id', 'id', 'timestamp', 'user_id'
+        'token', 'home_id', 'id', 'user_id', 'accepted_at'
     ];
 
     protected $hidden = [
