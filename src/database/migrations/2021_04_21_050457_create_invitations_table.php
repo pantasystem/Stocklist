@@ -22,6 +22,8 @@ class CreateInvitationsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
+
+            $table->dateTime('accepted_at')->nullable()->index();
             // $table->string('name')->index();
         });
     }

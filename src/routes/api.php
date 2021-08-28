@@ -56,7 +56,8 @@ Route::post('/logout', 'Api\UserController@logout')->middleware('auth:sanctum');
 Route::post('/register', 'Api\UserController@store');
 
 Route::post('/invitations', 'Api\InvitationController@store')->middleware('auth:sanctum');
-Route::post('/invitations/{token}/register', 'Api\InvitationController@index')->middleware('auth:sanctum');
+Route::post('/invitations/{token}/register', 'Api\InvitationController@join');
+Route::get('/invitations', 'Api\InvitationController@index')->middleware('auth:sanctum');
 
 Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'shopping-lists'], function() {
     Route::get('/', 'Api\ShoppingListController@index');
