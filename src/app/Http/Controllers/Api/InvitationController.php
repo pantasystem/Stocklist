@@ -16,13 +16,13 @@ use DB;
 class InvitationController extends Controller
 {
     //
-    public function store(Request $req){
+    public function store(){
         $token = (string)Str::uuid();
+        $user = Auth::user();
         $invitation = Invitation::create([
             'token' => $token,
-            'home_id' => $req->input('home_id'),
-            'user_id' => Auth::user()->id,
-            'id' => $req->input('id'),
+            'home_id' => $user->home_id,
+            'user_id' => $user->id,
         ]);
         return [
             'token' => $token,
