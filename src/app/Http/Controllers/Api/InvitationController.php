@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\JoinUserRequest;
 use Carbon\Carbon;
 use DB;
+use App\User;
 
 class InvitationController extends Controller
 {
@@ -38,11 +39,11 @@ class InvitationController extends Controller
     }
 
     public function join(JoinUserRequest $req, $token) {
-        $invitation = Invitation::where('token', '=', $token)->whereNull('accepted_at')->firstOrFail();
-        $user = DB::transaction(function() use ($invitation){
+        $invitation = Invitation::where('token', '=', $token)->firstOrFail();
+        $user = DB::transaction(function() use ($invitation, $req){
             $user = User::create([
                 'email' => $req->email,
-                'name' => $req->user_name,
+                'name' => $req->name,
                 'password' => Hash::make($req->password),
                 'home_id' => $invitation->home_id,
             ]);
@@ -52,7 +53,7 @@ class InvitationController extends Controller
 
             return $user;
         });
-        $token = $user->createToken($req->device_name ?? 'unknown')->plainText;
+        $token = $user->createToken($req->device_name ?? 'unknown')->plainTextToken;
         return [
             'token' => $token,
             'user' => $user
