@@ -25,7 +25,10 @@ class HomeController extends Controller
     {
         // 現在認証されているユーザーの取得
         $user = Auth::user();
-        return $home = $user->home::with('members')->firstOrFail();
+        $home = $user->home()->first();
+        $home->load('members');
+        return $home;
+        
     }
 
 }

@@ -47,7 +47,7 @@ class User extends Authenticatable
      */
     public function home()
     {
-        return $this->belongsTo(Home::class);
+        return $this->belongsTo(Home::class, 'home_id', 'id');
     }
 
     /**
