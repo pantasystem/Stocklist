@@ -8,7 +8,7 @@
             <v-row>
                 <v-col cols="12">
                     <v-card class="img-card">
-                        <img :src="item.image_path">
+                        <img :src="item.image_url">
                     </v-card>
                 </v-col>
             </v-row>

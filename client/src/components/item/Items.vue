@@ -9,7 +9,7 @@
                     <v-card class="card" :to="{name: 'ItemDetail', query: {id: item.id}}">
 
                         <!--画像だよ-->
-                        <v-img class="img" :src="item.image_path"></v-img>
+                        <v-img class="img" :src="item.image_url"></v-img>
 
                         <!--タイトルだよ-->
                         <v-card-title> <span class="card-text"> {{item.name}} </span> </v-card-title>
