@@ -61,7 +61,7 @@ export default {
                 password: this.password,
             })
             .then(()=>{
-                this.$router.push('/');
+                this.$router.push('/item');
                 localStorage.setItem("login", true);
                 this.$store.state.user.login = true;
             })

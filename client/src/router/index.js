@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 //home
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 
 //user
 import Login from '../views/Login.vue'
@@ -13,6 +13,7 @@ import ItemDetail from '../views/item/ItemDetail.vue'
 
 //box
 import Box from '../views/box/box.vue'
+import BoxEdit from '../views/box/boxedit.vue'
 
 // import store from '../store/index'
 
@@ -21,14 +22,14 @@ Vue.use(VueRouter)
 
 const routes = [
     //home
-    {
-        path: '/',
-        name: 'Home',
-        component: Home,
-        meta: {
-            requiresAuth: true,
-        }
-    },
+    // {
+    //     path: '/',
+    //     name: 'Home',
+    //     component: Home,
+    //     meta: {
+    //         requiresAuth: true,
+    //     }
+    // },
     //user
     {
         path: '/login',
@@ -55,7 +56,13 @@ const routes = [
         path: '/box',
         name: 'Box',
         component: Box,
-    }
+    },
+    //boxedit
+    {
+        path: '/box/edit',
+        name: 'BoxEdit',
+        component: BoxEdit,
+    },
 ]
 
 const router = new VueRouter({

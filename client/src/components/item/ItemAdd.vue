@@ -37,7 +37,7 @@
                                     <v-switch label="使い捨て" v-model="disposable" />
                                 </v-flex>
                                 <v-flex xs5 class="mx-auto">
-                                    <v-select label="カテゴリー" v-model="categoryId" item-text="name" item-value="id" :items="this.$store.state.box.boxes" />
+                                    <v-select label="カテゴリー" v-model="categoryId" item-text="path" item-value="id" :items="this.$store.state.category.categories" />
                                 </v-flex>
                             </v-row>
 
@@ -55,7 +55,6 @@
                     </v-card-actions>
 
                 </form>
-
             </v-card>
         </v-dialog>
 

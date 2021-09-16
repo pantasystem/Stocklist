@@ -70,6 +70,7 @@ export default {
         //取得
         this.$store.dispatch('item/getItems')
         this.$store.dispatch('box/getBoxes')
+        this.$store.dispatch('category/getCategories')
         this.$store.dispatch('stock/getStocks')
     },
 }

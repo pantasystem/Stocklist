@@ -4,23 +4,22 @@ export default {
     namespaced: true,
     state: {
         //物用
-        boxes: [],
-        boxAddFlag: false,
+        categories: [],
     },
     mutations: {
-        setBoxes: (state, response) => {
-            state.boxes = response.data;
+        setCategories: (state, response) => {
+            state.categories = response.data;
         },
     },
     getters: {
     },
     actions: {
-        async getBoxes({ commit }) {
+        async getCategories({ commit }) {
             if (this.state.user.login) {
                 await axios
-                    .get('/api/boxes')
+                    .get('/api/categories')
                     .then(response => {
-                        commit('setBoxes', response);
+                        commit('setCategories', response);
                     })
                     .catch(error => {
                         console.log(error);
